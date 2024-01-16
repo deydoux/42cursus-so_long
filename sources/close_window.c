@@ -1,36 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   close_window.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/01/16 18:56:53 by deydoux          ###   ########.fr       */
+/*   Created: 2024/01/16 18:53:24 by deydoux           #+#    #+#             */
+/*   Updated: 2024/01/16 18:56:30 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-# include "libft.h"
-# include "mlx.h"
+#include "so_long.h"
 
-# define ESC_KEY 65307
-
-# ifndef WINDOW_HEIGH
-#  define WINDOW_HEIGH 720
-# endif
-# ifndef WINDOW_WIDTH
-#  define WINDOW_WIDTH 1280
-# endif
-
-typedef struct s_win
+void	close_window(t_win win)
 {
-	void	*mlx;
-	void	*ptr;
-}			t_win;
-
-void	close_window(t_win win);
-int		deal_key(int key, t_win *win);
-
-#endif
+	mlx_destroy_window(win.mlx, win.ptr);
+	mlx_loop_end(win.mlx);
+}

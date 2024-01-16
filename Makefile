@@ -1,6 +1,7 @@
 NAME				=	so_long
 
-SOURCES				=	deal_key.c	\
+SOURCES				=	close_window.c	\
+						deal_key.c		\
 						so_long.c
 
 LIBFT_DIR			=	libft
@@ -10,7 +11,7 @@ INCLUDE_DIR			=	include
 OBJECTS_DIR			=	.objects
 
 CC					=	cc
-CFLAGS				=	-Wall -Wextra -Werror -MMD -I $(INCLUDE_DIR)
+CFLAGS				=	-Wall -Wextra -Werror -MMD -I $(INCLUDE_DIR) -g
 LFLAGS				=	-lmlx -lXext -lX11 -L $(MLX_DIR)
 RM					=	rm -rf
 MKDIR				=	mkdir -p
