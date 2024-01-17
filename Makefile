@@ -1,7 +1,7 @@
 NAME				=	so_long
 
 SOURCES				=	close_window.c	\
-						deal_key.c		\
+						key_release.c	\
 						so_long.c
 
 LIBFT_DIR			=	libft
