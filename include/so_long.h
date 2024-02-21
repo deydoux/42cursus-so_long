@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/01/17 16:31:20 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/21 13:43:45 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 # include "libft.h"
 # include "mlx.h"
+# include <fcntl.h>
 
 # ifndef WINDOW_HEIGH
 #  define WINDOW_HEIGH 720
@@ -47,7 +48,8 @@ typedef struct s_win
 	void	*ptr;
 }			t_win;
 
-int	close_window(t_win *win);
-int	key_release(int key, t_win *win);
+int		close_window(t_win *win);
+int		key_release(int key, t_win *win);
+char	*parse_map(char *path);
 
 #endif

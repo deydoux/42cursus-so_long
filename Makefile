@@ -2,6 +2,7 @@ NAME				=	so_long
 
 SOURCES				=	close_window.c	\
 						key_release.c	\
+						parse_map.c		\
 						so_long.c
 
 LIBFT_DIR			=	libft
@@ -11,7 +12,7 @@ INCLUDE_DIR			=	include
 BUILD_DIR			=	build
 
 CC					=	cc
-CFLAGS				=	-Wall -Wextra -Werror -MMD -I $(INCLUDE_DIR)
+CFLAGS				=	-Wall -Wextra -Werror -MMD -I $(INCLUDE_DIR) -g
 LFLAGS				=	-L $(MLX_DIR) -lmlx -lXext -lX11 -lm
 RM					=	rm -rf
 MKDIR				=	mkdir -p

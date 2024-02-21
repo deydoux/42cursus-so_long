@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:08:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/21 13:54:05 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/21 18:17:48 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static bool	valid_extention(char *path)
 
 int	main(int argc, char **argv)
 {
+	char	*map;
 	t_win	win;
 
 	if (argc != 2 || !valid_extention(argv[1]))
@@ -31,6 +32,8 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Usage: ./so_long map.ber\n", STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
+	map = parse_map(argv[1]);
+	free(map);
 	win.mlx = mlx_init();
 	win.ptr = mlx_new_window(win.mlx, WINDOW_WIDTH, WINDOW_HEIGH, "so_long");
 	mlx_hook(win.ptr, destroy_notify_event, structure_notify_mask, close_window,
