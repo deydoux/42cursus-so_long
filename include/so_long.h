@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/22 17:24:23 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/22 17:45:37 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_parse
 	bool	collectible;
 	bool	exit;
 	bool	start;
+	bool	last;
 }			t_parse;
 
 enum

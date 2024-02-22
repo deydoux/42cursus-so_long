@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:31:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/22 17:28:18 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/22 17:49:23 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 static bool	valid_char(char c, t_parse *parse)
 {
-	if (c == '0' || c == '1')
+	if (c == '1')
+		return (true);
+	parse->last = false;
+	if (c == '0')
 		return (true);
 	if (c == 'C')
 		parse->collectible = true;
@@ -47,6 +50,7 @@ static bool	valid_line(char *line, size_t *len, t_parse *parse)
 	}
 	if (line[0] != '1')
 		return (false);
+	parse->last = true;
 	i = 1;
 	while (line[i] != '\n' && line[i])
 		if (!valid_char(line[i++], parse))
@@ -61,7 +65,7 @@ static void	read_map(int fd, size_t size, t_parse parse, t_map *map)
 	line = get_next_line(fd);
 	if (!line)
 	{
-		if (!parse.collectible || !parse.exit || !parse.start)
+		if (!parse.collectible || !parse.exit || !parse.start || !parse.last)
 			return ;
 		map->content = malloc(sizeof(char) * (size + 1));
 		if (map->content)
