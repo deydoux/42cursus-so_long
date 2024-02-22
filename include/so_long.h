@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/21 13:43:45 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/22 17:24:23 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,19 @@
 # ifndef WINDOW_WIDTH
 #  define WINDOW_WIDTH 1280
 # endif
+
+typedef struct s_map
+{
+	char	*content;
+	size_t	line_len;
+}			t_map;
+
+typedef struct s_parse
+{
+	bool	collectible;
+	bool	exit;
+	bool	start;
+}			t_parse;
 
 enum
 {
@@ -50,6 +63,6 @@ typedef struct s_win
 
 int		close_window(t_win *win);
 int		key_release(int key, t_win *win);
-char	*parse_map(char *path);
+t_map	parse_map(char *path);
 
 #endif
