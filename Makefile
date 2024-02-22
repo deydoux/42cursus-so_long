@@ -12,8 +12,7 @@ INCLUDE_DIR			=	include
 BUILD_DIR			=	build
 
 CC					=	cc
-CFLAGS				=	-Wall -Wextra -Werror -MMD -I $(INCLUDE_DIR) -g
-LFLAGS				=	-L $(MLX_DIR) -lmlx -lXext -lX11 -lm
+CFLAGS				=	-Wall -Wextra -Werror -MMD -I $(INCLUDE_DIR)
 RM					=	rm -rf
 MKDIR				=	mkdir -p
 
@@ -21,6 +20,11 @@ LIBFT				=	$(LIBFT_DIR)/libft.a
 MLX					=	$(MLX_DIR)/libmlx.a
 OBJECTS				=	$(addprefix $(BUILD_DIR)/,$(SOURCES:.c=.o))
 DEPENDENCIES		=	$(OBJECTS:.o=.d)
+
+LFLAGS				=	-L $(MLX_DIR) -lmlx -lXext -lX11 -lm
+ifeq				($(shell uname), Darwin)
+	LFLAGS			+=	-L /usr/X11/lib
+endif
 
 all					:	$(NAME)
 
