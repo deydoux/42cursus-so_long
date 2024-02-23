@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/23 18:53:31 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/23 20:23:21 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ enum
 
 typedef struct s_map
 {
-	char	*content;
-	size_t	line_len;
+	char	*ptr;
+	size_t	width;
 }			t_map;
 
 typedef struct s_parse
@@ -65,5 +65,6 @@ typedef struct s_win
 int		close_window(t_win *win);
 int		key_release(int key, t_win *win);
 void	parse_map(char *path, t_map *map);
+void	valid_path(t_map *map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:31:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/23 18:54:47 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/23 20:28:24 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,18 @@ static void	read_map(int fd, size_t size, t_parse parse, t_map *map)
 	{
 		if (!parse.collectible || !parse.exit || !parse.start || !parse.last)
 			return ;
-		map->content = malloc(sizeof(char) * (size + 1));
-		if (map->content)
-			map->content[size] = 0;
+		map->ptr = malloc(sizeof(char) * (size + 1));
+		if (map->ptr)
+			map->ptr[size] = 0;
 		return ;
 	}
-	if (valid_line(line, &map->line_len, &parse))
+	if (valid_line(line, &map->width, &parse))
 	{
-		read_map(fd, size + map->line_len + 1, parse, map);
-		if (map->content)
+		read_map(fd, size + map->width + 1, parse, map);
+		if (map->ptr)
 		{
-			ft_memcpy(map->content + size, line, map->line_len);
-			map->content[size + map->line_len] = '\n';
+			ft_memcpy(map->ptr + size, line, map->width);
+			map->ptr[size + map->width] = '\n';
 		}
 	}
 	free(line);
@@ -89,20 +89,21 @@ void	parse_map(char *path, t_map *map)
 	int		fd;
 	t_parse	parse;
 
-	map->content = NULL;
+	map->ptr = NULL;
 	fd = open(path, O_RDONLY);
 	if (fd != -1)
 	{
-		map->line_len = 0;
+		map->width = 0;
 		parse.collectible = false;
 		parse.exit = false;
 		parse.start = false;
 		read_map(fd, 0, parse, map);
 		close(fd);
 	}
-	if (!map->content)
+	if (!map->ptr)
 	{
 		ft_putstr_fd("Error\nParsing failed\n", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
+	valid_path(map);
 }

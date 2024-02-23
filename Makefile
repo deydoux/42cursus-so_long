@@ -3,7 +3,8 @@ NAME				=	so_long
 SOURCES				=	close_window.c	\
 						key_release.c	\
 						parse_map.c		\
-						so_long.c
+						so_long.c		\
+						valid_path.c
 
 LIBFT_DIR			=	libft
 MLX_DIR				=	minilibx-linux
