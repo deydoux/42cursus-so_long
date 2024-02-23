@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/22 17:45:37 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/23 18:53:31 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,6 @@
 # ifndef WINDOW_WIDTH
 #  define WINDOW_WIDTH 1280
 # endif
-
-typedef struct s_map
-{
-	char	*content;
-	size_t	line_len;
-}			t_map;
-
-typedef struct s_parse
-{
-	bool	collectible;
-	bool	exit;
-	bool	start;
-	bool	last;
-}			t_parse;
 
 enum
 {
@@ -56,6 +42,20 @@ enum
 	structure_notify_mask = (1L<<17)
 };
 
+typedef struct s_map
+{
+	char	*content;
+	size_t	line_len;
+}			t_map;
+
+typedef struct s_parse
+{
+	bool	collectible;
+	bool	exit;
+	bool	start;
+	bool	last;
+}			t_parse;
+
 typedef struct s_win
 {
 	void	*mlx;
@@ -64,6 +64,6 @@ typedef struct s_win
 
 int		close_window(t_win *win);
 int		key_release(int key, t_win *win);
-t_map	parse_map(char *path);
+void	parse_map(char *path, t_map *map);
 
 #endif

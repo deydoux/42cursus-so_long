@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:31:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/22 17:49:23 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/23 18:54:47 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,27 +84,25 @@ static void	read_map(int fd, size_t size, t_parse parse, t_map *map)
 	free(line);
 }
 
-t_map	parse_map(char *path)
+void	parse_map(char *path, t_map *map)
 {
 	int		fd;
-	t_map	map;
 	t_parse	parse;
 
-	map.content = NULL;
+	map->content = NULL;
 	fd = open(path, O_RDONLY);
 	if (fd != -1)
 	{
-		map.line_len = 0;
+		map->line_len = 0;
 		parse.collectible = false;
 		parse.exit = false;
 		parse.start = false;
-		read_map(fd, 0, parse, &map);
+		read_map(fd, 0, parse, map);
 		close(fd);
 	}
-	if (!map.content)
+	if (!map->content)
 	{
 		ft_putstr_fd("Error\nParsing failed\n", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
-	return (map);
 }
