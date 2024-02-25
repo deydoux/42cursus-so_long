@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:31:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/23 20:28:24 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/25 16:06:15 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,18 @@ static void	read_map(int fd, size_t size, t_parse parse, t_map *map)
 	{
 		if (!parse.collectible || !parse.exit || !parse.start || !parse.last)
 			return ;
-		map->ptr = malloc(sizeof(char) * (size + 1));
-		if (map->ptr)
-			map->ptr[size] = 0;
+		map->str = malloc(sizeof(char) * (size + 1));
+		if (map->str)
+			map->str[size] = 0;
 		return ;
 	}
 	if (valid_line(line, &map->width, &parse))
 	{
 		read_map(fd, size + map->width + 1, parse, map);
-		if (map->ptr)
+		if (map->str)
 		{
-			ft_memcpy(map->ptr + size, line, map->width);
-			map->ptr[size + map->width] = '\n';
+			ft_memcpy(map->str + size, line, map->width);
+			map->str[size + map->width] = '\n';
 		}
 	}
 	free(line);
@@ -89,7 +89,7 @@ void	parse_map(char *path, t_map *map)
 	int		fd;
 	t_parse	parse;
 
-	map->ptr = NULL;
+	map->str = NULL;
 	fd = open(path, O_RDONLY);
 	if (fd != -1)
 	{
@@ -100,7 +100,7 @@ void	parse_map(char *path, t_map *map)
 		read_map(fd, 0, parse, map);
 		close(fd);
 	}
-	if (!map->ptr)
+	if (!map->str)
 	{
 		ft_putstr_fd("Error\nParsing failed\n", STDERR_FILENO);
 		exit(EXIT_FAILURE);

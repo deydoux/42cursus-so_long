@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/23 20:23:21 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/25 16:06:15 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ enum
 
 typedef struct s_map
 {
-	char	*ptr;
+	char	*str;
 	size_t	width;
 }			t_map;
 

@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:08:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/23 20:22:26 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/25 16:06:15 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	parse_map(argv[1], &map);
-	free(map.ptr);
+	free(map.str);
 	return (EXIT_SUCCESS);
 	win.mlx = mlx_init();
 	win.ptr = mlx_new_window(win.mlx, WINDOW_WIDTH, WINDOW_HEIGH, "so_long");
