@@ -8,12 +8,14 @@ SOURCES				=	close_window.c	\
 
 LIBFT_DIR			=	libft
 MLX_DIR				=	minilibx-linux
+X11_DIR				=	/usr/X11/lib
 SOURCES_DIR			=	sources
 INCLUDE_DIR			=	include
 BUILD_DIR			=	build
 
 CC					=	cc
-CFLAGS				=	-Wall -Wextra -Werror -MMD -I $(INCLUDE_DIR)
+CFLAGS				=	-I$(INCLUDE_DIR) -MD -Wall -Wextra -Werror
+LFLAGS				=	-L$(X11_DIR) -lX11 -lXext -lm
 RM					=	rm -rf
 MKDIR				=	mkdir -p
 
@@ -21,11 +23,6 @@ LIBFT				=	$(LIBFT_DIR)/libft.a
 MLX					=	$(MLX_DIR)/libmlx.a
 OBJECTS				=	$(addprefix $(BUILD_DIR)/,$(SOURCES:.c=.o))
 DEPENDENCIES		=	$(OBJECTS:.o=.d)
-
-LFLAGS				=	-L $(MLX_DIR) -lmlx -lXext -lX11 -lm
-ifeq				($(shell uname), Darwin)
-	LFLAGS			+=	-L /usr/X11/lib
-endif
 
 all					:	$(NAME)
 
@@ -45,8 +42,8 @@ $(BUILD_DIR)/%.o	:	$(SOURCES_DIR)/%.c
 	@$(MKDIR) $(@D)
 	$(CC) $(CFLAGS) -o $@ -c	$<
 
-$(NAME)				:	$(OBJECTS) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) -o $@ $^ $(LFLAGS)
+$(NAME)				:	$(MLX) $(LIBFT) $(OBJECTS)
+	$(CC) $(CFLAGS) $(LFLAGS) -o $@ $^
 
 clean				:
 	$(MAKE) --no-print-directory -C	$(LIBFT_DIR) $@
