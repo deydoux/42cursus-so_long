@@ -1,0 +1,26 @@
+/* XPM */
+static char *player_back[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 4 1 ",
+"  c None",
+". c #6E1E4B",
+"X c #E0B683",
+"o c #E0F8CF",
+/* pixels */
+"    .       .   ",
+"   .X.     .X.  ",
+"  .XXX.....XX.  ",
+"  .XXXXXXXXXX.  ",
+"  .XXXXXXXXXX.  ",
+"  .XXX...XXXX.  ",
+"  .XX.ooo.XXX.  ",
+"   ..ooooo.X.   ",
+"   ..ooooo..X.  ",
+"  .X..oooXX.Xo. ",
+"  .X..XXXXX..o. ",
+"   ...XXXXX...  ",
+"   .o.XXXXX.o.  ",
+"   ....XXX....  ",
+"  ..oo........  ",
+"   ..........   "
+};
