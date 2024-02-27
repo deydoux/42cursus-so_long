@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:31:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/25 16:06:15 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/27 16:27:28 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	parse_map(char *path, t_map *map)
 	}
 	if (!map->str)
 	{
-		ft_putstr_fd("Error\nParsing failed\n", STDERR_FILENO);
+		ft_putstr_fd("Error\nFailed to parse map\n", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
 	valid_path(map);
