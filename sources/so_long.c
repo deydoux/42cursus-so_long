@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:08:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/25 16:06:15 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/27 07:35:12 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static bool	valid_extention(char *path)
 int	main(int argc, char **argv)
 {
 	t_map	map;
+	t_img	img;
 	t_win	win;
 
 	if (argc != 2 || !valid_extention(argv[1]))
@@ -34,8 +35,8 @@ int	main(int argc, char **argv)
 	}
 	parse_map(argv[1], &map);
 	free(map.str);
-	return (EXIT_SUCCESS);
 	win.mlx = mlx_init();
+	open_images(win.mlx, &img);
 	win.ptr = mlx_new_window(win.mlx, WINDOW_WIDTH, WINDOW_HEIGH, "so_long");
 	mlx_hook(win.ptr, destroy_notify_event, structure_notify_mask, close_window,
 		&win);
@@ -43,4 +44,5 @@ int	main(int argc, char **argv)
 	mlx_loop(win.mlx);
 	mlx_destroy_display(win.mlx);
 	free(win.mlx);
+	return (EXIT_SUCCESS);
 }

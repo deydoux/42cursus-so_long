@@ -2,6 +2,7 @@ NAME				=	so_long
 
 SOURCES				=	close_window.c	\
 						key_release.c	\
+						open_images.c	\
 						parse_map.c		\
 						so_long.c		\
 						valid_path.c

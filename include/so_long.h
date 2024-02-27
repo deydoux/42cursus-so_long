@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/27 07:04:23 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/27 07:50:18 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include "mlx.h"
 # include <fcntl.h>
 
-# define OVERLAYS_SIZE 16
-# define PLAYER_SIZE 16
-# define TILES_SIZE 32
+# define OVERLAYS_IMAGE_SIZE 16
+# define PLAYER_IMAGE_SIZE 16
+# define TILES_IMAGE_SIZE 32
 
 # define WINDOW_HEIGH 720
 # define WINDOW_WIDTH 1280
@@ -42,6 +42,18 @@ enum e_mask
 	structure_notify_mask = (1L<<17)
 };
 
+typedef struct s_img
+{
+	void	*collectible;
+	void	*empty;
+	void	*exit;
+	void	*player_back;
+	void	*player_face;
+	void	*player_move;
+	void	*player_side;
+	void	*wall;
+}			t_img;
+
 typedef struct s_map
 {
 	char	*str;
@@ -64,6 +76,7 @@ typedef struct s_win
 
 int		close_window(t_win *win);
 int		key_release(int key, t_win *win);
+void	open_images(void *mlx, t_img *img);
 void	parse_map(char *path, t_map *map);
 void	valid_path(t_map *map);
 
