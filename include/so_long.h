@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/25 16:06:15 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/27 06:44:39 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@
 #  define WINDOW_WIDTH 1280
 # endif
 
-enum
+enum e_key
 {
 	esc_key = 65307
 };
 
-enum
+enum e_event
 {
 	key_press_event = 2,
 	key_release_event = 3,
 	destroy_notify_event = 17
 };
 
-enum
+enum e_mask
 {
 	key_press_mask = (1L<<0),
 	key_release_mask = (1L<<1),
