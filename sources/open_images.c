@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 07:14:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/27 13:49:31 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/27 15:52:23 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ static void	throw_error(void *mlx, char *map_str)
 
 void	open_images(void *mlx, char *map_str, t_img *img)
 {
-	const char	*files[] = {"assets/empty.xpm", "assets/player/back.xpm",
-		"assets/player/face.xpm", "assets/player/move.xpm",
-		"assets/player/side.xpm", "assets/collectible.xpm", "assets/exit.xpm",
-		"assets/wall.xpm", NULL};
-	const void	*img_ptr[] = {img->empty, img->player_back, img->player_face,
-		img->player_move, img->player_side, img->collectible, img->exit,
+	const char	*files[] = {"assets/collectible.xpm", "assets/empty.xpm",
+		"assets/exit.xpm", "assets/player/back.xpm", "assets/player/face.xpm",
+		"assets/player/move.xpm", "assets/player/side.xpm", "assets/wall.xpm",
+		NULL};
+	const void	*img_ptr[] = {img->collectible, img->empty, img->exit,
+		img->player_back, img->player_face, img->player_move, img->player_side,
 		img->wall};
 	int			size;
 	size_t		i;
@@ -43,5 +43,6 @@ void	open_images(void *mlx, char *map_str, t_img *img)
 				mlx_destroy_image(mlx, (void *)img_ptr[i]);
 			throw_error(mlx, map_str);
 		}
+		i++;
 	}
 }
