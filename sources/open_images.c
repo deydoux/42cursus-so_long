@@ -6,68 +6,42 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 07:14:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/27 07:44:48 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/27 13:49:31 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	open_overlays_images(void *mlx, t_img *img)
+static void	throw_error(void *mlx, char *map_str)
 {
-	const char	*path[] = {"assets/overlays/collectible.xpm",
-		"assets/overlays/exit.xpm"};
-	const void	*ptr[] = {img->collectible, img->exit, NULL};
-	const int	size = OVERLAYS_IMAGE_SIZE;
-	size_t		i;
-
-	i = 0;
-	while (ptr[i])
-	{
-		ptr[i] = mlx_xpm_file_to_image(mlx, (char *)path[i],
-				(int *)&size, (int *)&size);
-		i++;
-	}
+	ft_putstr_fd("Error\nFailed to open images\n", STDERR_FILENO);
+	free(map_str);
+	free_mlx(mlx);
+	exit(EXIT_FAILURE);
 }
 
-static void	open_player_images(void *mlx, t_img *img)
+void	open_images(void *mlx, char *map_str, t_img *img)
 {
-	const char	*path[] = {"assets/player/back.xpm",
+	const char	*files[] = {"assets/empty.xpm", "assets/player/back.xpm",
 		"assets/player/face.xpm", "assets/player/move.xpm",
-		"assets/player/side.xpm"};
-	const void	*ptr[] = {img->player_back, img->player_face,
-		img->player_move, img->player_side, NULL};
-	const int	size = PLAYER_IMAGE_SIZE;
+		"assets/player/side.xpm", "assets/collectible.xpm", "assets/exit.xpm",
+		"assets/wall.xpm", NULL};
+	const void	*img_ptr[] = {img->empty, img->player_back, img->player_face,
+		img->player_move, img->player_side, img->collectible, img->exit,
+		img->wall};
+	int			size;
 	size_t		i;
 
+	size = IMAGE_SIZE;
 	i = 0;
-	while (ptr[i])
+	while (files[i])
 	{
-		ptr[i] = mlx_xpm_file_to_image(mlx, (char *)path[i],
-				(int *)&size, (int *)&size);
-		i++;
+		img_ptr[i] = mlx_xpm_file_to_image(mlx, (char *)files[i], &size, &size);
+		if (!img_ptr[i])
+		{
+			while (i--)
+				mlx_destroy_image(mlx, (void *)img_ptr[i]);
+			throw_error(mlx, map_str);
+		}
 	}
-}
-
-static void	open_tiles_images(void *mlx, t_img *img)
-{
-	const char	*path[] = {"assets/tiles/empty.xpm",
-		"assets/tiles/wall.xpm"};
-	const void	*ptr[] = {img->empty, img->wall, NULL};
-	const int	size = TILES_IMAGE_SIZE;
-	size_t		i;
-
-	i = 0;
-	while (ptr[i])
-	{
-		ptr[i] = mlx_xpm_file_to_image(mlx, (char *)path[i],
-				(int *)&size, (int *)&size);
-		i++;
-	}
-}
-
-void	open_images(void *mlx, t_img *img)
-{
-	open_overlays_images(mlx, img);
-	open_player_images(mlx, img);
-	open_tiles_images(mlx, img);
 }

@@ -1,6 +1,7 @@
 NAME				=	so_long
 
 SOURCES				=	close_window.c	\
+						free_mlx.c		\
 						key_release.c	\
 						open_images.c	\
 						parse_map.c		\

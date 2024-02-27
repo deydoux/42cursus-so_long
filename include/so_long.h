@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/27 07:50:18 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/27 13:49:13 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@
 # include "mlx.h"
 # include <fcntl.h>
 
-# define OVERLAYS_IMAGE_SIZE 16
-# define PLAYER_IMAGE_SIZE 16
-# define TILES_IMAGE_SIZE 32
+# define IMAGE_SIZE 32
 
 # define WINDOW_HEIGH 720
 # define WINDOW_WIDTH 1280
+# define WINDOW_TITLE "so_long"
 
 enum e_key
 {
@@ -68,15 +67,18 @@ typedef struct s_parse
 	bool	last;
 }			t_parse;
 
-typedef struct s_win
+typedef struct s_game
 {
+	t_img	img;
+	t_map	map;
 	void	*mlx;
-	void	*ptr;
-}			t_win;
+	void	*win;
+}			t_game;
 
-int		close_window(t_win *win);
-int		key_release(int key, t_win *win);
-void	open_images(void *mlx, t_img *img);
+int		close_window(t_game *game);
+void	free_mlx(void *mlx);
+int		key_release(int key, t_game *game);
+void	open_images(void *mlx, char *map_str, t_img *img);
 void	parse_map(char *path, t_map *map);
 void	valid_path(t_map *map);
 

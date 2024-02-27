@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_release.c                                      :+:      :+:    :+:   */
+/*   free_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 16:27:29 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/27 11:37:57 by deydoux          ###   ########.fr       */
+/*   Created: 2024/02/27 13:41:58 by deydoux           #+#    #+#             */
+/*   Updated: 2024/02/27 13:42:29 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	key_release(int key, t_game *game)
+void	free_mlx(void *mlx)
 {
-	if (key == esc_key)
-		close_window(game);
-	return (0);
+	mlx_destroy_display(mlx);
+	free(mlx);
 }
