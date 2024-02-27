@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/27 06:44:39 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/27 07:04:23 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 # include "mlx.h"
 # include <fcntl.h>
 
-# ifndef WINDOW_HEIGH
-#  define WINDOW_HEIGH 720
-# endif
-# ifndef WINDOW_WIDTH
-#  define WINDOW_WIDTH 1280
-# endif
+# define OVERLAYS_SIZE 16
+# define PLAYER_SIZE 16
+# define TILES_SIZE 32
+
+# define WINDOW_HEIGH 720
+# define WINDOW_WIDTH 1280
 
 enum e_key
 {
