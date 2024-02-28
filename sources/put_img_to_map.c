@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:23:03 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/28 18:24:46 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/28 18:26:29 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,4 @@ void	put_img_to_map(t_img img, t_img map_img, size_t x, size_t y)
 		x_img = 0;
 		y_img++;
 	}
-	ft_printf("%llu %llu\n", x_img, y_img);
 }
