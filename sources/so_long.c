@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:08:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/27 16:23:11 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/28 13:56:56 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,12 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Error\nFailed to connect to X server\n", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
-	open_images(game.mlx, game.map.str, &game.img);
 	new_window(game.mlx, &game.win);
-	mlx_put_image_to_window(game.mlx, game.win, game.img.empty, 0, 0);
 	mlx_hook(game.win, destroy_notify_event, structure_notify_mask,
 		close_window, &game);
 	mlx_hook(game.win, key_release_event, key_release_mask, key_release, &game);
 	mlx_loop(game.mlx);
-	free(game.map.str);
 	free_mlx(game.mlx);
+	free(game.map.str);
 	exit(EXIT_SUCCESS);
 }

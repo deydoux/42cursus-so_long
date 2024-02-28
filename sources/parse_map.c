@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:31:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/27 16:27:28 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/28 12:56:56 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ static void	read_map(int fd, size_t size, t_parse parse, t_map *map)
 	}
 	if (valid_line(line, &map->width, &parse))
 	{
+		map->heigh++;
 		read_map(fd, size + map->width + 1, parse, map);
 		if (map->str)
 		{
@@ -93,6 +94,7 @@ void	parse_map(char *path, t_map *map)
 	fd = open(path, O_RDONLY);
 	if (fd != -1)
 	{
+		map->heigh = 0;
 		map->width = 0;
 		parse.collectible = false;
 		parse.exit = false;

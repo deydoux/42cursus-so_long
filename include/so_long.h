@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/27 13:49:13 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/28 13:56:40 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,12 @@ enum e_mask
 	structure_notify_mask = (1L<<17)
 };
 
-typedef struct s_img
-{
-	void	*collectible;
-	void	*empty;
-	void	*exit;
-	void	*player_back;
-	void	*player_face;
-	void	*player_move;
-	void	*player_side;
-	void	*wall;
-}			t_img;
-
 typedef struct s_map
 {
 	char	*str;
+	size_t	heigh;
 	size_t	width;
+	void	*img;
 }			t_map;
 
 typedef struct s_parse
@@ -69,7 +59,6 @@ typedef struct s_parse
 
 typedef struct s_game
 {
-	t_img	img;
 	t_map	map;
 	void	*mlx;
 	void	*win;
@@ -78,7 +67,6 @@ typedef struct s_game
 int		close_window(t_game *game);
 void	free_mlx(void *mlx);
 int		key_release(int key, t_game *game);
-void	open_images(void *mlx, char *map_str, t_img *img);
 void	parse_map(char *path, t_map *map);
 void	valid_path(t_map *map);
 
