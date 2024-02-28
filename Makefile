@@ -1,10 +1,13 @@
 NAME				=	so_long
 
-SOURCES				=	close_window.c	\
-						free_mlx.c		\
-						key_release.c	\
-						parse_map.c		\
-						so_long.c		\
+SOURCES				=	close_window.c		\
+						create_map_img.c	\
+						free_mlx.c			\
+						get_img.c			\
+						key_release.c		\
+						parse_map.c			\
+						put_img_to_map.c	\
+						so_long.c			\
 						valid_path.c
 
 LIBFT_DIR			=	libft
@@ -20,7 +23,7 @@ X11_DIR				=	/usr/lib
 endif
 
 CC					=	cc
-CFLAGS				=	-I$(INCLUDE_DIR) -I$(MLX_DIR) -MD -Wall -Wextra -Werror
+CFLAGS				=	-I$(INCLUDE_DIR) -I$(MLX_DIR) -MD -Wall -Wextra -Werror -g
 LFLAGS				=	-L$(X11_DIR) -lX11 -lXext -lm
 RM					=	rm -rf
 MKDIR				=	mkdir -p
