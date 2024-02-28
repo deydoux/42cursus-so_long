@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:26:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/28 17:53:36 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/28 18:18:37 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	put_tiles(void *mlx, t_map map)
 
 	open_tiles_img(mlx, map.str, img);
 	put_img_to_map(img[0], map.img, 0, 0);
-	put_img_to_map(img[1], map.img, 32, 0);
+	put_img_to_map(img[1], map.img, 32, 32);
 	mlx_destroy_image(mlx, img[0].ptr);
 	mlx_destroy_image(mlx, img[1].ptr);
 }
