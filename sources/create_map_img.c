@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:26:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/29 13:29:45 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/29 15:20:19 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,36 @@ static void	open_tiles_img(void *mlx, char *map_str, t_img img[2])
 static void	put_tiles(void *mlx, t_map map)
 {
 	t_img	img[2];
+	size_t	x;
+	size_t	y;
+	size_t	i;
 
 	open_tiles_img(mlx, map.str, img);
-	put_img_to_img(img[0], map.img, 0, 0);
-	put_img_to_img(img[1], map.img, 32, 32);
+	x = 0;
+	y = 0;
+	i = 0;
+	while (map.str[i])
+	{
+		if (map.str[i] == '\n')
+		{
+			x = 0;
+			y += IMAGE_SIZE;
+		}
+		else
+		{
+			put_img_to_img(img[map.str[i] == '1'], map.img, x, y);
+			x += IMAGE_SIZE;
+		}
+		i++;
+	}
 	mlx_destroy_image(mlx, img[0].ptr);
 	mlx_destroy_image(mlx, img[1].ptr);
 }
 
 void	create_map_img(void *mlx, t_map *map)
 {
-	map->width *= IMAGE_SIZE;
-	map->heigh *= IMAGE_SIZE;
+	map->width = WINDOW_WIDTH;
+	map->heigh = WINDOW_HEIGH;
 	if (map->heigh > INT_MAX || map->width > INT_MAX)
 	{
 		ft_putstr_fd("Error\nMap too large\n", STDERR_FILENO);
