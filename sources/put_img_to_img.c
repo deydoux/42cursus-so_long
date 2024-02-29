@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_img_to_map.c                                   :+:      :+:    :+:   */
+/*   put_img_to_img.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:23:03 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/28 18:26:29 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/29 13:30:44 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	put_img_to_map(t_img img, t_img map_img, size_t x, size_t y)
+void	put_img_to_img(t_img src, t_img dst, size_t x, size_t y)
 {
-	size_t	x_img;
-	size_t	y_img;
+	size_t	width;
+	size_t	x_src;
+	int		y_src;
 
 	x *= 4;
-	x_img = 0;
-	y_img = 0;
-	while (y_img < IMAGE_SIZE)
+	width = src.width * 4;
+	x_src = 0;
+	y_src = 0;
+	while (y_src < src.heigh)
 	{
-		while (x_img < IMAGE_SIZE * 4)
+		while (x_src < width)
 		{
-			map_img.buffer[x + x_img + (y + y_img) * map_img.line_size]
-				= img.buffer[x_img + (y_img * img.line_size)];
-			x_img++;
+			dst.buffer[x + x_src + (y + y_src) * dst.line_size]
+				= src.buffer[x_src + (y_src * src.line_size)];
+			x_src++;
 		}
-		x_img = 0;
-		y_img++;
+		x_src = 0;
+		y_src++;
 	}
 }

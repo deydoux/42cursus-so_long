@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/28 17:49:54 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/02/29 13:29:28 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ enum e_mask
 
 typedef struct s_img
 {
+	int		heigh;
+	int		width;
 	void	*ptr;
 	char	*buffer;
 	int		pixel_bits;
@@ -76,10 +78,11 @@ typedef struct s_game
 int		close_window(t_game *game);
 void	create_map_img(void *mlx, t_map *map);
 void	free_mlx(void *mlx);
-void	get_img(t_img *img);
 int		key_release(int key, t_game *game);
+t_img	new_img(void *mlx, int heigh, int width);
+t_img	open_img(void *mlx, char *path, int heigh, int width);
 void	parse_map(char *path, t_map *map);
-void	put_img_to_map(t_img img, t_img map_img, size_t x, size_t y);
+void	put_img_to_img(t_img src, t_img dst, size_t x, size_t y);
 void	valid_path(t_map *map);
 
 #endif

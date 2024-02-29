@@ -3,10 +3,11 @@ NAME				=	so_long
 SOURCES				=	close_window.c		\
 						create_map_img.c	\
 						free_mlx.c			\
-						get_img.c			\
 						key_release.c		\
+						new_img.c			\
+						open_img.c			\
 						parse_map.c			\
-						put_img_to_map.c	\
+						put_img_to_img.c	\
 						so_long.c			\
 						valid_path.c
 
