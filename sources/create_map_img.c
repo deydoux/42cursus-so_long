@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:26:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/29 15:24:03 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/04 18:02:22 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,23 @@ static void	put_tiles(void *mlx, t_map map)
 	t_img	img[2];
 	size_t	x;
 	size_t	y;
-	size_t	i;
 
 	open_tiles_img(mlx, map.str, img);
 	x = 0;
 	y = 0;
-	i = 0;
-	while (map.str[i])
+	while (*map.str)
 	{
-		if (map.str[i] == '\n')
+		if (*map.str == '\n')
 		{
 			x = 0;
 			y += IMAGE_SIZE;
 		}
 		else
 		{
-			put_img_to_img(img[map.str[i] == '1'], map.img, x, y);
+			put_img_to_img(img[*map.str == '1'], map.img, x, y);
 			x += IMAGE_SIZE;
 		}
-		i++;
+		map.str++;
 	}
 	mlx_destroy_image(mlx, img[0].ptr);
 	mlx_destroy_image(mlx, img[1].ptr);
