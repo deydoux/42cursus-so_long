@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/29 13:29:28 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/04 15:21:17 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "mlx.h"
 # include <fcntl.h>
 
-# define IMAGE_SIZE 32
+# define IMAGE_SIZE 64
 
 # define WINDOW_HEIGH 720
 # define WINDOW_WIDTH 1280
