@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:08:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/28 18:26:08 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/04 16:42:00 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	parse_map(argv[1], &game.map);
+	ft_bzero(&game.keys, sizeof(game.keys));
 	game.mlx = mlx_init();
 	if (!game.mlx)
 	{
@@ -55,7 +56,9 @@ int	main(int argc, char **argv)
 	mlx_put_image_to_window(game.mlx, game.win, game.map.img.ptr, 0, 0);
 	mlx_hook(game.win, destroy_notify_event, structure_notify_mask,
 		close_window, &game);
+	mlx_hook(game.win, key_press_event, key_press_mask, key_press, &game);
 	mlx_hook(game.win, key_release_event, key_release_mask, key_release, &game);
+	mlx_loop_hook(game.mlx, loop, &game);
 	mlx_loop(game.mlx);
 	mlx_destroy_image(game.mlx, game.map.img.ptr);
 	free_mlx(game.mlx);

@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/04 15:21:17 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/04 17:10:15 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@
 # include <fcntl.h>
 
 # define IMAGE_SIZE 64
-
-# define WINDOW_HEIGH 720
-# define WINDOW_WIDTH 1280
+# define WINDOW_HEIGH 1080
+# define WINDOW_WIDTH 1920
 # define WINDOW_TITLE "so_long"
+# define KEY_UP 'w'
+# define KEY_LEFT 'a'
+# define KEY_DOWN 's'
+# define KEY_RIGHT 'd'
 
 enum e_key
 {
@@ -68,17 +71,28 @@ typedef struct s_parse
 	bool	last;
 }			t_parse;
 
+typedef struct s_keys
+{
+	bool	up;
+	bool	left;
+	bool	down;
+	bool	right;
+}			t_keys;
+
 typedef struct s_game
 {
 	t_map	map;
 	void	*mlx;
 	void	*win;
+	t_keys	keys;
 }			t_game;
 
 int		close_window(t_game *game);
 void	create_map_img(void *mlx, t_map *map);
 void	free_mlx(void *mlx);
+int		key_press(int key, t_game *game);
 int		key_release(int key, t_game *game);
+int		loop(t_game *game);
 t_img	new_img(void *mlx, int heigh, int width);
 t_img	open_img(void *mlx, char *path, int heigh, int width);
 void	parse_map(char *path, t_map *map);
