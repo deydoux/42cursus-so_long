@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:01:03 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/06 12:11:04 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/06 17:09:19 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static size_t	get_copy(
 	const char specifier, va_list ap, va_list aq, t_conv_copy *copy)
 {
-	const char			*specifiers = "cdis%";
+	const char			*specifiers = "cdisu%";
 	const t_conv_copy	conv_copy[] = {c_copy, d_copy, d_copy, s_copy,
-		percent_copy};
+		u_copy, percent_copy};
 	const t_conv_size	conv_size[] = {c_size, d_size, d_size, s_size,
-		percent_size};
+		u_size, percent_size};
 	size_t				i;
 
 	i = 0;

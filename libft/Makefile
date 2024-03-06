@@ -42,6 +42,7 @@ SOURCES				=	free_nptr.c					\
 						ft_printf/conv_d.c			\
 						ft_printf/conv_percent.c	\
 						ft_printf/conv_s.c			\
+						ft_printf/conv_u.c			\
 						ft_printf/ft_dprintf.c		\
 						ft_printf/ft_printf.c		\
 						ft_printf/ft_vdprintf.c		\

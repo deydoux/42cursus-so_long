@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:10:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/05 19:45:54 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/06 17:08:50 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@ void	percent_copy(va_list ap, char *buffer);
 size_t	percent_size(va_list ap);
 void	s_copy(va_list ap, char *buffer);
 size_t	s_size(va_list ap);
+void	u_copy(va_list ap, char *buffer);
+size_t	u_size(va_list ap);
 
 #endif
