@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:09:42 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/19 13:22:38 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/05 16:48:53 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <limits.h>
 # include <stdbool.h>
+# include <stdarg.h>
 # include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -29,6 +30,7 @@ int		ft_abs(int j);
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
+int		ft_dprintf(int fd, const char *format, ...);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
@@ -80,6 +82,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+int		ft_vdprintf(int fd, const char *format, va_list ap);
 char	*get_next_line(int fd);
 
 #endif

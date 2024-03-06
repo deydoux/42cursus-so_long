@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   ft_vprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 15:38:06 by deydoux           #+#    #+#             */
-/*   Updated: 2023/11/21 09:57:10 by deydoux          ###   ########.fr       */
+/*   Created: 2024/02/13 12:26:25 by deydoux           #+#    #+#             */
+/*   Updated: 2024/03/05 17:08:24 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_char(va_list *ap, t_flags flags)
+int	ft_vprintf(const char *format, va_list ap)
 {
-	int	len;
-
-	flags.width--;
-	len = (flags.width * (flags.width > 0)) + 1;
-	if (!flags.left_adjust)
-		while (flags.width-- > 0)
-			ft_stdout(&flags.padding, 1, flags.error);
-	ft_stdout_char((unsigned char)va_arg(*ap, int), flags.error);
-	while (flags.width-- > 0)
-		ft_stdout_char(' ', flags.error);
-	return (len);
+	return (ft_vdprintf(STDOUT_FILENO, format, ap));
 }

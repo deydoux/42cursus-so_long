@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   conv_percent.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 12:10:12 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/05 17:07:48 by deydoux          ###   ########.fr       */
+/*   Created: 2024/03/05 19:18:47 by deydoux           #+#    #+#             */
+/*   Updated: 2024/03/05 19:20:12 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+void	percent_copy(va_list ap, char *buffer)
 {
-	va_list	ap;
-	ssize_t	len;
+	(void)ap;
+	*buffer = '%';
+}
 
-	va_start(ap, format);
-	len = ft_vdprintf(STDOUT_FILENO, format, ap);
-	va_end(ap);
-	return (len);
+size_t	percent_size(va_list ap)
+{
+	(void)ap;
+	return (1);
 }

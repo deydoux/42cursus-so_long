@@ -38,13 +38,14 @@ SOURCES				=	free_nptr.c					\
 						ft_memcpy.c					\
 						ft_memmove.c				\
 						ft_memset.c					\
+						ft_printf/conv_c.c			\
+						ft_printf/conv_d.c			\
+						ft_printf/conv_percent.c	\
+						ft_printf/conv_s.c			\
+						ft_printf/ft_dprintf.c		\
 						ft_printf/ft_printf.c		\
-						ft_printf/get_flags.c		\
-						ft_printf/print_char.c		\
-						ft_printf/print_ptr.c		\
-						ft_printf/print_signed.c	\
-						ft_printf/print_str.c		\
-						ft_printf/print_unsigned.c	\
+						ft_printf/ft_vdprintf.c		\
+						ft_printf/ft_vprintf.c		\
 						ft_putchar_fd.c				\
 						ft_putendl_fd.c				\
 						ft_putnbr_fd.c				\

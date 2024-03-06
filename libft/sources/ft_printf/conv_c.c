@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   conv_c.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 12:10:12 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/05 17:07:48 by deydoux          ###   ########.fr       */
+/*   Created: 2024/03/05 17:54:03 by deydoux           #+#    #+#             */
+/*   Updated: 2024/03/05 19:04:43 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+void	c_copy(va_list ap, char *buffer)
 {
-	va_list	ap;
-	ssize_t	len;
+	*buffer = va_arg(ap, int);
+}
 
-	va_start(ap, format);
-	len = ft_vdprintf(STDOUT_FILENO, format, ap);
-	va_end(ap);
-	return (len);
+size_t	c_size(va_list ap)
+{
+	va_arg(ap, int);
+	return (1);
 }
