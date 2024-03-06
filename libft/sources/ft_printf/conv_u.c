@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:05:12 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/06 17:07:40 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/06 17:21:43 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static size_t	itoa_size(unsigned int u)
 	return (size);
 }
 
-void	d_copy(va_list ap, char *buffer)
+void	u_copy(va_list ap, char *buffer)
 {
 	unsigned int	u;
 	size_t			size;
@@ -44,7 +44,7 @@ void	d_copy(va_list ap, char *buffer)
 	}
 }
 
-size_t	d_size(va_list ap)
+size_t	u_size(va_list ap)
 {
 	unsigned int	u;
 
