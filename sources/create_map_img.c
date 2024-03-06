@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:26:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/04 18:02:22 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/05 14:18:17 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	put_tiles(void *mlx, t_map map)
 
 void	create_map_img(void *mlx, t_map *map)
 {
-	if (map->heigh > INT_MAX || map->width > INT_MAX)
+	if (map->heigh > INT_MAX / IMAGE_SIZE || map->width > INT_MAX / IMAGE_SIZE)
 	{
 		ft_putstr_fd("Error\nMap too large\n", STDERR_FILENO);
 		free_mlx(mlx);
