@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/04 17:10:15 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/06 12:36:25 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@
 # define KEY_LEFT 'a'
 # define KEY_DOWN 's'
 # define KEY_RIGHT 'd'
+
+# define ERR_MAP_IMG "Error\nFailed to create map image\n"
+# define ERR_MAP_SIZE "Error\nMap size too large\n"
+# define ERR_MLX_INIT "Error\nFailed to connect to X server\n"
+# define ERR_NO_PATH "Error\nNo path found to validate this map\n"
+# define ERR_NEW_WIN "Error\nFailed to create window\n"
+# define ERR_OPEN_IMG "Error\nFailed to open %s\n"
+# define ERR_USAGE "Error\nUsage: %s map_file.ber\n"
 
 enum e_key
 {

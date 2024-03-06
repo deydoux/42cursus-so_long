@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:08:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/04 16:42:00 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/06 12:36:32 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	new_window(void *mlx, char *map_str, void **win)
 	*win = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGH, WINDOW_TITLE);
 	if (!*win)
 	{
-		ft_putstr_fd("Error\nFailed to create window\n", STDERR_FILENO);
+		ft_putstr_fd(ERR_NEW_WIN, STDERR_FILENO);
 		free_mlx(mlx);
 		free(map_str);
 		exit(EXIT_FAILURE);
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2 || !valid_extention(argv[1]))
 	{
-		ft_putstr_fd("Error\nUsage: ./so_long map_file.ber\n", STDERR_FILENO);
+		ft_dprintf(STDERR_FILENO, ERR_USAGE, argv[0]);
 		exit(EXIT_FAILURE);
 	}
 	parse_map(argv[1], &game.map);
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 	game.mlx = mlx_init();
 	if (!game.mlx)
 	{
-		ft_putstr_fd("Error\nFailed to connect to X server\n", STDERR_FILENO);
+		ft_putstr_fd(ERR_MLX_INIT, STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
 	create_map_img(game.mlx, &game.map);

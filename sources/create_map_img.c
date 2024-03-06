@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:26:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/05 14:18:17 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/06 12:33:12 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	open_tiles_img(void *mlx, char *map_str, t_img img[2])
 	img[0] = open_img(mlx, "assets/empty.xpm", IMAGE_SIZE, IMAGE_SIZE);
 	if (!img[0].ptr)
 	{
-		ft_putstr_fd("Error\nFailed to open assets/empty.xpm\n", STDERR_FILENO);
+		ft_dprintf(STDERR_FILENO, ERR_OPEN_IMG, "assets/empty.xpm");
 		free_mlx(mlx);
 		free(map_str);
 		exit(EXIT_FAILURE);
@@ -25,7 +25,7 @@ static void	open_tiles_img(void *mlx, char *map_str, t_img img[2])
 	img[1] = open_img(mlx, "assets/wall.xpm", IMAGE_SIZE, IMAGE_SIZE);
 	if (!map_str)
 	{
-		ft_putstr_fd("Error\nFailed to open assets/wall.xpm\n", STDERR_FILENO);
+		ft_dprintf(STDERR_FILENO, ERR_OPEN_IMG, "assets/wall.xpm");
 		mlx_destroy_image(mlx, img[0].ptr);
 		free_mlx(mlx);
 		free(map_str);
@@ -64,7 +64,7 @@ void	create_map_img(void *mlx, t_map *map)
 {
 	if (map->heigh > INT_MAX / IMAGE_SIZE || map->width > INT_MAX / IMAGE_SIZE)
 	{
-		ft_putstr_fd("Error\nMap too large\n", STDERR_FILENO);
+		ft_putstr_fd(ERR_MAP_SIZE, STDERR_FILENO);
 		free_mlx(mlx);
 		free(map->str);
 		exit(EXIT_FAILURE);
@@ -72,7 +72,7 @@ void	create_map_img(void *mlx, t_map *map)
 	map->img = new_img(mlx, map->heigh * IMAGE_SIZE, map->width * IMAGE_SIZE);
 	if (!map->img.ptr)
 	{
-		ft_putstr_fd("Error\nFailed to create map image\n", STDERR_FILENO);
+		ft_putstr_fd(ERR_MAP_IMG, STDERR_FILENO);
 		free_mlx(mlx);
 		free(map->str);
 		exit(EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 22:58:09 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/27 07:45:12 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/06 12:30:42 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	valid_path(t_map *map)
 	if (ft_strchr(map->str, 'C') || ft_strchr(map->str, 'E'))
 	{
 		free(map->str);
-		ft_putstr_fd("Error\nNo valid path found\n", STDERR_FILENO);
+		ft_putstr_fd(ERR_NO_PATH, STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
 	revert_propagation(map->str);
