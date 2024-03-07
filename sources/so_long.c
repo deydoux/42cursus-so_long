@@ -6,20 +6,20 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:08:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/06 12:36:32 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/06 17:18:31 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static bool	valid_extention(char *path)
+static bool	valid_extention(char *filename)
 {
 	size_t	len;
 
-	len = ft_strlen(path);
+	len = ft_strlen(filename);
 	if (len < 4)
 		return (false);
-	return (!ft_strncmp(path + len - 4, ".ber", 4));
+	return (!ft_strncmp(filename + len - 4, ".ber", 4));
 }
 
 static void	new_window(void *mlx, char *map_str, void **win)
@@ -44,6 +44,8 @@ int	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	parse_map(argv[1], &game.map);
+	ft_printf(game.map.str);
+	return (0);
 	ft_bzero(&game.keys, sizeof(game.keys));
 	game.mlx = mlx_init();
 	if (!game.mlx)

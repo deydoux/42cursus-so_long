@@ -1,7 +1,10 @@
 NAME				=	so_long
 
 SOURCES				=	close_window.c		\
+						closed_map.c		\
 						create_map_img.c	\
+						find_components.c	\
+						find_valid_path.c	\
 						free_mlx.c			\
 						key_press.c			\
 						key_release.c		\
@@ -10,8 +13,8 @@ SOURCES				=	close_window.c		\
 						open_img.c			\
 						parse_map.c			\
 						put_img_to_img.c	\
-						so_long.c			\
-						valid_path.c
+						read_map.c			\
+						so_long.c
 
 LIBFT_DIR			=	libft
 MLX_DIR				=	minilibx-linux

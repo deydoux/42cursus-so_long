@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_path.c                                       :+:      :+:    :+:   */
+/*   find_valid_path.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 22:58:09 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/06 12:30:42 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/07 15:34:13 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	propagate_path(t_map *map, size_t position)
+static void	propagate_path(t_map map, size_t position)
 {
-	if (ft_strchr(".1cep", map->str[position]))
+	if (ft_strchr(".1cep", map.str[position]))
 		return ;
-	if (map->str[position] == '0')
-		map->str[position] = '.';
+	if (map.str[position] == '0')
+		map.str[position] = '.';
 	else
-		map->str[position] = ft_tolower(map->str[position]);
+		map.str[position] = ft_tolower(map.str[position]);
 	propagate_path(map, position + 1);
 	propagate_path(map, position - 1);
-	propagate_path(map, position + 1 + map->width);
-	propagate_path(map, position - 1 - map->width);
+	propagate_path(map, position + 1 + map.width);
+	propagate_path(map, position - 1 - map.width);
 }
 
 static void	revert_propagation(char *str)
@@ -38,14 +38,14 @@ static void	revert_propagation(char *str)
 	}
 }
 
-void	valid_path(t_map *map)
+void	find_valid_path(char *filename, t_map map)
 {
-	propagate_path(map, ft_strchr(map->str, 'P') - map->str);
-	if (ft_strchr(map->str, 'C') || ft_strchr(map->str, 'E'))
+	propagate_path(map, ft_strchr(map.str, 'P') - map.str);
+	if (ft_strchr(map.str, 'C') || ft_strchr(map.str, 'E'))
 	{
-		free(map->str);
-		ft_putstr_fd(ERR_NO_PATH, STDERR_FILENO);
+		free(map.str);
+		ft_dprintf(STDERR_FILENO, ERR_NO_PATH, filename);
 		exit(EXIT_FAILURE);
 	}
-	revert_propagation(map->str);
+	revert_propagation(map.str);
 }
