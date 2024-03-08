@@ -1,7 +1,6 @@
 NAME				=	so_long
 
 SOURCES				=	close_window.c		\
-						closed_map.c		\
 						create_map_img.c	\
 						find_components.c	\
 						find_valid_path.c	\

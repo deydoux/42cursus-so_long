@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/08 15:12:02 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/08 17:58:50 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ typedef struct s_game
 }			t_game;
 
 int		close_window(t_game *game);
-void	closed_map(char *filename, t_map map);
 void	create_map_img(void *mlx, t_map *map);
 void	find_components(char *filename, t_map map);
 void	find_valid_path(char *filename, t_map map);
