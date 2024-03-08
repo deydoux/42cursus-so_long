@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:27:32 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/08 15:15:24 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/08 15:43:32 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static void	find_unexpected_character(char *filename, t_map map)
 	{
 		if (!ft_strchr("01CEP\n", map.str[i]))
 		{
-			free(map.str);
 			ft_dprintf(STDERR_FILENO, ERR_UEXP_CHAR, map.str[i], filename,
 				i / len + 1, i % len + 1);
+			free(map.str);
 			exit(EXIT_FAILURE);
 		}
 		i++;
