@@ -6,14 +6,14 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:01:03 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/06 17:09:19 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/11 10:22:07 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static size_t	get_copy(
-	const char specifier, va_list ap, va_list aq, t_conv_copy *copy)
+	const char specifier, va_list *ap, va_list *aq, t_conv_copy *copy)
 {
 	const char			*specifiers = "cdisu%";
 	const t_conv_copy	conv_copy[] = {c_copy, d_copy, d_copy, s_copy,
@@ -28,7 +28,7 @@ static size_t	get_copy(
 		if (specifiers[i] == specifier)
 		{
 			*copy = conv_copy[i];
-			va_copy(aq, ap);
+			va_copy(*aq, *ap);
 			return (conv_size[i](ap));
 		}
 		i++;
@@ -36,7 +36,7 @@ static size_t	get_copy(
 	return (1);
 }
 
-static char	*create_buffer(const char *format, va_list ap, size_t *size)
+static char	*create_buffer(const char *format, va_list *ap, size_t *size)
 {
 	t_conv_copy	copy;
 	size_t		i;
@@ -48,7 +48,7 @@ static char	*create_buffer(const char *format, va_list ap, size_t *size)
 	copy = NULL;
 	i = *size;
 	if (*format == '%')
-		*size += get_copy(format[1], ap, aq, &copy);
+		*size += get_copy(format[1], ap, &aq, &copy);
 	else
 		(*size)++;
 	buffer = create_buffer(format + 1 + (copy != NULL), ap, size);
@@ -57,7 +57,7 @@ static char	*create_buffer(const char *format, va_list ap, size_t *size)
 		if (!copy)
 			buffer[i] = *format;
 		else
-			copy(aq, buffer + i);
+			copy(&aq, buffer + i);
 	}
 	if (copy)
 		va_end(aq);
@@ -66,14 +66,17 @@ static char	*create_buffer(const char *format, va_list ap, size_t *size)
 
 int	ft_vdprintf(int fd, const char *format, va_list ap)
 {
+	va_list	aq;
 	size_t	size;
 	char	*buffer;
 	ssize_t	len;
 
 	if (!format)
 		return (-1);
+	va_copy(aq, ap);
 	size = 0;
-	buffer = create_buffer(format, ap, &size);
+	buffer = create_buffer(format, &aq, &size);
+	va_end(aq);
 	if (!buffer)
 		return (-1);
 	len = write(fd, buffer, size);

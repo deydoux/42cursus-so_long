@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 19:34:33 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/06 17:07:58 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/10 13:51:49 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ static size_t	itoa_size(int d)
 	return (size);
 }
 
-void	d_copy(va_list ap, char *buffer)
+void	d_copy(va_list *ap, char *buffer)
 {
 	int		d;
 	size_t	size;
 
-	d = va_arg(ap, int);
+	d = va_arg(*ap, int);
 	size = itoa_size(d);
 	if (!d)
 	{
@@ -46,10 +46,10 @@ void	d_copy(va_list ap, char *buffer)
 	}
 }
 
-size_t	d_size(va_list ap)
+size_t	d_size(va_list *ap)
 {
 	int	d;
 
-	d = va_arg(ap, int);
+	d = va_arg(*ap, int);
 	return (itoa_size(d));
 }
