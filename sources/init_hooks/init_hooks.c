@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_release.c                                      :+:      :+:    :+:   */
+/*   init_hooks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 16:27:29 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/04 16:09:59 by deydoux          ###   ########.fr       */
+/*   Created: 2024/03/11 14:56:52 by deydoux           #+#    #+#             */
+/*   Updated: 2024/03/11 15:04:19 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "init_hooks.h"
 
-int	key_release(int key, t_game *game)
+void	init_hooks(t_game *game)
 {
-	if (key == esc_key)
-		close_window(game);
-	else if (key == KEY_UP)
-		game->keys.up = false;
-	else if (key == KEY_LEFT)
-		game->keys.left = false;
-	else if (key == KEY_DOWN)
-		game->keys.down = false;
-	else if (key == KEY_RIGHT)
-		game->keys.right = false;
-	return (0);
+	mlx_hook(game->win, destroy_notify_event, structure_notify_mask,
+		close_window, game);
+	mlx_hook(game->win, key_press_event, key_press_mask, key_press, game);
+	mlx_hook(game->win, key_release_event, key_release_mask, key_release, game);
+	mlx_loop_hook(game->mlx, loop, game);
 }

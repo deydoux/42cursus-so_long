@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/11 14:51:01 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/11 15:08:44 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,6 @@
 enum e_key
 {
 	esc_key = 65307
-};
-
-enum e_event
-{
-	key_press_event = 2,
-	key_release_event = 3,
-	destroy_notify_event = 17
-};
-
-enum e_mask
-{
-	key_press_mask = (1L<<0),
-	key_release_mask = (1L<<1),
-	structure_notify_mask = (1L<<17)
 };
 
 typedef struct s_img
@@ -76,9 +62,7 @@ typedef struct s_game
 int		close_window(t_game *game);
 void	create_map_img(void *mlx, t_map *map);
 void	free_mlx(void *mlx);
-int		key_press(int key, t_game *game);
-int		key_release(int key, t_game *game);
-int		loop(t_game *game);
+void	init_hooks(t_game *game);
 t_img	new_img(void *mlx, int heigh, int width);
 t_img	open_img(void *mlx, char *path, int heigh, int width);
 void	parse_map(char *filename, t_map *map);

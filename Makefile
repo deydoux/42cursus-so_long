@@ -3,9 +3,10 @@ NAME				=	so_long
 SOURCES				=	close_window.c						\
 						create_map_img.c					\
 						free_mlx.c							\
-						key_press.c							\
-						key_release.c						\
-						loop.c								\
+						init_hooks/init_hooks.c				\
+						init_hooks/key_press.c				\
+						init_hooks/key_release.c			\
+						init_hooks/loop.c					\
 						new_img.c							\
 						open_img.c							\
 						parse_map/check_closed_map.c		\

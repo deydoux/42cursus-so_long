@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:08:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/11 14:39:04 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/11 15:06:31 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static void	new_window(void *mlx, char *map_str, void **win)
 	if (!*win)
 	{
 		ft_putstr_fd(ERR_NEW_WIN, STDERR_FILENO);
-		free_mlx(mlx);
+		mlx_destroy_display(mlx);
+		free(mlx);
 		free(map_str);
 		exit(EXIT_FAILURE);
 	}
@@ -41,28 +42,24 @@ int	main(int argc, char **argv)
 	if (argc != 2 || !valid_extention(argv[1]))
 	{
 		ft_dprintf(STDERR_FILENO, ERR_USAGE, argv[0]);
-		exit(EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	}
 	parse_map(argv[1], &game.map);
-	free(game.map.str);
-	ft_bzero(&game.keys, sizeof(game.keys));
 	game.mlx = mlx_init();
 	if (!game.mlx)
 	{
 		ft_putstr_fd(ERR_MLX_INIT, STDERR_FILENO);
-		exit(EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	}
 	create_map_img(game.mlx, &game.map);
 	new_window(game.mlx, game.map.str, &game.win);
 	mlx_put_image_to_window(game.mlx, game.win, game.map.img.ptr, 0, 0);
-	mlx_hook(game.win, destroy_notify_event, structure_notify_mask,
-		close_window, &game);
-	mlx_hook(game.win, key_press_event, key_press_mask, key_press, &game);
-	mlx_hook(game.win, key_release_event, key_release_mask, key_release, &game);
-	mlx_loop_hook(game.mlx, loop, &game);
+	ft_bzero(&game.keys, sizeof(game.keys));
+	init_hooks(&game);
 	mlx_loop(game.mlx);
 	mlx_destroy_image(game.mlx, game.map.img.ptr);
-	free_mlx(game.mlx);
+	mlx_destroy_display(game.mlx);
+	free(game.mlx);
 	free(game.map.str);
-	exit(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
