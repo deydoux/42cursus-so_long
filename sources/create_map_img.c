@@ -6,40 +6,38 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:26:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/06 12:33:12 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/11 15:44:41 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	open_tiles_img(void *mlx, char *map_str, t_img img[2])
+static bool	open_tiles_img(void *mlx, t_img img[2])
 {
 	img[0] = open_img(mlx, "assets/empty.xpm", IMAGE_SIZE, IMAGE_SIZE);
 	if (!img[0].ptr)
 	{
 		ft_dprintf(STDERR_FILENO, ERR_OPEN_IMG, "assets/empty.xpm");
-		free_mlx(mlx);
-		free(map_str);
-		exit(EXIT_FAILURE);
+		return (true);
 	}
 	img[1] = open_img(mlx, "assets/wall.xpm", IMAGE_SIZE, IMAGE_SIZE);
-	if (!map_str)
+	if (!img[1].ptr)
 	{
 		ft_dprintf(STDERR_FILENO, ERR_OPEN_IMG, "assets/wall.xpm");
 		mlx_destroy_image(mlx, img[0].ptr);
-		free_mlx(mlx);
-		free(map_str);
-		exit(EXIT_FAILURE);
+		return (true);
 	}
+	return (false);
 }
 
-static void	put_tiles(void *mlx, t_map map)
+static bool	put_tiles(void *mlx, t_map map)
 {
 	t_img	img[2];
 	size_t	x;
 	size_t	y;
 
-	open_tiles_img(mlx, map.str, img);
+	if (open_tiles_img(mlx, img))
+		return (true);
 	x = 0;
 	y = 0;
 	while (*map.str)
@@ -58,24 +56,21 @@ static void	put_tiles(void *mlx, t_map map)
 	}
 	mlx_destroy_image(mlx, img[0].ptr);
 	mlx_destroy_image(mlx, img[1].ptr);
+	return (false);
 }
 
-void	create_map_img(void *mlx, t_map *map)
+bool	create_map_img(void *mlx, t_map *map)
 {
 	if (map->heigh > INT_MAX / IMAGE_SIZE || map->width > INT_MAX / IMAGE_SIZE)
 	{
 		ft_putstr_fd(ERR_MAP_SIZE, STDERR_FILENO);
-		free_mlx(mlx);
-		free(map->str);
-		exit(EXIT_FAILURE);
+		return (true);
 	}
 	map->img = new_img(mlx, map->heigh * IMAGE_SIZE, map->width * IMAGE_SIZE);
 	if (!map->img.ptr)
 	{
 		ft_putstr_fd(ERR_MAP_IMG, STDERR_FILENO);
-		free_mlx(mlx);
-		free(map->str);
-		exit(EXIT_FAILURE);
+		return (true);
 	}
-	put_tiles(mlx, *map);
+	return (put_tiles(mlx, *map));
 }

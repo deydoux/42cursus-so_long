@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/11 15:08:44 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/11 15:50:46 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ typedef struct s_game
 }			t_game;
 
 int		close_window(t_game *game);
-void	create_map_img(void *mlx, t_map *map);
-void	free_mlx(void *mlx);
+bool	create_map_img(void *mlx, t_map *map);
 void	init_hooks(t_game *game);
 t_img	new_img(void *mlx, int heigh, int width);
 t_img	open_img(void *mlx, char *path, int heigh, int width);
