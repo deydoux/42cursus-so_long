@@ -6,11 +6,11 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:31:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/07 15:34:13 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/11 11:37:56 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "parse_map.h"
 
 static bool	init_map_str(size_t size, char **map_str)
 {
@@ -58,7 +58,7 @@ static bool	create_map_str(int fd, size_t size, t_map *map)
 	return (fd == -1);
 }
 
-void	read_map(char *filename, t_map *map)
+bool	read_map(char *filename, t_map *map)
 {
 	int		fd;
 
@@ -66,19 +66,20 @@ void	read_map(char *filename, t_map *map)
 	if (fd == -1)
 	{
 		ft_dprintf(STDERR_FILENO, ERR_OPEN_MAP, filename);
-		exit(EXIT_FAILURE);
+		return (true);
 	}
 	map->str = NULL;
 	map->heigh = 0;
 	if (create_map_str(fd, 0, map))
 	{
 		ft_dprintf(STDERR_FILENO, ERR_MAP_RECT, filename, map->heigh);
-		exit(EXIT_FAILURE);
+		return (true);
 	}
 	close(fd);
 	if (!map->str)
 	{
 		ft_dprintf(STDERR_FILENO, ERR_READ_MAP, filename);
-		exit(EXIT_FAILURE);
+		return (true);
 	}
+	return (false);
 }

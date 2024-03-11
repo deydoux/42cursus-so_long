@@ -1,18 +1,19 @@
 NAME				=	so_long
 
-SOURCES				=	close_window.c		\
-						create_map_img.c	\
-						find_components.c	\
-						find_valid_path.c	\
-						free_mlx.c			\
-						key_press.c			\
-						key_release.c		\
-						loop.c				\
-						new_img.c			\
-						open_img.c			\
-						parse_map.c			\
-						put_img_to_img.c	\
-						read_map.c			\
+SOURCES				=	close_window.c						\
+						create_map_img.c					\
+						free_mlx.c							\
+						key_press.c							\
+						key_release.c						\
+						loop.c								\
+						new_img.c							\
+						open_img.c							\
+						parse_map/check_closed_map.c		\
+						parse_map/check_map_components.c	\
+						parse_map/check_valid_path.c		\
+						parse_map/parse_map.c				\
+						parse_map/read_map.c				\
+						put_img_to_img.c					\
 						so_long.c
 
 LIBFT_DIR			=	libft
