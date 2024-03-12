@@ -2,6 +2,7 @@ NAME				=	so_long
 
 SOURCES				=	close_window.c						\
 						create_map_img.c					\
+						free_game.c							\
 						init_hooks/init_hooks.c				\
 						init_hooks/key_press.c				\
 						init_hooks/key_release.c			\

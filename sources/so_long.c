@@ -6,20 +6,45 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:08:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/12 16:15:08 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/12 20:12:11 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static bool	valid_extention(char *filename)
+static bool	check_args(int argc, char **argv)
 {
+	bool	error;
 	size_t	len;
 
-	len = ft_strlen(filename);
-	if (len < 4)
-		return (false);
-	return (!ft_strncmp(filename + len - 4, ".ber", 4));
+	error = argc != 2;
+	if (!error)
+	{
+		len = ft_strlen(argv[1]);
+		error = len < 4;
+		if (!error)
+			error = ft_strncmp(argv[1] + len - 4, ".ber", 4) != 0;
+	}
+	if (error)
+	{
+		if (argc)
+			ft_dprintf(STDERR_FILENO, ERR_USAGE, argv[0]);
+		else
+			ft_dprintf(STDERR_FILENO, ERR_USAGE, "so_long");
+		return (true);
+	}
+	return (false);
+}
+
+static bool	init_mlx(void **mlx)
+{
+	*mlx = mlx_init();
+	if (!*mlx)
+	{
+		ft_putstr_fd(ERR_MLX_INIT, STDERR_FILENO);
+		return (true);
+	}
+	return (false);
 }
 
 static bool	new_window(void *mlx, t_map map, t_win *win)
@@ -44,37 +69,19 @@ static bool	new_window(void *mlx, t_map map, t_win *win)
 int	main(int argc, char **argv)
 {
 	t_game	game;
+	bool	error;
 
-	if (argc != 2 || !valid_extention(argv[1]))
+	ft_bzero(&game, sizeof(game));
+	error = check_args(argc, argv)
+		|| parse_map(argv[1], &game.map)
+		|| init_mlx(&game.mlx)
+		|| create_map_img(game.mlx, &game.map)
+		|| new_window(game.mlx, game.map, &game.win);
+	if (!error)
 	{
-		ft_dprintf(STDERR_FILENO, ERR_USAGE, argv[0]);
-		return (EXIT_FAILURE);
+		init_hooks(&game);
+		mlx_loop(game.mlx);
 	}
-	if (parse_map(argv[1], &game.map))
-		return (EXIT_FAILURE);
-	game.mlx = mlx_init();
-	if (!game.mlx)
-	{
-		ft_putstr_fd(ERR_MLX_INIT, STDERR_FILENO);
-		return (EXIT_FAILURE);
-	}
-	if (create_map_img(game.mlx, &game.map)
-		|| open_sprites(game.mlx, &game.sprites)
-		|| new_window(game.mlx, game.map, &game.win))
-	{
-		mlx_destroy_display(game.mlx);
-		free(game.mlx);
-		free(game.map.str);
-		return (EXIT_FAILURE);
-	}
-	mlx_put_image_to_window(game.mlx, game.win.ptr, game.map.img.ptr, 0, 0);
-	mlx_put_image_to_window(game.mlx, game.win.ptr, game.sprites.player_down[0], game.win.width / 2 - 16, game.win.heigh / 2 - 16);
-	ft_bzero(&game.keys, sizeof(game.keys));
-	init_hooks(&game);
-	mlx_loop(game.mlx);
-	mlx_destroy_image(game.mlx, game.map.img.ptr);
-	mlx_destroy_display(game.mlx);
-	free(game.mlx);
-	free(game.map.str);
-	return (EXIT_SUCCESS);
+	free_game(game);
+	return (error);
 }

@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   free_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/06 13:27:32 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/12 19:47:54 by deydoux          ###   ########.fr       */
+/*   Created: 2024/03/12 19:38:19 by deydoux           #+#    #+#             */
+/*   Updated: 2024/03/12 19:44:18 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse_map.h"
+#include "so_long.h"
 
-bool	parse_map(char *filename, t_map *map)
+void	free_game(t_game game)
 {
-	return (read_map(filename, map)
-		|| check_map_components(*map, filename)
-		|| check_closed_map(*map, filename)
-		|| check_valid_path(*map, filename));
+	free(game.map.str);
+	if (game.mlx)
+	{
+		if (game.map.img.ptr)
+			mlx_destroy_image(game.mlx, game.map.img.ptr);
+		mlx_destroy_display(game.mlx);
+		free(game.mlx);
+	}
 }
