@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/12 10:42:12 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/12 13:49:08 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_keys
 	bool	left;
 	bool	down;
 	bool	right;
+	char	last;
 }			t_keys;
 
 typedef struct s_game
