@@ -8,6 +8,7 @@ SOURCES				=	close_window.c						\
 						init_hooks/loop.c					\
 						new_img.c							\
 						open_img.c							\
+						open_sprites.c						\
 						parse_map/check_closed_map.c		\
 						parse_map/check_map_components.c	\
 						parse_map/check_valid_path.c		\
@@ -29,7 +30,7 @@ X11_DIR				=	/usr/lib
 endif
 
 CC					=	cc
-CFLAGS				=	-I$(INCLUDE_DIR) -I$(MLX_DIR) -MD -Wall -Wextra -Werror
+CFLAGS				=	-I$(INCLUDE_DIR) -I$(MLX_DIR) -MD -Wall -Wextra -Werror -g
 LFLAGS				=	-L$(X11_DIR) -lX11 -lXext -lm
 RM					=	rm -rf
 MKDIR				=	mkdir -p

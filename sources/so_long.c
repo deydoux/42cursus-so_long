@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:08:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/12 15:01:14 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/12 16:15:08 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ int	main(int argc, char **argv)
 		ft_putstr_fd(ERR_MLX_INIT, STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
-	if (create_map_img(game.mlx, &game.map) || new_window(game.mlx, game.map,
-		&game.win))
+	if (create_map_img(game.mlx, &game.map)
+		|| open_sprites(game.mlx, &game.sprites)
+		|| new_window(game.mlx, game.map, &game.win))
 	{
 		mlx_destroy_display(game.mlx);
 		free(game.mlx);
@@ -67,7 +68,7 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	mlx_put_image_to_window(game.mlx, game.win.ptr, game.map.img.ptr, 0, 0);
-
+	mlx_put_image_to_window(game.mlx, game.win.ptr, game.sprites.player_down[0], game.win.width / 2 - 16, game.win.heigh / 2 - 16);
 	ft_bzero(&game.keys, sizeof(game.keys));
 	init_hooks(&game);
 	mlx_loop(game.mlx);
