@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:38:19 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/12 20:26:02 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/12 20:35:14 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ static void	free_sprites(void *mlx, t_sprites sprites)
 
 	i = 0;
 	while (img[i])
+	{
 		if ((*img[i]).ptr)
 			mlx_destroy_image(mlx, (*img[i]).ptr);
+		i++;
+	}
 }
 
 void	free_game(t_game game)
