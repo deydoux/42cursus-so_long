@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/12 12:04:03 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/12 14:27:03 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	loop(t_game *game)
 	if (y_update)
 		y += (2 - x_update) * (game->keys.up + (game->keys.down * -1));
 	if (x_update || y_update)
-		mlx_put_image_to_window(game->mlx, game->win, game->map.img.ptr, x, y);
+		mlx_put_image_to_window(game->mlx, game->win.ptr, game->map.img.ptr, x,
+			y);
 	return (0);
 }

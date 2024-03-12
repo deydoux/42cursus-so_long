@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:08:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/12 10:42:40 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/12 15:01:14 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,18 @@ static bool	valid_extention(char *filename)
 	return (!ft_strncmp(filename + len - 4, ".ber", 4));
 }
 
-static bool	new_window(void *mlx, void **win)
+static bool	new_window(void *mlx, t_map map, t_win *win)
 {
-	*win = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGH, WINDOW_TITLE);
-	if (!*win)
+	if (map.img.heigh < WINDOW_HEIGH)
+		win->heigh = map.img.heigh;
+	else
+		win->heigh = WINDOW_HEIGH;
+	if (map.img.width < WINDOW_WIDTH)
+		win->width = map.img.width;
+	else
+		win->width = WINDOW_WIDTH;
+	win->ptr = mlx_new_window(mlx, win->width, win->heigh, WINDOW_TITLE);
+	if (!win->ptr)
 	{
 		ft_putstr_fd(ERR_NEW_WIN, STDERR_FILENO);
 		return (true);
@@ -50,14 +58,16 @@ int	main(int argc, char **argv)
 		ft_putstr_fd(ERR_MLX_INIT, STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
-	if (create_map_img(game.mlx, &game.map) || new_window(game.mlx, &game.win))
+	if (create_map_img(game.mlx, &game.map) || new_window(game.mlx, game.map,
+		&game.win))
 	{
 		mlx_destroy_display(game.mlx);
 		free(game.mlx);
 		free(game.map.str);
 		return (EXIT_FAILURE);
 	}
-	mlx_put_image_to_window(game.mlx, game.win, game.map.img.ptr, 0, 0);
+	mlx_put_image_to_window(game.mlx, game.win.ptr, game.map.img.ptr, 0, 0);
+
 	ft_bzero(&game.keys, sizeof(game.keys));
 	init_hooks(&game);
 	mlx_loop(game.mlx);
