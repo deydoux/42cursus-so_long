@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:08:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/11 15:54:18 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/12 10:42:40 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	main(int argc, char **argv)
 		ft_dprintf(STDERR_FILENO, ERR_USAGE, argv[0]);
 		return (EXIT_FAILURE);
 	}
-	parse_map(argv[1], &game.map);
+	if (parse_map(argv[1], &game.map))
+		return (EXIT_FAILURE);
 	game.mlx = mlx_init();
 	if (!game.mlx)
 	{
