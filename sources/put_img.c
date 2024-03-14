@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 13:39:33 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/14 17:00:09 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/14 17:06:35 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static int	get_color(t_img img, size_t x, size_t y)
 {
-	int	pixel;
+	size_t	pixel;
 
-	pixel = (x * 4) + (y * img.line_size);
+	pixel = x * 4 + y * img.line_size;
 	if (img.endian)
 		return ((img.buffer[pixel] << 24)
 			+ (img.buffer[pixel + 1] << 16)
