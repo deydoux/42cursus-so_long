@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/14 13:17:14 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/14 15:28:41 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ enum e_key
 
 typedef struct s_img
 {
-	int		heigh;
-	int		width;
+	size_t	heigh;
+	size_t	width;
 	void	*ptr;
 	char	*buffer;
 	int		pixel_bits;
