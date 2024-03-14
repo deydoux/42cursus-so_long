@@ -16,6 +16,7 @@ SOURCES				=	close_window.c						\
 						parse_map/parse_map.c				\
 						parse_map/read_map.c				\
 						put_img_to_img.c					\
+						put_img_to_win.c					\
 						so_long.c
 
 LIBFT_DIR			=	libft
