@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/14 16:59:44 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/14 17:28:00 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ typedef struct s_sprites
 	bool	alt;
 	t_img	collectible;
 	t_img	exit;
-	t_img	player_down[2];
-	t_img	player_left[2];
-	t_img	player_right[2];
 	t_img	player_up[2];
+	t_img	player_left[2];
+	t_img	player_down[2];
+	t_img	player_right[2];
 }			t_sprites;
 
 typedef struct s_win
@@ -67,7 +67,6 @@ typedef struct s_keys
 	bool	left;
 	bool	down;
 	bool	right;
-	char	last;
 }			t_keys;
 
 typedef struct s_game
