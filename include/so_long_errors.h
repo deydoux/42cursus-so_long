@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:50:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/11 10:53:27 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/14 13:46:54 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define ERR_DUP_CMPN "Error\nDuplicate %s at %s:%u:%u in map file\n"
 # define ERR_MAP_IMG "Error\nFailed to create map image\n"
 # define ERR_MAP_RECT "Error\nLine length mismatch at %s:%u in map file\n"
-# define ERR_MAP_SIZE "Error\nMap size too large\n"
+# define ERR_MAP_SIZE "Error\nMap size too large with %upx sprites\n"
 # define ERR_MLX_INIT "Error\nFailed to connect to X server\n"
 # define ERR_NO_CMPN "Error\nNo %s found in %s map file\n"
 # define ERR_NO_PATH "Error\nNo path found to validate %s map\n"

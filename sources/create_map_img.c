@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:26:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/11 15:44:41 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/14 14:57:47 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,11 @@ static bool	put_tiles(void *mlx, t_map map)
 
 bool	create_map_img(void *mlx, t_map *map)
 {
-	if (map->heigh > INT_MAX / IMAGE_SIZE || map->width > INT_MAX / IMAGE_SIZE)
+	if (map->heigh > MAX_IMG_DIMENSION / IMAGE_SIZE
+		|| map->width > MAX_IMG_DIMENSION / IMAGE_SIZE
+		|| map->heigh * map->width > MAX_IMG_PIXEL / IMAGE_SIZE)
 	{
-		ft_putstr_fd(ERR_MAP_SIZE, STDERR_FILENO);
+		ft_dprintf(STDERR_FILENO, ERR_MAP_SIZE, IMAGE_SIZE);
 		return (true);
 	}
 	map->img = new_img(mlx, map->heigh * IMAGE_SIZE, map->width * IMAGE_SIZE);
