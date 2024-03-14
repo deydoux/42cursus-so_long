@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/14 16:35:31 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/14 16:59:44 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_game
 }				t_game;
 
 int		close_window(t_game *game);
+void	copy_img(t_img src, t_img dst, size_t x, size_t y);
 bool	create_map_img(void *mlx, t_map *map);
 void	free_game(t_game game);
 void	init_hooks(t_game *game);
@@ -89,7 +90,6 @@ t_img	new_img(void *mlx, int heigh, int width);
 t_img	open_img(void *mlx, const char *filename, int heigh, int width);
 bool	open_sprites(void *mlx, t_sprites *sprites);
 bool	parse_map(char *filename, t_map *map);
-void	put_img_to_img(t_img src, t_img dst, size_t x, size_t y);
-void	put_img_to_win(t_img img, t_game game, int x, int y);
+void	put_img(t_img img, t_game game, int x, int y);
 
 #endif

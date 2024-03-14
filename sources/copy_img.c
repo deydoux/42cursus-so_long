@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_img_to_img.c                                   :+:      :+:    :+:   */
+/*   copy_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:23:03 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/14 15:28:35 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/14 16:58:02 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	put_img_to_img(t_img src, t_img dst, size_t x, size_t y)
+void	copy_img(t_img src, t_img dst, size_t x, size_t y)
 {
 	size_t	width;
 	size_t	x_src;

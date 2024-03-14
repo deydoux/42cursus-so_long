@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:26:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/14 14:57:47 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/14 16:58:48 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static bool	put_tiles(void *mlx, t_map map)
 		}
 		else
 		{
-			put_img_to_img(img[*map.str == '1'], map.img, x, y);
+			copy_img(img[*map.str == '1'], map.img, x, y);
 			x += IMAGE_SIZE;
 		}
 		map.str++;

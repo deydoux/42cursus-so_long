@@ -1,6 +1,7 @@
 NAME				=	so_long
 
 SOURCES				=	close_window.c						\
+						copy_img.c							\
 						create_map_img.c					\
 						free_game.c							\
 						init_hooks/init_hooks.c				\
@@ -15,8 +16,7 @@ SOURCES				=	close_window.c						\
 						parse_map/check_valid_path.c		\
 						parse_map/parse_map.c				\
 						parse_map/read_map.c				\
-						put_img_to_img.c					\
-						put_img_to_win.c					\
+						put_img.c							\
 						so_long.c
 
 LIBFT_DIR			=	libft
