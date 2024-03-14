@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:23:03 by deydoux           #+#    #+#             */
-/*   Updated: 2024/02/29 13:30:44 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/13 16:19:28 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	put_img_to_img(t_img src, t_img dst, size_t x, size_t y)
 {
 	size_t	width;
 	size_t	x_src;
-	int		y_src;
+	size_t	y_src;
 
 	x *= 4;
 	width = src.width * 4;
 	x_src = 0;
 	y_src = 0;
-	while (y_src < src.heigh)
+	while (y_src < (size_t)src.heigh)
 	{
 		while (x_src < width)
 		{
