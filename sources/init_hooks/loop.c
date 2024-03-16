@@ -6,33 +6,47 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/16 13:07:00 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/16 13:16:06 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_hooks.h"
 
+static char	get_player_direction(t_keys keys)
+{
+	static char	direction = 'd';
+
+	if ((keys.up ^ keys.down) + (keys.left ^ keys.right) == 1)
+	{
+		if (keys.up ^ keys.down)
+		{
+			if (keys.up)
+				direction = 'u';
+			else
+				direction = 'd';
+		}
+		else if (keys.left ^ keys.right)
+		{
+			if (keys.left)
+				direction = 'l';
+			else
+				direction = 'r';
+		}
+	}
+	return (direction);
+}
+
 static void	put_player(t_game game)
 {
-	static char	last = 'd';
-	t_img		sprite;
+	char	direction;
+	t_img	sprite;
 
-	if (game.keys.up + game.keys.left + game.keys.down + game.keys.right == 1)
-	{
-		if (game.keys.up)
-			last = 'u';
-		else if (game.keys.left)
-			last = 'l';
-		else if (game.keys.right)
-			last = 'r';
-		else
-			last = 'd';
-	}
-	if (last == 'u')
+	direction = get_player_direction(game.keys);
+	if (direction == 'u')
 		sprite = game.sprites.player_up[game.sprites.alt];
-	else if (last == 'l')
+	else if (direction == 'l')
 		sprite = game.sprites.player_left[game.sprites.alt];
-	else if (last == 'r')
+	else if (direction == 'r')
 		sprite = game.sprites.player_right[game.sprites.alt];
 	else
 		sprite = game.sprites.player_down[game.sprites.alt];
