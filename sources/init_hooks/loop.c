@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/14 17:32:02 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/16 13:07:00 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ static void	put_player(t_game game)
 		sprite = game.sprites.player_up[game.sprites.alt];
 	else if (last == 'l')
 		sprite = game.sprites.player_left[game.sprites.alt];
-	else if (last == 'd')
-		sprite = game.sprites.player_down[game.sprites.alt];
 	else if (last == 'r')
 		sprite = game.sprites.player_right[game.sprites.alt];
+	else
+		sprite = game.sprites.player_down[game.sprites.alt];
 	put_img(sprite, game, game.win.width / 2 - IMAGE_SIZE / 2,
 		game.win.heigh / 2 - IMAGE_SIZE / 2);
 }
