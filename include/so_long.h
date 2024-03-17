@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/17 23:09:50 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/17 23:34:08 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,20 @@ typedef struct s_keys
 	bool	right;
 }			t_keys;
 
+typedef struct s_position
+{
+	size_t	x;
+	size_t	y;
+}			t_position;
+
 typedef struct s_game
 {
 	void		*mlx;
-	t_win		win;
 	t_map		map;
-	t_keys		keys;
 	t_sprites	sprites;
-	int			x;
-	int			y;
+	t_win		win;
+	t_keys		keys;
+	t_position	position;
 }				t_game;
 
 int		close_window(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/17 19:49:27 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/17 23:35:27 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,16 @@ static void	put_player(t_game game)
 	direction = get_player_direction(game.keys);
 	if (direction == 'u')
 		sprite = game.sprites.player_up
-		[ft_abs(game.y / (IMAGE_SIZE / 2) % 2)];
+		[ft_abs(game.position.y / (IMAGE_SIZE / 2) % 2)];
 	else if (direction == 'l')
 		sprite = game.sprites.player_left
-		[ft_abs(game.x / (IMAGE_SIZE / 2) % 2)];
+		[ft_abs(game.position.x / (IMAGE_SIZE / 2) % 2)];
 	else if (direction == 'r')
 		sprite = game.sprites.player_right
-		[ft_abs(game.x / (IMAGE_SIZE / 2) % 2)];
+		[ft_abs(game.position.x / (IMAGE_SIZE / 2) % 2)];
 	else
 		sprite = game.sprites.player_down
-		[ft_abs(game.y / (IMAGE_SIZE / 2) % 2)];
+		[ft_abs(game.position.y / (IMAGE_SIZE / 2) % 2)];
 	put_img(sprite, game, game.win.width / 2 - IMAGE_SIZE / 2,
 		game.win.heigh / 2 - IMAGE_SIZE / 2);
 }
@@ -66,10 +66,10 @@ int	loop(t_game *game)
 		|| (game->keys.up ^ game->keys.down);
 	if (update)
 	{
-		game->x += game->keys.left + (game->keys.right * -1);
-		game->y += game->keys.up + (game->keys.down * -1);
+		game->position.x += game->keys.left + (game->keys.right * -1);
+		game->position.y += game->keys.up + (game->keys.down * -1);
 		mlx_put_image_to_window(game->mlx, game->win.ptr, game->map.img.ptr,
-			game->x, game->y);
+			game->position.x, game->position.y);
 		put_player(*game);
 	}
 	return (0);
