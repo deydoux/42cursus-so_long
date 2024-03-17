@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/16 13:16:06 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/17 19:30:03 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,33 +43,30 @@ static void	put_player(t_game game)
 
 	direction = get_player_direction(game.keys);
 	if (direction == 'u')
-		sprite = game.sprites.player_up[game.sprites.alt];
+		sprite = game.sprites.player_up[ft_abs(game.y / (IMAGE_SIZE / 2) % 2)];
 	else if (direction == 'l')
-		sprite = game.sprites.player_left[game.sprites.alt];
+		sprite = game.sprites.player_left[ft_abs(game.x / (IMAGE_SIZE / 2) % 2)];
 	else if (direction == 'r')
-		sprite = game.sprites.player_right[game.sprites.alt];
+		sprite = game.sprites.player_right[ft_abs(game.x / (IMAGE_SIZE / 2) % 2)];
 	else
-		sprite = game.sprites.player_down[game.sprites.alt];
+		sprite = game.sprites.player_down[ft_abs(game.y / (IMAGE_SIZE / 2) % 2)];
 	put_img(sprite, game, game.win.width / 2 - IMAGE_SIZE / 2,
 		game.win.heigh / 2 - IMAGE_SIZE / 2);
 }
 
 int	loop(t_game *game)
 {
-	static int	x = 0;
-	static int	y = 0;
 	bool		update;
 
 	update = (game->keys.left ^ game->keys.right)
 		|| (game->keys.up ^ game->keys.down);
 	if (update)
 	{
-		x += game->keys.left + (game->keys.right * -1);
-		y += game->keys.up + (game->keys.down * -1);
-		mlx_put_image_to_window(game->mlx, game->win.ptr, game->map.img.ptr, x,
-			y);
+		game->x += game->keys.left + (game->keys.right * -1);
+		game->y += game->keys.up + (game->keys.down * -1);
+		mlx_put_image_to_window(game->mlx, game->win.ptr, game->map.img.ptr,
+			game->x, game->y);
 		put_player(*game);
-		game->sprites.alt = !game->sprites.alt;
 	}
 	return (0);
 }

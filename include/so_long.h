@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/14 17:28:00 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/17 19:01:30 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ typedef struct s_map
 
 typedef struct s_sprites
 {
-	bool	alt;
 	t_img	collectible;
 	t_img	exit;
 	t_img	player_up[2];
@@ -76,8 +75,8 @@ typedef struct s_game
 	t_map		map;
 	t_keys		keys;
 	t_sprites	sprites;
-	size_t		x;
-	size_t		y;
+	int			x;
+	int			y;
 }				t_game;
 
 int		close_window(t_game *game);
