@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:38:19 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/17 22:30:37 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/18 00:08:49 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static void	free_sprites(void *mlx, t_sprites sprites)
 void	free_game(t_game game)
 {
 	free(game.map.str);
+	ft_lstclear(&game.map.collectibles, free);
 	if (game.mlx)
 	{
 		if (game.map.img.ptr)

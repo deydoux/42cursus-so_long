@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/17 23:34:08 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/17 23:56:00 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_map
 	size_t	heigh;
 	size_t	width;
 	t_img	img;
+	t_list	*collectibles;
 }			t_map;
 
 typedef struct s_sprites

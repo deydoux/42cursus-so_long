@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:56:01 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/11 13:11:50 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/18 00:14:27 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 bool	check_closed_map(t_map map, char *filename);
 bool	check_map_components(t_map map, char *filename);
 bool	check_valid_path(t_map map, char *filename);
+bool	find_collectibles(t_map *map, char *filename);
 bool	read_map(char *filename, t_map *map);
 
 #endif

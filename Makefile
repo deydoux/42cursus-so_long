@@ -14,6 +14,7 @@ SOURCES				=	close_window.c						\
 						parse_map/check_closed_map.c		\
 						parse_map/check_map_components.c	\
 						parse_map/check_valid_path.c		\
+						parse_map/find_collectibles.c		\
 						parse_map/parse_map.c				\
 						parse_map/read_map.c				\
 						put_img.c							\
