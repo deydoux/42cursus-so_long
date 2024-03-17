@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:08:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/12 20:26:39 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/17 23:10:07 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ int	main(int argc, char **argv)
 	error = check_args(argc, argv)
 		|| parse_map(argv[1], &game.map)
 		|| init_mlx(&game.mlx)
-		|| create_map_img(game.mlx, &game.map)
 		|| open_sprites(game.mlx, &game.sprites)
+		|| init_map_img(game.mlx, &game.sprites, &game.map)
 		|| new_window(game.mlx, game.map, &game.win);
 	if (!error)
 	{

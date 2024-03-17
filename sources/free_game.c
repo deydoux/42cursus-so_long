@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:38:19 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/12 20:35:14 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/17 22:30:37 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void	free_sprites(void *mlx, t_sprites sprites)
 {
-	const t_img	*img[] = {&sprites.collectible, &sprites.exit,
-		&sprites.player_down[0], &sprites.player_down[1],
-		&sprites.player_left[0], &sprites.player_left[1],
-		&sprites.player_right[0], &sprites.player_right[1],
-		&sprites.player_up[0], &sprites.player_up[1], NULL};
+	const t_img	*img[] = {&sprites.collectible, &sprites.empty, &sprites.exit,
+		&sprites.player_up[0], &sprites.player_up[1], &sprites.player_left[0],
+		&sprites.player_left[1], &sprites.player_down[0],
+		&sprites.player_down[1], &sprites.player_right[0],
+		&sprites.player_right[1], &sprites.wall, NULL};
 	size_t		i;
 
 	i = 0;

@@ -2,12 +2,12 @@ NAME				=	so_long
 
 SOURCES				=	close_window.c						\
 						copy_img.c							\
-						create_map_img.c					\
 						free_game.c							\
 						init_hooks/init_hooks.c				\
 						init_hooks/key_press.c				\
 						init_hooks/key_release.c			\
 						init_hooks/loop.c					\
+						init_map_img.c						\
 						new_img.c							\
 						open_img.c							\
 						open_sprites.c						\

@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:31:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/11 11:37:56 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/17 22:48:21 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static size_t	line_len(char *line)
 	return (len);
 }
 
-static bool	create_map_str(int fd, size_t size, t_map *map)
+static bool	copy_map_str(int fd, size_t size, t_map *map)
 {
 	char	*line;
 	size_t	len;
@@ -47,7 +47,7 @@ static bool	create_map_str(int fd, size_t size, t_map *map)
 		map->width = len;
 	else if (map->width != len)
 		fd = -1;
-	if (fd == -1 || create_map_str(fd, size + len + 1, map))
+	if (fd == -1 || copy_map_str(fd, size + len + 1, map))
 		fd = -1;
 	else if (map->str)
 	{
@@ -70,7 +70,7 @@ bool	read_map(char *filename, t_map *map)
 	}
 	map->str = NULL;
 	map->heigh = 0;
-	if (create_map_str(fd, 0, map))
+	if (copy_map_str(fd, 0, map))
 	{
 		ft_dprintf(STDERR_FILENO, ERR_MAP_RECT, filename, map->heigh);
 		return (true);
