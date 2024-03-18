@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/18 16:05:48 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/18 16:39:58 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,9 @@ static void	put_player(t_game game)
 int	loop(t_game *game)
 {
 	static char	i = 0;
-	bool		update;
 
-	update = (game->keys.left ^ game->keys.right)
-		|| (game->keys.up ^ game->keys.down);
-	if (update)
+	if ((game->keys.left ^ game->keys.right)
+		|| (game->keys.up ^ game->keys.down))
 	{
 		if (i++ % 64)
 			return (0);
