@@ -6,14 +6,14 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:50:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/18 00:08:06 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/18 17:29:29 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_ERRORS_H
 # define SO_LONG_ERRORS_H
-# define ERR_COL_POS "Error\nFailed to store collectible positions\n"
 # define ERR_CLOSE_MAP "Error\nMap not surrounded by walls at %s:%u:%u\n"
+# define ERR_COL_POS "Error\nFailed to store collectible positions\n"
 # define ERR_DUP_CMPN "Error\nDuplicate %s at %s:%u:%u in map file\n"
 # define ERR_MAP_IMG "Error\nFailed to create map image\n"
 # define ERR_MAP_RECT "Error\nLine length mismatch at %s:%u in map file\n"
