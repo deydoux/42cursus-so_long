@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_window.c                                     :+:      :+:    :+:   */
+/*   close_win.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 18:53:24 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/18 17:28:15 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/19 13:51:46 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	close_window(t_game *game)
+int	close_win(t_game *game)
 {
 	if (game->moves)
 		ft_putchar_fd('\n', STDOUT_FILENO);

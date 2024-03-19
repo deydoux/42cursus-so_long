@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/18 17:16:22 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/19 13:52:09 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,10 @@ typedef struct s_map
 	t_list	*collectibles;
 }			t_map;
 
-typedef struct s_sprites
+typedef struct s_spr
 {
+	size_t	heigh;
+	size_t	width;
 	t_img	collectible;
 	t_img	empty;
 	t_img	exit;
@@ -54,7 +56,7 @@ typedef struct s_sprites
 	t_img	player_down[2];
 	t_img	player_right[2];
 	t_img	wall;
-}			t_sprites;
+}			t_spr;
 
 typedef struct s_win
 {
@@ -63,39 +65,39 @@ typedef struct s_win
 	int		width;
 }			t_win;
 
-typedef struct s_keys
+typedef struct s_key
 {
 	bool	up;
 	bool	left;
 	bool	down;
 	bool	right;
-}			t_keys;
+}			t_key;
 
-typedef struct s_position
+typedef struct s_dim
 {
 	size_t	x;
 	size_t	y;
-}			t_position;
+}			t_dim;
 
 typedef struct s_game
 {
-	void		*mlx;
-	t_map		map;
-	t_sprites	sprites;
-	t_win		win;
-	t_keys		keys;
-	t_position	position;
-	size_t		moves;
+	void	*mlx;
+	t_map	map;
+	t_spr	spr;
+	t_win	win;
+	t_key	key;
+	t_dim	pos;
+	size_t	moves;
 }				t_game;
 
-int		close_window(t_game *game);
+int		close_win(t_game *game);
 void	copy_img(t_img src, t_img dst, size_t x, size_t y);
 void	free_game(t_game game);
 void	init_hooks(t_game *game);
-bool	init_map_img(void *mlx, t_sprites *sprites, t_map *map);
+bool	init_map_img(void *mlx, t_spr *spr, t_map *map);
 t_img	new_img(void *mlx, int heigh, int width);
-t_img	open_img(void *mlx, const char *filename, int heigh, int width);
-bool	open_sprites(void *mlx, t_sprites *sprites);
+t_img	open_img(void *mlx, const char *filename);
+bool	open_spr(void *mlx, t_spr *spr);
 bool	parse_map(char *filename, t_map *map);
 void	put_img(t_img img, t_game game, int x, int y);
 

@@ -6,36 +6,36 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/18 17:22:42 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/19 13:50:08 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_hooks.h"
 
-static char	get_player_direction(t_keys keys)
+static char	get_player_direction(t_key key)
 {
 	static char	direction = 'd';
 
-	if ((keys.up ^ keys.down) + (keys.left ^ keys.right) == 1)
+	if ((key.up ^ key.down) + (key.left ^ key.right) == 1)
 	{
-		if (keys.up ^ keys.down)
+		if (key.up ^ key.down)
 		{
-			if (keys.up)
+			if (key.up)
 				direction = 'u';
 			else
 				direction = 'd';
 		}
-		else if (keys.left ^ keys.right)
+		else if (key.left ^ key.right)
 		{
-			if (keys.left)
+			if (key.left)
 				direction = 'l';
 			else
 				direction = 'r';
 		}
 	}
-	else if (direction == 'u' && keys.down)
+	else if (direction == 'u' && key.down)
 		direction = 'd';
-	else if (keys.up)
+	else if (key.up)
 		direction = 'u';
 	return (direction);
 }
@@ -45,19 +45,19 @@ static void	put_player(t_game game)
 	char	direction;
 	t_img	sprite;
 
-	direction = get_player_direction(game.keys);
+	direction = get_player_direction(game.key);
 	if (direction == 'u')
-		sprite = game.sprites.player_up
-		[ft_abs(game.position.y / IMAGE_SIZE % 2)];
+		sprite = game.spr.player_up
+		[ft_abs(game.pos.y / IMAGE_SIZE % 2)];
 	else if (direction == 'l')
-		sprite = game.sprites.player_left
-		[ft_abs(game.position.x / IMAGE_SIZE % 2)];
+		sprite = game.spr.player_left
+		[ft_abs(game.pos.x / IMAGE_SIZE % 2)];
 	else if (direction == 'r')
-		sprite = game.sprites.player_right
-		[ft_abs(game.position.x / IMAGE_SIZE % 2)];
+		sprite = game.spr.player_right
+		[ft_abs(game.pos.x / IMAGE_SIZE % 2)];
 	else
-		sprite = game.sprites.player_down
-		[ft_abs(game.position.y / IMAGE_SIZE % 2)];
+		sprite = game.spr.player_down
+		[ft_abs(game.pos.y / IMAGE_SIZE % 2)];
 	put_img(sprite, game, game.win.width / 2 - IMAGE_SIZE / 2,
 		game.win.heigh / 2 - IMAGE_SIZE / 2);
 }
@@ -66,25 +66,25 @@ int	loop(t_game *game)
 {
 	static char	i = 0;
 
-	if ((game->keys.left ^ game->keys.right)
-		|| (game->keys.up ^ game->keys.down))
+	if ((game->key.left ^ game->key.right)
+		|| (game->key.up ^ game->key.down))
 	{
 		if (i++ % 64)
 			return (0);
-		if (game->keys.left ^ game->keys.right)
+		if (game->key.left ^ game->key.right)
 		{
-			game->position.x += game->keys.left + (game->keys.right * -1);
-			if (game->position.x % IMAGE_SIZE == 0)
+			game->pos.x += game->key.left + (game->key.right * -1);
+			if (game->pos.x % IMAGE_SIZE == 0)
 				ft_printf("\r%u moves", ++game->moves);
 		}
-		if (game->keys.up ^ game->keys.down)
+		if (game->key.up ^ game->key.down)
 		{
-			game->position.y += game->keys.up + (game->keys.down * -1);
-			if (game->position.y % IMAGE_SIZE == 0)
+			game->pos.y += game->key.up + (game->key.down * -1);
+			if (game->pos.y % IMAGE_SIZE == 0)
 				ft_printf("\r%u moves", ++game->moves);
 		}
 		mlx_put_image_to_window(game->mlx, game->win.ptr, game->map.img.ptr,
-			game->position.x, game->position.y);
+			game->pos.x, game->pos.y);
 		put_player(*game);
 	}
 	return (0);

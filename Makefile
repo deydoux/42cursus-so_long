@@ -1,6 +1,6 @@
 NAME				=	so_long
 
-SOURCES				=	close_window.c						\
+SOURCES				=	close_win.c							\
 						copy_img.c							\
 						free_game.c							\
 						init_hooks/init_hooks.c				\
@@ -10,7 +10,7 @@ SOURCES				=	close_window.c						\
 						init_map_img.c						\
 						new_img.c							\
 						open_img.c							\
-						open_sprites.c						\
+						open_spr.c							\
 						parse_map/check_closed_map.c		\
 						parse_map/check_map_components.c	\
 						parse_map/check_valid_path.c		\

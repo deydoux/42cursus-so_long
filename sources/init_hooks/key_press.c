@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:06:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/14 17:28:22 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/19 13:50:08 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 int	key_press(int key, t_game *game)
 {
 	if (key == KEY_UP)
-		game->keys.up = true;
+		game->key.up = true;
 	else if (key == KEY_LEFT)
-		game->keys.left = true;
+		game->key.left = true;
 	else if (key == KEY_DOWN)
-		game->keys.down = true;
+		game->key.down = true;
 	else if (key == KEY_RIGHT)
-		game->keys.right = true;
+		game->key.right = true;
 	return (0);
 }

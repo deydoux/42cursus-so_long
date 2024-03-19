@@ -6,26 +6,26 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:26:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/17 23:09:26 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/19 13:49:05 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static t_img	get_tile(char c, t_sprites sprites)
+static t_img	get_tile(char c, t_spr spr)
 {
 	if (c == '0' || c == 'P')
-		return (sprites.empty);
+		return (spr.empty);
 	if (c == '1')
-		return (sprites.wall);
+		return (spr.wall);
 	if (c == 'C')
-		return (sprites.collectible);
+		return (spr.collectible);
 	if (c == 'E')
-		return (sprites.exit);
-	return (sprites.empty);
+		return (spr.exit);
+	return (spr.empty);
 }
 
-static bool	copy_tiles(t_sprites sprites, t_map map)
+static bool	copy_tiles(t_spr spr, t_map map)
 {
 	size_t	x;
 	size_t	y;
@@ -41,7 +41,7 @@ static bool	copy_tiles(t_sprites sprites, t_map map)
 		}
 		else
 		{
-			copy_img(get_tile(*map.str, sprites), map.img, x, y);
+			copy_img(get_tile(*map.str, spr), map.img, x, y);
 			x += IMAGE_SIZE;
 		}
 		map.str++;
@@ -49,17 +49,17 @@ static bool	copy_tiles(t_sprites sprites, t_map map)
 	return (false);
 }
 
-static void	free_tiles(void *mlx, t_sprites *sprites)
+static void	free_tiles(void *mlx, t_spr *spr)
 {
-	mlx_destroy_image(mlx, sprites->collectible.ptr);
-	sprites->collectible.ptr = NULL;
-	mlx_destroy_image(mlx, sprites->exit.ptr);
-	sprites->exit.ptr = NULL;
-	mlx_destroy_image(mlx, sprites->wall.ptr);
-	sprites->wall.ptr = NULL;
+	mlx_destroy_image(mlx, spr->collectible.ptr);
+	spr->collectible.ptr = NULL;
+	mlx_destroy_image(mlx, spr->exit.ptr);
+	spr->exit.ptr = NULL;
+	mlx_destroy_image(mlx, spr->wall.ptr);
+	spr->wall.ptr = NULL;
 }
 
-bool	init_map_img(void *mlx, t_sprites *sprites, t_map *map)
+bool	init_map_img(void *mlx, t_spr *spr, t_map *map)
 {
 	map->img = new_img(mlx, map->heigh * IMAGE_SIZE, map->width * IMAGE_SIZE);
 	if (!map->img.ptr)
@@ -67,8 +67,8 @@ bool	init_map_img(void *mlx, t_sprites *sprites, t_map *map)
 		ft_putstr_fd(ERR_MAP_IMG, STDERR_FILENO);
 		return (true);
 	}
-	if (copy_tiles(*sprites, *map))
+	if (copy_tiles(*spr, *map))
 		return (true);
-	free_tiles(mlx, sprites);
+	free_tiles(mlx, spr);
 	return (false);
 }

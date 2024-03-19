@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 23:52:06 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/18 00:14:20 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/19 13:51:12 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static bool	new_collectible(size_t i, t_map *map)
 {
-	t_position	*collectible;
+	t_dim	*collectible;
 	t_list		*new;
 
 	collectible = malloc(sizeof(*collectible));

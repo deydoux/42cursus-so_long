@@ -6,19 +6,19 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:38:19 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/18 00:08:49 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/19 13:49:05 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	free_sprites(void *mlx, t_sprites sprites)
+static void	free_spr(void *mlx, t_spr spr)
 {
-	const t_img	*img[] = {&sprites.collectible, &sprites.empty, &sprites.exit,
-		&sprites.player_up[0], &sprites.player_up[1], &sprites.player_left[0],
-		&sprites.player_left[1], &sprites.player_down[0],
-		&sprites.player_down[1], &sprites.player_right[0],
-		&sprites.player_right[1], &sprites.wall, NULL};
+	const t_img	*img[] = {&spr.collectible, &spr.empty, &spr.exit,
+		&spr.player_up[0], &spr.player_up[1], &spr.player_left[0],
+		&spr.player_left[1], &spr.player_down[0],
+		&spr.player_down[1], &spr.player_right[0],
+		&spr.player_right[1], &spr.wall, NULL};
 	size_t		i;
 
 	i = 0;
@@ -38,7 +38,7 @@ void	free_game(t_game game)
 	{
 		if (game.map.img.ptr)
 			mlx_destroy_image(game.mlx, game.map.img.ptr);
-		free_sprites(game.mlx, game.sprites);
+		free_spr(game.mlx, game.spr);
 		mlx_destroy_display(game.mlx);
 		free(game.mlx);
 	}
