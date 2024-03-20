@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:08:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/19 15:23:43 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/20 18:16:08 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,27 @@ static bool	init_mlx(void **mlx)
 
 static bool	new_win(void *mlx, t_map map, t_win *win)
 {
-	if (map.img.size.y < MAX_WINDOW_HEIGH)
-		win->heigh = map.img.size.y;
+	int	width;
+	int	heigh;
+
+	if (map.img.width < MAX_WINDOW_WIDTH)
+		width = map.img.width;
 	else
-		win->heigh = MAX_WINDOW_HEIGH;
-	if (map.img.size.x < MAX_WINDOW_WIDTH)
-		win->width = map.img.size.x;
+		width = MAX_WINDOW_WIDTH;
+	if (map.img.heigh < MAX_WINDOW_HEIGH)
+		heigh = map.img.heigh;
 	else
-		win->width = MAX_WINDOW_WIDTH;
-	win->ptr = mlx_new_window(mlx, win->width, win->heigh, WINDOW_TITLE);
+		heigh = MAX_WINDOW_HEIGH;
+	win->frame = new_img(mlx, heigh, width);
+	if (!win->frame.ptr)
+	{
+		ft_dprintf(STDERR_FILENO, ERR_NEW, "frame");
+		return (true);
+	}
+	win->ptr = mlx_new_window(mlx, width, heigh, WINDOW_TITLE);
 	if (!win->ptr)
 	{
-		ft_putstr_fd(ERR_NEW_WIN, STDERR_FILENO);
+		ft_dprintf(STDERR_FILENO, ERR_NEW, "window");
 		return (true);
 	}
 	return (false);

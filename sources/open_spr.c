@@ -28,7 +28,7 @@ bool	open_spr(void *mlx, t_spr *spr)
 	i = 0;
 	while (img[i])
 	{
-		*(t_img *)img[i] = open_img(mlx, filename[i]);
+		*(t_img *)img[i] = open_img(mlx, (char *)filename[i]);
 		if (!(*img[i]).ptr)
 		{
 			ft_dprintf(STDERR_FILENO, ERR_OPEN_IMG, filename[i]);

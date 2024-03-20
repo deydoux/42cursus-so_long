@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:38:19 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/20 13:50:23 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/20 15:07:54 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	free_game(t_game game)
 	{
 		if (game.map.img.ptr)
 			mlx_destroy_image(game.mlx, game.map.img.ptr);
+		if (game.win.frame.ptr)
+			mlx_destroy_image(game.mlx, game.win.frame.ptr);
 		free_spr(game.mlx, game.spr);
 		mlx_destroy_display(game.mlx);
 		free(game.mlx);

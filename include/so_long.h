@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/20 13:58:55 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/20 18:36:34 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ typedef struct s_dim
 typedef struct s_img
 {
 	void	*ptr;
-	t_dim	size;
+	int		heigh;
+	int		width;
 	char	*buffer;
 	int		pixel_bits;
 	int		line_size;
@@ -62,8 +63,7 @@ typedef struct s_spr
 typedef struct s_win
 {
 	void	*ptr;
-	int		heigh;
-	int		width;
+	t_img	frame;
 }			t_win;
 
 typedef struct s_key
@@ -81,19 +81,20 @@ typedef struct s_game
 	t_spr	spr;
 	t_win	win;
 	t_key	key;
-	t_dim	pos;
+	int		x;
+	int		y;
 	size_t	moves;
 }				t_game;
 
 int		close_win(t_game *game);
 bool	comp_dim(t_dim dim1, t_dim dim2);
-void	copy_img(t_img src, t_img dst, size_t x, size_t y);
+void	copy_img(t_img src, t_img dst, int x, int y);
 void	free_game(t_game game);
 void	init_hooks(t_game *game);
 bool	init_map_img(void *mlx, t_spr *spr, t_map *map);
 int		loop(t_game *game);
 t_img	new_img(void *mlx, int heigh, int width);
-t_img	open_img(void *mlx, const char *filename);
+t_img	open_img(void *mlx, char *filename);
 bool	open_spr(void *mlx, t_spr *spr);
 bool	parse_map(char *filename, t_map *map);
 void	put_img(t_img img, t_game game, int x, int y);

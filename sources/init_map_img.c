@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:26:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/20 13:54:10 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/20 14:12:52 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ bool	init_map_img(void *mlx, t_spr *spr, t_map *map)
 	map->img = new_img(mlx, map->size.y * IMAGE_SIZE, map->size.x * IMAGE_SIZE);
 	if (!map->img.ptr)
 	{
-		ft_putstr_fd(ERR_MAP_IMG, STDERR_FILENO);
+		ft_dprintf(STDERR_FILENO, ERR_NEW, "map image");
 		return (true);
 	}
 	if (copy_tiles(*spr, *map))
