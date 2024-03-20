@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 13:39:33 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/14 17:06:35 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/19 13:59:52 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,17 @@ static void	put_pixel(int color, t_game game, int x, int y)
 
 void	put_img(t_img img, t_game game, int x, int y)
 {
-	size_t	x_img;
-	size_t	y_img;
+	t_dim	pos;
 
-	y_img = 0;
-	while (y_img < img.heigh)
+	pos.y = 0;
+	while (pos.y < img.size.y)
 	{
-		x_img = 0;
-		while (x_img < img.width)
+		pos.x = 0;
+		while (pos.x < img.size.x)
 		{
-			put_pixel(get_color(img, x_img, y_img), game, x + x_img, y + y_img);
-			x_img++;
+			put_pixel(get_color(img, pos.x, pos.y), game, x + pos.x, y + pos.y);
+			pos.x++;
 		}
-		y_img++;
+		pos.y++;
 	}
 }

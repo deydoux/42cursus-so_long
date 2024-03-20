@@ -12,23 +12,17 @@
 
 #include "so_long.h"
 
-// static bool	check_spr(t_spr *spr)
-// {
-// 	if ()
-// }
-
 bool	open_spr(void *mlx, t_spr *spr)
 {
-	const char	*filename[] = {"assets/collectible.xpm", "assets/empty.xpm",
-		"assets/exit.xpm", "assets/player/up.xpm", "assets/player/up_alt.xpm",
-		"assets/player/left.xpm", "assets/player/left_alt.xpm",
-		"assets/player/down.xpm", "assets/player/down_alt.xpm",
-		"assets/player/right.xpm", "assets/player/right_alt.xpm",
-		"assets/wall.xpm"};
-	const t_img	*img[] = {&spr->collectible, &spr->empty, &spr->exit,
-		&spr->player_up[0], &spr->player_up[1], &spr->player_left[0],
-		&spr->player_left[1], &spr->player_down[0], &spr->player_down[1],
-		&spr->player_right[0], &spr->player_right[1], &spr->wall, NULL};
+	const char	*filename[] = {"assets/empty.xpm", "assets/wall.xpm",
+		"assets/collectible.xpm", "assets/exit.xpm",
+		"assets/player/u0.xpm", "assets/player/u1.xpm", "assets/player/l0.xpm",
+		"assets/player/l1.xpm", "assets/player/d0.xpm", "assets/player/d1.xpm",
+		"assets/player/r0.xpm", "assets/player/r1.xpm"};
+	const t_img	*img[] = {&spr->empty, &spr->wall, &spr->collectible,
+		&spr->exit, &spr->player_u[0], &spr->player_u[1], &spr->player_l[0],
+		&spr->player_l[1], &spr->player_d[0], &spr->player_d[1],
+		&spr->player_r[0], &spr->player_r[1], NULL};
 	size_t		i;
 
 	i = 0;

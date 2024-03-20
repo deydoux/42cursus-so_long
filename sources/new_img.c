@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 13:17:56 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/14 13:17:38 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/19 13:58:48 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ t_img	new_img(void *mlx, int heigh, int width)
 {
 	t_img	img;
 
-	img.heigh = heigh;
-	img.width = width;
+	img.size.x = width;
+	img.size.y = heigh;
 	if (heigh > MAX_IMG_DIMENSION || width > MAX_IMG_DIMENSION
 		|| heigh * width > MAX_IMG_PIXEL)
 	{

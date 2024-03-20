@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:11:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/18 00:31:40 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/19 14:03:52 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static bool	check_map_component(char c, char *name, t_map map, char *filename)
 		if (map.str[i] == c)
 		{
 			ft_dprintf(STDERR_FILENO, ERR_DUP_CMPN, name, filename,
-				i / (map.width + 1) + 1, i % (map.width + 1) + 1);
+				i / (map.size.x + 1) + 1, i % (map.size.x + 1) + 1);
 			return (true);
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:08:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/19 13:49:05 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/19 15:23:43 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,16 @@ static bool	init_mlx(void **mlx)
 	return (false);
 }
 
-static bool	new_window(void *mlx, t_map map, t_win *win)
+static bool	new_win(void *mlx, t_map map, t_win *win)
 {
-	if (map.img.heigh < WINDOW_HEIGH)
-		win->heigh = map.img.heigh;
+	if (map.img.size.y < MAX_WINDOW_HEIGH)
+		win->heigh = map.img.size.y;
 	else
-		win->heigh = WINDOW_HEIGH;
-	if (map.img.width < WINDOW_WIDTH)
-		win->width = map.img.width;
+		win->heigh = MAX_WINDOW_HEIGH;
+	if (map.img.size.x < MAX_WINDOW_WIDTH)
+		win->width = map.img.size.x;
 	else
-		win->width = WINDOW_WIDTH;
+		win->width = MAX_WINDOW_WIDTH;
 	win->ptr = mlx_new_window(mlx, win->width, win->heigh, WINDOW_TITLE);
 	if (!win->ptr)
 	{
@@ -77,7 +77,7 @@ int	main(int argc, char **argv)
 		|| init_mlx(&game.mlx)
 		|| open_spr(game.mlx, &game.spr)
 		|| init_map_img(game.mlx, &game.spr, &game.map)
-		|| new_window(game.mlx, game.map, &game.win);
+		|| new_win(game.mlx, game.map, &game.win);
 	if (!error)
 	{
 		init_hooks(&game);

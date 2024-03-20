@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/19 13:52:09 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/20 13:30:30 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,16 @@ enum e_key
 	esc_key = 65307
 };
 
+typedef struct s_dim
+{
+	size_t	x;
+	size_t	y;
+}			t_dim;
+
 typedef struct s_img
 {
-	size_t	heigh;
-	size_t	width;
 	void	*ptr;
+	t_dim	size;
 	char	*buffer;
 	int		pixel_bits;
 	int		line_size;
@@ -38,24 +43,21 @@ typedef struct s_img
 typedef struct s_map
 {
 	char	*str;
-	size_t	heigh;
-	size_t	width;
+	t_dim	size;
 	t_img	img;
 	t_list	*collectibles;
 }			t_map;
 
 typedef struct s_spr
 {
-	size_t	heigh;
-	size_t	width;
-	t_img	collectible;
 	t_img	empty;
-	t_img	exit;
-	t_img	player_up[2];
-	t_img	player_left[2];
-	t_img	player_down[2];
-	t_img	player_right[2];
 	t_img	wall;
+	t_img	collectible;
+	t_img	exit;
+	t_img	player_u[2];
+	t_img	player_l[2];
+	t_img	player_d[2];
+	t_img	player_r[2];
 }			t_spr;
 
 typedef struct s_win
@@ -67,17 +69,11 @@ typedef struct s_win
 
 typedef struct s_key
 {
-	bool	up;
-	bool	left;
-	bool	down;
-	bool	right;
+	bool	u;
+	bool	l;
+	bool	d;
+	bool	r;
 }			t_key;
-
-typedef struct s_dim
-{
-	size_t	x;
-	size_t	y;
-}			t_dim;
 
 typedef struct s_game
 {
@@ -91,6 +87,7 @@ typedef struct s_game
 }				t_game;
 
 int		close_win(t_game *game);
+bool	comp_dim(t_dim dim1, t_dim dim2);
 void	copy_img(t_img src, t_img dst, size_t x, size_t y);
 void	free_game(t_game game);
 void	init_hooks(t_game *game);

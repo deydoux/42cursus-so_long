@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:38:19 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/19 13:49:05 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/19 15:32:11 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 static void	free_spr(void *mlx, t_spr spr)
 {
-	const t_img	*img[] = {&spr.collectible, &spr.empty, &spr.exit,
-		&spr.player_up[0], &spr.player_up[1], &spr.player_left[0],
-		&spr.player_left[1], &spr.player_down[0],
-		&spr.player_down[1], &spr.player_right[0],
-		&spr.player_right[1], &spr.wall, NULL};
+	const t_img	*img[] = {&spr.empty, &spr.wall, &spr.collectible, &spr.exit,
+		&spr.player_u[0], &spr.player_u[1], &spr.player_l[0], &spr.player_l[1],
+		&spr.player_d[0], &spr.player_d[1], &spr.player_r[0], &spr.player_r[1],
+		NULL};
 	size_t		i;
 
 	i = 0;
