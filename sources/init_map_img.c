@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:26:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/20 13:39:10 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/20 13:54:10 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,11 @@
 
 static t_img	get_tile(char c, t_spr spr)
 {
-	if (c == '0' || c == 'P')
-		return (spr.empty);
 	if (c == '1')
-		return (spr.wall);
-	if (c == 'C')
-		return (spr.collectible);
+		return (spr.tiles[1]);
 	if (c == 'E')
-		return (spr.exit);
-	return (spr.empty);
+		return (spr.e);
+	return (spr.tiles[0]);
 }
 
 static bool	copy_tiles(t_spr spr, t_map map)
@@ -51,12 +47,10 @@ static bool	copy_tiles(t_spr spr, t_map map)
 
 static void	free_tiles(void *mlx, t_spr *spr)
 {
-	mlx_destroy_image(mlx, spr->collectible.ptr);
-	spr->collectible.ptr = NULL;
-	mlx_destroy_image(mlx, spr->exit.ptr);
-	spr->exit.ptr = NULL;
-	mlx_destroy_image(mlx, spr->wall.ptr);
-	spr->wall.ptr = NULL;
+	mlx_destroy_image(mlx, spr->e.ptr);
+	spr->e.ptr = NULL;
+	mlx_destroy_image(mlx, spr->tiles[1].ptr);
+	spr->tiles[1].ptr = NULL;
 }
 
 bool	init_map_img(void *mlx, t_spr *spr, t_map *map)

@@ -1,5 +1,5 @@
 /* XPM */
-static char * exit_xpm[] = {
+static char * e_xpm[] = {
 "64 64 3 1",
 " 	c #C0D470",
 ".	c #2D2741",

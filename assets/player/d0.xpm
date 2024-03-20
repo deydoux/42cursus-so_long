@@ -1,5 +1,5 @@
 /* XPM */
-static char * face_xpm[] = {
+static char * player_d0_xpm[] = {
 "64 64 4 1",
 " 	c None",
 ".	c #6E1E4B",

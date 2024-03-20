@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/20 13:30:30 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/20 13:47:11 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,9 @@ typedef struct s_map
 
 typedef struct s_spr
 {
-	t_img	empty;
-	t_img	wall;
-	t_img	collectible;
-	t_img	exit;
+	t_img	tiles[2];
+	t_img	c;
+	t_img	e;
 	t_img	player_u[2];
 	t_img	player_l[2];
 	t_img	player_d[2];
