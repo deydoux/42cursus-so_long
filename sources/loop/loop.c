@@ -6,11 +6,11 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/20 13:38:53 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/20 13:59:06 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_hooks.h"
+#include "loop.h"
 
 static char	get_player_direction(t_key key)
 {

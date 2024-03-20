@@ -6,8 +6,8 @@ SOURCES				=	close_win.c							\
 						init_hooks/init_hooks.c				\
 						init_hooks/key_press.c				\
 						init_hooks/key_release.c			\
-						init_hooks/loop.c					\
 						init_map_img.c						\
+						loop/loop.c							\
 						new_img.c							\
 						open_img.c							\
 						open_spr.c							\
