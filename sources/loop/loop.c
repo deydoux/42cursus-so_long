@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/20 18:37:38 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/22 00:04:47 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	put_player(t_game game)
 		sprite = game.spr.player_r[ft_abs(game.x / IMAGE_SIZE % 2)];
 	else
 		sprite = game.spr.player_d[ft_abs(game.y / IMAGE_SIZE % 2)];
-	put_img(sprite, game, game.win.frame.width / 2 - IMAGE_SIZE / 2,
+	copy_img(sprite, game.win.frame, game.win.frame.width / 2 - IMAGE_SIZE / 2,
 		game.win.frame.heigh / 2 - IMAGE_SIZE / 2);
 }
 
@@ -62,11 +62,9 @@ int	loop(t_game *game)
 {
 	static char	i = 0;
 
-	if ((game->key.l ^ game->key.r)
-		|| (game->key.u ^ game->key.d))
+	if (i++ % 64 == 0
+		&& ((game->key.l ^ game->key.r) || (game->key.u ^ game->key.d)))
 	{
-		if (i++ % 64)
-			return (0);
 		if (game->key.l ^ game->key.r)
 		{
 			game->x += game->key.l + (game->key.r * -1);
@@ -80,9 +78,9 @@ int	loop(t_game *game)
 				ft_printf("\r%u moves", ++game->moves);
 		}
 		copy_img(game->map.img, game->win.frame, game->x, game->y);
-		mlx_put_image_to_window(game->mlx, game->win.ptr, game->win.frame.ptr, 0, 0);
-		if (false)
-			put_player(*game);
+		put_player(*game);
 	}
+	mlx_put_image_to_window(game->mlx, game->win.ptr, game->win.frame.ptr, 0,
+		0);
 	return (0);
 }
