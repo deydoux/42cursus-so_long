@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_hooks.h                                       :+:      :+:    :+:   */
+/*   init_loop.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:55:06 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/11 15:04:28 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/22 13:15:46 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_HOOKS_H
-# define INIT_HOOKS_H
+#ifndef INIT_LOOP_H
+# define INIT_LOOP_H
 # include "so_long.h"
 
 enum e_event

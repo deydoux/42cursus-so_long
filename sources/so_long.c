@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:08:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/20 18:16:08 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/22 13:17:21 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,7 @@ int	main(int argc, char **argv)
 		|| init_map_img(game.mlx, &game.spr, &game.map)
 		|| new_win(game.mlx, game.map, &game.win);
 	if (!error)
-	{
-		init_hooks(&game);
-		mlx_loop(game.mlx);
-	}
+		init_loop(&game);
 	free_game(game);
 	return (error);
 }

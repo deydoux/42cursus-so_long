@@ -3,9 +3,9 @@ NAME				=	so_long
 SOURCES				=	close_win.c							\
 						copy_img.c							\
 						free_game.c							\
-						init_hooks/init_hooks.c				\
-						init_hooks/key_press.c				\
-						init_hooks/key_release.c			\
+						init_loop/init_loop.c				\
+						init_loop/key_press.c				\
+						init_loop/key_release.c				\
 						init_map_img.c						\
 						loop/loop.c							\
 						new_img.c							\
