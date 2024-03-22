@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/22 12:52:21 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/22 13:01:05 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int	loop(t_game *game)
 {
 	static char	i = 0;
 
+	if (game->destroy)
+		close_win(game);
 	if (i++ % 64 == 0
 		&& ((game->key.l ^ game->key.r) || (game->key.u ^ game->key.d)))
 	{
