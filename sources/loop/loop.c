@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/22 11:23:26 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/22 11:50:49 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	loop(t_game *game)
 	if (i++ % 64 == 0
 		&& ((game->key.l ^ game->key.r) || (game->key.u ^ game->key.d)))
 	{
+		ft_putchar_fd(game->map.str[game->pos.x / 64 + game->pos.y / 64 * game->map.width], 1);
 		if (game->key.l ^ game->key.r)
 		{
 			game->pos.x += game->key.l + (game->key.r * -1);
