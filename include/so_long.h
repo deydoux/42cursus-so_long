@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/22 11:24:09 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/22 11:26:21 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,5 @@ t_img	new_img(void *mlx, int heigh, int width);
 t_img	open_img(void *mlx, char *filename);
 bool	open_spr(void *mlx, t_spr *spr);
 bool	parse_map(char *filename, t_map *map);
-void	put_img(t_img img, t_game game, int x, int y);
 
 #endif
