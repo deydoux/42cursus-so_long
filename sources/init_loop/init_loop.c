@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:56:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/22 13:17:13 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/22 16:09:43 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,20 @@ static int	destroy_notify(t_game *game)
 	return (0);
 }
 
+static void	init_pos(t_map map, t_pos *pos)
+{
+	size_t	i;
+
+	i = 0;
+	while (map.str[i] != 'P')
+		i++;
+	pos->x = i / (map.width + 1) * IMAGE_SIZE;
+	pos->y = i % (map.width + 1) * IMAGE_SIZE;
+}
+
 void	init_loop(t_game *game)
 {
+	init_pos(game->map, &game->pos);
 	mlx_hook(game->win.ptr, destroy_notify_event, structure_notify_mask,
 		destroy_notify, game);
 	mlx_hook(game->win.ptr, key_press_event, key_press_mask, key_press, game);
