@@ -16,6 +16,7 @@ SOURCES				=	close_win.c									\
 						init_loop/key_press.c						\
 						init_loop/key_release.c						\
 						loop/loop.c									\
+						loop/render_frame.c							\
 						new_img.c									\
 						open_img.c									\
 						so_long.c

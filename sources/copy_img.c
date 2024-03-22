@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:23:03 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/22 17:47:42 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/22 17:58:26 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ static void	copy_pixel(char *src, char *dst)
 
 void	copy_img(t_img src, t_img dst, int x, int y)
 {
-	int	null_src_x;
+	int	min_src_x;
 	int	src_x;
 	int	src_y;
 
-	null_src_x = (x < 0) * ft_abs(x);
+	min_src_x = (x < 0) * ft_abs(x);
 	src_y = (y < 0) * ft_abs(y);
 	while (src_y < src.heigh)
 	{
-		src_x = null_src_x;
 		if (y + src_y > dst.heigh)
 			return ;
+		src_x = min_src_x;
 		while (src_x < src.width)
 		{
 			if (x + src_x > dst.width)
