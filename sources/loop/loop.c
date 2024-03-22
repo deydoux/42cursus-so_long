@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/22 11:50:49 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/22 12:52:21 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	loop(t_game *game)
 	if (i++ % 64 == 0
 		&& ((game->key.l ^ game->key.r) || (game->key.u ^ game->key.d)))
 	{
-		ft_putchar_fd(game->map.str[game->pos.x / 64 + game->pos.y / 64 * game->map.width], 1);
 		if (game->key.l ^ game->key.r)
 		{
 			game->pos.x += game->key.l + (game->key.r * -1);
@@ -80,8 +79,8 @@ int	loop(t_game *game)
 		}
 		copy_img(game->map.img, game->win.frame, game->pos.x, game->pos.y);
 		put_player(*game);
+		mlx_put_image_to_window(game->mlx, game->win.ptr, game->win.frame.ptr,
+			0, 0);
 	}
-	mlx_put_image_to_window(game->mlx, game->win.ptr, game->win.frame.ptr, 0,
-		0);
 	return (0);
 }
