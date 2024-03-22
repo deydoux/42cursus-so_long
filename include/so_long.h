@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/20 18:36:34 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/22 11:24:09 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ enum e_key
 	esc_key = 65307
 };
 
-typedef struct s_dim
+typedef struct s_pos
 {
-	size_t	x;
-	size_t	y;
-}			t_dim;
+	int	x;
+	int	y;
+}		t_pos;
 
 typedef struct s_img
 {
@@ -44,7 +44,8 @@ typedef struct s_img
 typedef struct s_map
 {
 	char	*str;
-	t_dim	size;
+	size_t	heigh;
+	size_t	width;
 	t_img	img;
 	t_list	*collectibles;
 }			t_map;
@@ -81,13 +82,11 @@ typedef struct s_game
 	t_spr	spr;
 	t_win	win;
 	t_key	key;
-	int		x;
-	int		y;
+	t_pos	pos;
 	size_t	moves;
 }				t_game;
 
 int		close_win(t_game *game);
-bool	comp_dim(t_dim dim1, t_dim dim2);
 void	copy_img(t_img src, t_img dst, int x, int y);
 void	free_game(t_game game);
 void	init_hooks(t_game *game);

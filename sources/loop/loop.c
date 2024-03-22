@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/22 00:04:47 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/22 11:23:26 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ static void	put_player(t_game game)
 
 	direction = get_player_direction(game.key);
 	if (direction == 'u')
-		sprite = game.spr.player_u[ft_abs(game.y / IMAGE_SIZE % 2)];
+		sprite = game.spr.player_u[ft_abs(game.pos.y / IMAGE_SIZE % 2)];
 	else if (direction == 'l')
-		sprite = game.spr.player_l[ft_abs(game.x / IMAGE_SIZE % 2)];
+		sprite = game.spr.player_l[ft_abs(game.pos.x / IMAGE_SIZE % 2)];
 	else if (direction == 'r')
-		sprite = game.spr.player_r[ft_abs(game.x / IMAGE_SIZE % 2)];
+		sprite = game.spr.player_r[ft_abs(game.pos.x / IMAGE_SIZE % 2)];
 	else
-		sprite = game.spr.player_d[ft_abs(game.y / IMAGE_SIZE % 2)];
+		sprite = game.spr.player_d[ft_abs(game.pos.y / IMAGE_SIZE % 2)];
 	copy_img(sprite, game.win.frame, game.win.frame.width / 2 - IMAGE_SIZE / 2,
 		game.win.frame.heigh / 2 - IMAGE_SIZE / 2);
 }
@@ -67,17 +67,17 @@ int	loop(t_game *game)
 	{
 		if (game->key.l ^ game->key.r)
 		{
-			game->x += game->key.l + (game->key.r * -1);
-			if (game->x % IMAGE_SIZE == 0)
+			game->pos.x += game->key.l + (game->key.r * -1);
+			if (game->pos.x % IMAGE_SIZE == 0)
 				ft_printf("\r%u moves", ++game->moves);
 		}
 		if (game->key.u ^ game->key.d)
 		{
-			game->y += game->key.u + (game->key.d * -1);
-			if (game->y % IMAGE_SIZE == 0)
+			game->pos.y += game->key.u + (game->key.d * -1);
+			if (game->pos.y % IMAGE_SIZE == 0)
 				ft_printf("\r%u moves", ++game->moves);
 		}
-		copy_img(game->map.img, game->win.frame, game->x, game->y);
+		copy_img(game->map.img, game->win.frame, game->pos.x, game->pos.y);
 		put_player(*game);
 	}
 	mlx_put_image_to_window(game->mlx, game->win.ptr, game->win.frame.ptr, 0,

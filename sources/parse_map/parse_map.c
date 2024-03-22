@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:27:32 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/19 14:04:55 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/22 11:18:54 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static bool	check_map_size(t_map map, char *filename)
 {
-	if (map.size.y > MAX_IMG_DIMENSION / IMAGE_SIZE
-		|| map.size.x > MAX_IMG_DIMENSION / IMAGE_SIZE
-		|| map.size.y * map.size.x > MAX_IMG_PIXEL / IMAGE_SIZE)
+	if (map.heigh > MAX_IMG_DIMENSION / IMAGE_SIZE
+		|| map.width > MAX_IMG_DIMENSION / IMAGE_SIZE
+		|| map.heigh * map.width > MAX_IMG_PIXEL / IMAGE_SIZE)
 	{
 		ft_dprintf(STDERR_FILENO, ERR_MAP_SIZE, filename, IMAGE_SIZE);
 		return (true);
@@ -29,7 +29,7 @@ static bool	check_characters(t_map map, char *filename)
 	size_t	len;
 	size_t	i;
 
-	len = map.size.x + 1;
+	len = map.width + 1;
 	i = 0;
 	while (map.str[i])
 	{
