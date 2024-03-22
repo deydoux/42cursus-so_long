@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.h                                        :+:      :+:    :+:   */
+/*   init_game.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 10:56:01 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/18 00:14:27 by deydoux          ###   ########.fr       */
+/*   Created: 2024/03/22 13:23:48 by deydoux           #+#    #+#             */
+/*   Updated: 2024/03/22 13:33:04 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_MAP_H
-# define PARSE_MAP_H
+#ifndef INIT_GAME_H
+# define INIT_GAME_H
 # include "so_long.h"
 
-bool	check_closed_map(t_map map, char *filename);
-bool	check_map_components(t_map map, char *filename);
-bool	check_valid_path(t_map map, char *filename);
-bool	find_collectibles(t_map *map, char *filename);
-bool	read_map(char *filename, t_map *map);
+bool	init_map_img(void *mlx, t_spr *spr, t_map *map);
+bool	open_spr(void *mlx, t_spr *spr);
+bool	parse_map(char *filename, t_map *map);
 
 #endif

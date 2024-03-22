@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/22 13:16:40 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/22 13:33:00 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,9 @@ typedef struct s_game
 int		close_win(t_game *game);
 void	copy_img(t_img src, t_img dst, int x, int y);
 void	free_game(t_game game);
+bool	init_game(int argc, char **argv, t_game *game);
 void	init_loop(t_game *game);
-bool	init_map_img(void *mlx, t_spr *spr, t_map *map);
 int		loop(t_game *game);
 t_img	new_img(void *mlx, int heigh, int width);
 t_img	open_img(void *mlx, char *filename);
-bool	open_spr(void *mlx, t_spr *spr);
-bool	parse_map(char *filename, t_map *map);
-
 #endif

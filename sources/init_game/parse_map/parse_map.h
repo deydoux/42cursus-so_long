@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   parse_map.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 13:08:20 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/22 13:29:26 by deydoux          ###   ########.fr       */
+/*   Created: 2024/03/11 10:56:01 by deydoux           #+#    #+#             */
+/*   Updated: 2024/03/22 13:36:01 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#ifndef PARSE_MAP_H
+# define PARSE_MAP_H
+# include "../init_game.h"
 
-int	main(int argc, char **argv)
-{
-	t_game	game;
-	bool	error;
+bool	check_closed_map(t_map map, char *filename);
+bool	check_map_components(t_map map, char *filename);
+bool	check_valid_path(t_map map, char *filename);
+bool	find_collectibles(t_map *map, char *filename);
+bool	read_map(char *filename, t_map *map);
 
-	error = init_game(argc, argv, &game);
-	if (!error)
-		init_loop(&game);
-	free_game(game);
-	return (error);
-}
+#endif

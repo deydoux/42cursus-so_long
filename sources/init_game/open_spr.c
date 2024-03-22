@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "init_game.h"
 
 bool	open_spr(void *mlx, t_spr *spr)
 {
