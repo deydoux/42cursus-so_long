@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:23:03 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/20 18:18:17 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/22 12:41:51 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	copy_img(t_img src, t_img dst, int x, int y)
 		while (src_x < src.width)
 		{
 			if (0 <= x + src_x && x + src_x <= dst.width
-				&& 0 <= y + src_y && y + src_y <= dst.width)
+				&& 0 <= y + src_y && y + src_y <= dst.heigh)
 				copy_pixel(&src.buffer[src_x * 4 + src_y * src.line_size],
 					&dst.buffer[(x + src_x) * 4 + (y + src_y) * dst.line_size]);
 			src_x++;
