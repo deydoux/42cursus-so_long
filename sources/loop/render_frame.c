@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:12:31 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/24 15:27:24 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/24 15:30:26 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ static t_img	get_player_spr(t_game game)
 void	render_frame(t_game game)
 {
 	t_pos	map_pos;
-	t_pos	player_pos;
 
 	map_pos.x = game.pos.x * -1 + (game.win.frame.width - IMAGE_SIZE) / 2;
 	map_pos.y = game.pos.y * -1 + (game.win.frame.heigh - IMAGE_SIZE) / 2;
@@ -70,8 +69,7 @@ void	render_frame(t_game game)
 		map_pos.y = 0;
 	else if (map_pos.y < game.win.frame.heigh - game.map.img.heigh)
 		map_pos.y = game.win.frame.heigh - game.map.img.heigh;
-	player_pos.x = game.pos.x + map_pos.x;
-	player_pos.y = game.pos.y + map_pos.y;
 	copy_img(game.map.img, game.win.frame, map_pos.x, map_pos.y);
-	copy_img(get_player_spr(game), game.win.frame, player_pos.x, player_pos.y);
+	copy_img(get_player_spr(game), game.win.frame, game.pos.x + map_pos.x,
+		game.pos.y + map_pos.y);
 }
