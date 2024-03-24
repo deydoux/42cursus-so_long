@@ -6,11 +6,36 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 11:30:02 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/24 22:39:01 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/25 00:37:13 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "loop.h"
+
+static char	get_direction(t_pos move, char last_key)
+{
+	static char	direction = 'd';
+	char		x_direction;
+	char		y_direction;
+
+	if (move.x > 0)
+		x_direction = 'r';
+	else if (move.x < 0)
+		x_direction = 'l';
+	else
+		x_direction = 0;
+	if (move.y > 0)
+		y_direction = 'd';
+	else if (move.y < 0)
+		y_direction = 'u';
+	else
+		y_direction = 0;
+	if (x_direction && (x_direction == last_key || !y_direction))
+		direction = x_direction;
+	else if (y_direction && (y_direction == last_key || !x_direction))
+		direction = y_direction;
+	return (direction);
+}
 
 void	check_move(t_game *game)
 {
@@ -31,4 +56,5 @@ void	check_move(t_game *game)
 			&& game->map.str[i + 1] == '1'))
 		move.y = 0;
 	game->pos.y += move.y;
+	game->direction = get_direction(move, game->key.last);
 }

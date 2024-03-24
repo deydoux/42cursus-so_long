@@ -6,50 +6,19 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:12:31 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/24 15:30:26 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/25 00:37:28 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "loop.h"
 
-static char	get_player_direction(t_key key)
-{
-	static char	direction = 'd';
-
-	if ((key.u ^ key.d) + (key.l ^ key.r) == 1)
-	{
-		if (key.u ^ key.d)
-		{
-			if (key.u)
-				direction = 'u';
-			else
-				direction = 'd';
-		}
-		else if (key.l ^ key.r)
-		{
-			if (key.l)
-				direction = 'l';
-			else
-				direction = 'r';
-		}
-	}
-	else if (direction == 'u' && key.d)
-		direction = 'd';
-	else if (key.u)
-		direction = 'u';
-	return (direction);
-}
-
 static t_img	get_player_spr(t_game game)
 {
-	char	direction;
-
-	direction = get_player_direction(game.key);
-	if (direction == 'u')
+	if (game.direction == 'u')
 		return (game.spr.player_u[game.pos.y / IMAGE_SIZE % 2]);
-	else if (direction == 'l')
+	else if (game.direction == 'l')
 		return (game.spr.player_l[game.pos.x / IMAGE_SIZE % 2]);
-	else if (direction == 'r')
+	else if (game.direction == 'r')
 		return (game.spr.player_r[game.pos.x / IMAGE_SIZE % 2]);
 	else
 		return (game.spr.player_d[game.pos.y / IMAGE_SIZE % 2]);
