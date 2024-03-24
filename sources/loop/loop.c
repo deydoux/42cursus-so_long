@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/22 13:01:05 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/24 01:23:37 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,19 @@ int	loop(t_game *game)
 	{
 		if (game->key.l ^ game->key.r)
 		{
-			game->pos.x += game->key.l + (game->key.r * -1);
+			game->pos.x += game->key.r + (game->key.l * -1);
 			if (game->pos.x % IMAGE_SIZE == 0)
 				ft_printf("\r%u moves", ++game->moves);
 		}
 		if (game->key.u ^ game->key.d)
 		{
-			game->pos.y += game->key.u + (game->key.d * -1);
+			game->pos.y += game->key.d + (game->key.u * -1);
 			if (game->pos.y % IMAGE_SIZE == 0)
 				ft_printf("\r%u moves", ++game->moves);
 		}
-		copy_img(game->map.img, game->win.frame, game->pos.x, game->pos.y);
-		put_player(*game);
+		render_frame(*game);
+		if (false)
+			put_player(*game);
 		mlx_put_image_to_window(game->mlx, game->win.ptr, game->win.frame.ptr,
 			0, 0);
 	}
