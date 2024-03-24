@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:56:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/22 16:09:43 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/24 14:58:14 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	init_pos(t_map map, t_pos *pos)
 	i = 0;
 	while (map.str[i] != 'P')
 		i++;
-	pos->x = i / (map.width + 1) * IMAGE_SIZE;
-	pos->y = i % (map.width + 1) * IMAGE_SIZE;
+	pos->x = i % (map.width + 1) * IMAGE_SIZE;
+	pos->y = i / (map.width + 1) * IMAGE_SIZE;
 }
 
 void	init_loop(t_game *game)
