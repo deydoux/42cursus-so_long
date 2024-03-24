@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 18:53:24 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/19 13:51:46 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/24 22:25:10 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ int	close_win(t_game *game)
 		ft_putchar_fd('\n', STDOUT_FILENO);
 	mlx_destroy_window(game->mlx, game->win.ptr);
 	mlx_loop_end(game->mlx);
-	return (0);
+	free_game(*game);
+	exit(EXIT_SUCCESS);
 }

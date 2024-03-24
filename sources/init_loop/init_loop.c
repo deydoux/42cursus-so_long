@@ -6,17 +6,11 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:56:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/24 21:33:47 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/24 22:26:20 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_loop.h"
-
-static int	destroy_notify(t_game *game)
-{
-	game->destroy = true;
-	return (0);
-}
 
 static void	init_pos(t_map map, t_pos *pos)
 {
@@ -33,7 +27,7 @@ void	init_loop(t_game *game)
 {
 	init_pos(game->map, &game->pos);
 	mlx_hook(game->win.ptr, destroy_notify_event, structure_notify_mask,
-		destroy_notify, game);
+		close_win, game);
 	mlx_hook(game->win.ptr, key_press_event, key_press_mask, key_press, game);
 	mlx_hook(game->win.ptr, key_release_event, key_release_mask, key_release,
 		game);

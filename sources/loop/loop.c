@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/24 21:41:40 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/24 22:26:37 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	loop(t_game *game)
 {
 	static char	i = 0;
 
-	if (game->destroy)
-		close_win(game);
 	if (i % 64 == 0)
 	{
 		check_move(game);
