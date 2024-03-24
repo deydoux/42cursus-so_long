@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:31:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/22 11:19:04 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/24 21:37:04 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,6 @@ bool	read_map(char *filename, t_map *map)
 		ft_dprintf(STDERR_FILENO, ERR_READ_MAP, filename);
 		return (true);
 	}
+	map->width++;
 	return (false);
 }

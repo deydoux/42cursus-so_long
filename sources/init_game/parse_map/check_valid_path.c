@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 22:58:09 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/22 11:18:54 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/24 21:34:39 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static void	propagate_path(size_t position, t_map map)
 		map.str[position] = ft_tolower(map.str[position]);
 	propagate_path(position + 1, map);
 	propagate_path(position - 1, map);
-	propagate_path(position + 1 + map.width, map);
-	propagate_path(position - 1 - map.width, map);
+	propagate_path(position + map.width, map);
+	propagate_path(position - map.width, map);
 }
 
 static void	revert_propagation(char *str)

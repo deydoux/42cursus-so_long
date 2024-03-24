@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:26:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/22 13:33:45 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/24 21:39:17 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ static void	free_tiles(void *mlx, t_spr *spr)
 
 bool	init_map_img(void *mlx, t_spr *spr, t_map *map)
 {
-	map->img = new_img(mlx, map->heigh * IMAGE_SIZE, map->width * IMAGE_SIZE);
+	map->img = new_img(mlx, map->heigh * IMAGE_SIZE,
+			(map->width - 1) * IMAGE_SIZE);
 	if (!map->img.ptr)
 	{
 		ft_dprintf(STDERR_FILENO, ERR_NEW, "map image");

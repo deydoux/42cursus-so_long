@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:58:05 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/22 11:18:54 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/24 21:33:47 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ bool	check_closed_map(t_map map, char *filename)
 	if (check_top_walls(&i, map.str) || check_vertical_walls(&i, map.str))
 	{
 		ft_dprintf(STDERR_FILENO, ERR_CLOSE_MAP, filename,
-			i / (map.width + 1) + 1, i % (map.width + 1) + 1);
+			i / map.width + 1, i % map.width + 1);
 		return (true);
 	}
 	return (false);

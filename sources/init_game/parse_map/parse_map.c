@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:27:32 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/22 11:18:54 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/24 21:37:18 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static bool	check_map_size(t_map map, char *filename)
 {
 	if (map.heigh > MAX_IMG_DIMENSION / IMAGE_SIZE
-		|| map.width > MAX_IMG_DIMENSION / IMAGE_SIZE
-		|| map.heigh * map.width > MAX_IMG_PIXEL / IMAGE_SIZE)
+		|| (map.width - 1) > MAX_IMG_DIMENSION / IMAGE_SIZE
+		|| map.heigh * (map.width - 1) > MAX_IMG_PIXEL / IMAGE_SIZE)
 	{
 		ft_dprintf(STDERR_FILENO, ERR_MAP_SIZE, filename, IMAGE_SIZE);
 		return (true);
@@ -26,17 +26,15 @@ static bool	check_map_size(t_map map, char *filename)
 
 static bool	check_characters(t_map map, char *filename)
 {
-	size_t	len;
 	size_t	i;
 
-	len = map.width + 1;
 	i = 0;
 	while (map.str[i])
 	{
 		if (!ft_strchr("01CEP\n", map.str[i]))
 		{
 			ft_dprintf(STDERR_FILENO, ERR_UEXP_CHAR, map.str[i], filename,
-				i / len + 1, i % len + 1);
+				i / map.width + 1, i % map.width + 1);
 			return (true);
 		}
 		i++;
