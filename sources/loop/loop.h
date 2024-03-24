@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 13:57:43 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/22 16:32:49 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/24 19:20:02 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LOOP_H
 # include "so_long.h"
 
+void	check_move(t_game *game);
 void	render_frame(t_game game);
 
 #endif

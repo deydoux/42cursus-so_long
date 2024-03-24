@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:52:26 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/24 15:47:37 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/24 20:25:24 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@
 # define MAX_IMG_PIXEL		536107716
 # define MAX_WINDOW_HEIGH	720
 # define MAX_WINDOW_WIDTH	1280
-# define SPEED				4
+# define SPEED				1
 # define WINDOW_TITLE		"so_long"
 #endif
