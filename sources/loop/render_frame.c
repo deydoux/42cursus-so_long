@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:12:31 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/25 13:25:27 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/25 13:44:41 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static void	render_collectibles(t_pos map_pos, t_game game)
 	while (game.map.collectibles)
 	{
 		pos = *(t_pos *)game.map.collectibles->content;
-		copy_img(game.spr.c[i / 1024 % 2], game.win.frame, pos.x + map_pos.x,
-			pos.y + map_pos.y);
+		copy_img(game.spr.c[i / COLLECTIBLE_ALT % 2], game.win.frame,
+			pos.x + map_pos.x, pos.y + map_pos.y);
 		game.map.collectibles = game.map.collectibles->next;
 	}
 }
