@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 23:52:06 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/24 21:34:02 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/25 13:05:48 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static bool	new_collectible(size_t i, t_map *map)
 		free(collectible);
 		return (true);
 	}
-	collectible->x = i / map->width * IMAGE_SIZE;
-	collectible->y = i % map->width * IMAGE_SIZE;
+	collectible->x = i % map->width * IMAGE_SIZE;
+	collectible->y = i / map->width * IMAGE_SIZE;
 	ft_lstadd_back(&map->collectibles, new);
 	return (false);
 }
