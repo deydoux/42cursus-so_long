@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:12:31 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/25 00:37:28 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/25 13:15:58 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,20 @@ static t_img	get_player_spr(t_game game)
 		return (game.spr.player_d[game.pos.y / IMAGE_SIZE % 2]);
 }
 
+static void	render_collectibles(t_pos map_pos, t_game game)
+{
+	static int	i = 0;
+	t_pos		pos;
+
+	while (game.map.collectibles)
+	{
+		pos = *(t_pos *)game.map.collectibles->content;
+		copy_img(game.spr.c[i++ / 1024 % 2], game.win.frame, pos.x + map_pos.x,
+			pos.y + map_pos.y);
+		game.map.collectibles = game.map.collectibles->next;
+	}
+}
+
 void	render_frame(t_game game)
 {
 	t_pos	map_pos;
@@ -39,6 +53,7 @@ void	render_frame(t_game game)
 	else if (map_pos.y < game.win.frame.heigh - game.map.img.heigh)
 		map_pos.y = game.win.frame.heigh - game.map.img.heigh;
 	copy_img(game.map.img, game.win.frame, map_pos.x, map_pos.y);
+	render_collectibles(map_pos, game);
 	copy_img(get_player_spr(game), game.win.frame, game.pos.x + map_pos.x,
 		game.pos.y + map_pos.y);
 }
