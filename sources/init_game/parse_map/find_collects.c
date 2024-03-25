@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_collectibles.c                                :+:      :+:    :+:   */
+/*   find_collects.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 23:52:06 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/25 13:05:48 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/25 17:59:38 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse_map.h"
 
-static bool	new_collectible(size_t i, t_map *map)
+static bool	new_collect(size_t i, t_map *map)
 {
-	t_pos	*collectible;
-	t_list	*new;
+	t_collect	*collect;
+	t_list		*new;
 
-	collectible = malloc(sizeof(*collectible));
-	if (!collectible)
+	collect = malloc(sizeof(*collect));
+	if (!collect)
 		return (true);
-	new = ft_lstnew(collectible);
+	new = ft_lstnew(collect);
 	if (!new)
 	{
-		free(collectible);
+		free(collect);
 		return (true);
 	}
-	collectible->x = i % map->width * IMAGE_SIZE;
-	collectible->y = i / map->width * IMAGE_SIZE;
-	ft_lstadd_back(&map->collectibles, new);
+	collect->active = true;
+	collect->pos.x = i % map->width * IMAGE_SIZE;
+	collect->pos.y = i / map->width * IMAGE_SIZE;
+	ft_lstadd_back(&map->collects, new);
 	return (false);
 }
 
-bool	find_collectibles(t_map *map, char *filename)
+bool	find_collects(t_map *map, char *filename)
 {
 	size_t	i;
 
@@ -41,7 +42,7 @@ bool	find_collectibles(t_map *map, char *filename)
 	{
 		if (map->str[i] == 'C')
 		{
-			if (new_collectible(i, map))
+			if (new_collect(i, map))
 			{
 				ft_putstr_fd(ERR_COL_POS, STDERR_FILENO);
 				return (true);
@@ -49,7 +50,7 @@ bool	find_collectibles(t_map *map, char *filename)
 		}
 		i++;
 	}
-	if (!map->collectibles)
+	if (!map->collects)
 	{
 		ft_dprintf(STDERR_FILENO, ERR_NO_CMPN, "collectible", filename);
 		return (true);

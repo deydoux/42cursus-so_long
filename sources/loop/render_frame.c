@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:12:31 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/25 13:44:41 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/25 18:00:05 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,19 @@ static t_img	get_player_spr(t_game game)
 		return (game.spr.player_d[game.pos.y / IMAGE_SIZE % 2]);
 }
 
-static void	render_collectibles(t_pos map_pos, t_game game)
+static void	render_collects(t_pos map_pos, t_game game)
 {
 	static int	i = 0;
-	t_pos		pos;
+	t_collect	collect;
 
 	i++;
-	while (game.map.collectibles)
+	while (game.map.collects)
 	{
-		pos = *(t_pos *)game.map.collectibles->content;
-		copy_img(game.spr.c[i / COLLECTIBLE_ALT % 2], game.win.frame,
-			pos.x + map_pos.x, pos.y + map_pos.y);
-		game.map.collectibles = game.map.collectibles->next;
+		collect = *(t_collect *)game.map.collects->content;
+		if (collect.active)
+			copy_img(game.spr.c[i / COLLECT_ALT % 2], game.win.frame,
+				collect.pos.x + map_pos.x, collect.pos.y + map_pos.y);
+		game.map.collects = game.map.collects->next;
 	}
 }
 
@@ -54,7 +55,7 @@ void	render_frame(t_game game)
 	else if (map_pos.y < game.win.frame.heigh - game.map.img.heigh)
 		map_pos.y = game.win.frame.heigh - game.map.img.heigh;
 	copy_img(game.map.img, game.win.frame, map_pos.x, map_pos.y);
-	render_collectibles(map_pos, game);
+	render_collects(map_pos, game);
 	copy_img(get_player_spr(game), game.win.frame, game.pos.x + map_pos.x,
 		game.pos.y + map_pos.y);
 }

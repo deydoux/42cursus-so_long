@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/25 12:58:37 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/25 17:54:38 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,19 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
+typedef struct s_collect
+{
+	bool	active;
+	t_pos	pos;
+}			t_collect;
+
 typedef struct s_map
 {
 	char	*str;
 	size_t	heigh;
 	size_t	width;
 	t_img	img;
-	t_list	*collectibles;
+	t_list	*collects;
 }			t_map;
 
 typedef struct s_spr

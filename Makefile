@@ -9,7 +9,7 @@ SOURCES				=	close_win.c									\
 						init_game/parse_map/check_closed_map.c		\
 						init_game/parse_map/check_map_components.c	\
 						init_game/parse_map/check_valid_path.c		\
-						init_game/parse_map/find_collectibles.c		\
+						init_game/parse_map/find_collects.c			\
 						init_game/parse_map/parse_map.c				\
 						init_game/parse_map/read_map.c				\
 						init_loop/init_loop.c						\

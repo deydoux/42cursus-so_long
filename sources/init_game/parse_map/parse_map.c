@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:27:32 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/24 21:37:18 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/25 17:58:55 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ bool	parse_map(char *filename, t_map *map)
 		|| check_map_components(*map, filename)
 		|| check_closed_map(*map, filename)
 		|| check_valid_path(*map, filename)
-		|| find_collectibles(map, filename));
+		|| find_collects(map, filename));
 }

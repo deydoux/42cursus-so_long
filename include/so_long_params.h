@@ -6,13 +6,13 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:52:26 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/25 16:16:23 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/25 18:00:00 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_PARAMS_H
 # define SO_LONG_PARAMS_H
-# define COLLECTIBLE_ALT	512
+# define COLLECT_ALT		512
 # define IMAGE_SIZE			64
 # define KEY_UP				'w'
 # define KEY_LEFT			'a'
