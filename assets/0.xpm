@@ -1,5 +1,5 @@
 /* XPM */
-static char * empty_xpm[] = {
+static char * tile_0[] = {
 "64 64 2 1",
 " 	c #C0D470",
 ".	c #A4C263",
