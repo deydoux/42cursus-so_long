@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 11:30:02 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/26 18:41:17 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/26 19:23:43 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,29 @@ static char	get_direction(t_pos move, char last_key)
 	return (direction);
 }
 
+static void	init_mov_str(unsigned int n, char *str)
+{
+	unsigned int	tmp_n;
+	size_t			len;
+
+	tmp_n = n;
+	len = !n;
+	while (tmp_n)
+	{
+		tmp_n /= 10;
+		len++;
+	}
+	str[len--] = 0;
+	if (!n)
+		str[0] = '0';
+	while (n)
+	{
+		str[len--] = n % 10 + '0';
+		n /= 10;
+	}
+	ft_strlcat(str, " moves", MOV_STR_SIZE);
+}
+
 static void	count_move(t_pos move, t_game *game)
 {
 	int	n;
@@ -46,10 +69,11 @@ static void	count_move(t_pos move, t_game *game)
 		n += game->pos.x % IMAGE_SIZE == 0;
 	if (move.y)
 		n += game->pos.y % IMAGE_SIZE == 0;
-	if (n)
+	if (n || !*game->mov.str)
 	{
-		game->mov.count += n;
-		ft_printf("\r%u moves", game->mov.count);
+		game->mov.n += n;
+		init_mov_str(game->mov.n, game->mov.str);
+		ft_printf("\r%s", game->mov.str);
 	}
 }
 

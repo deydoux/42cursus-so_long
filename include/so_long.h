@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/26 18:40:55 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/26 19:23:37 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ typedef struct s_key
 
 typedef struct s_mov
 {
-	unsigned int	count;
-	char			str[17];
+	unsigned int	n;
+	char			str[MOV_STR_SIZE];
 }				t_mov;
 
 typedef struct s_game
