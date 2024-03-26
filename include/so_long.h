@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/26 19:23:37 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/26 21:01:03 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ typedef struct s_spr
 	t_img	player_l[2];
 	t_img	player_d[2];
 	t_img	player_r[2];
+	t_img	box_l;
+	t_img	box_c;
+	t_img	box_r;
 }			t_spr;
 
 typedef struct s_win

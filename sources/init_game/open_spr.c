@@ -14,15 +14,17 @@
 
 bool	open_spr(void *mlx, t_spr *spr)
 {
-	const char	*filename[] = {
-		"assets/0.xpm", "assets/1.xpm", "assets/c0.xpm", "assets/c1.xpm",
-		"assets/e.xpm", "assets/player/u0.xpm", "assets/player/u1.xpm",
-		"assets/player/l0.xpm", "assets/player/l1.xpm", "assets/player/d0.xpm",
-		"assets/player/d1.xpm", "assets/player/r0.xpm", "assets/player/r1.xpm"};
+	const char	*filename[] = {"assets/0.xpm", "assets/1.xpm", "assets/c0.xpm",
+		"assets/c1.xpm", "assets/e.xpm", "assets/player/u0.xpm",
+		"assets/player/u1.xpm", "assets/player/l0.xpm", "assets/player/l1.xpm",
+		"assets/player/d0.xpm", "assets/player/d1.xpm", "assets/player/r0.xpm",
+		"assets/player/r1.xpm", "assets/box/l.xpm", "assets/box/c.xpm",
+		"assets/box/r.xpm"};
 	const t_img	*img[] = {&spr->tiles[0], &spr->tiles[1], &spr->c[0],
 		&spr->c[1], &spr->e, &spr->player_u[0], &spr->player_u[1],
 		&spr->player_l[0], &spr->player_l[1], &spr->player_d[0],
-		&spr->player_d[1], &spr->player_r[0], &spr->player_r[1], NULL};
+		&spr->player_d[1], &spr->player_r[0], &spr->player_r[1],
+		&spr->box_l, &spr->box_c, &spr->box_r, NULL};
 	size_t		i;
 
 	i = 0;
