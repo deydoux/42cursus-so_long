@@ -6,19 +6,19 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:27:32 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/25 17:58:55 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/26 14:13:25 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse_map.h"
 
-static bool	check_map_size(t_map map, char *filename)
+static bool	check_map_size(t_map map)
 {
 	if (map.heigh > MAX_IMG_DIMENSION / IMAGE_SIZE
 		|| (map.width - 1) > MAX_IMG_DIMENSION / IMAGE_SIZE
 		|| map.heigh * (map.width - 1) > MAX_IMG_PIXEL / IMAGE_SIZE)
 	{
-		ft_dprintf(STDERR_FILENO, ERR_MAP_SIZE, filename, IMAGE_SIZE);
+		ft_dprintf(STDERR_FILENO, ERR_MAP_SIZE, IMAGE_SIZE);
 		return (true);
 	}
 	return (false);
@@ -45,7 +45,7 @@ static bool	check_characters(t_map map, char *filename)
 bool	parse_map(char *filename, t_map *map)
 {
 	return (read_map(filename, map)
-		|| check_map_size(*map, filename)
+		|| check_map_size(*map)
 		|| check_characters(*map, filename)
 		|| check_map_components(*map, filename)
 		|| check_closed_map(*map, filename)
