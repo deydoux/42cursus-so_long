@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 11:30:02 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/25 13:42:36 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/26 18:41:17 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static void	count_move(t_pos move, t_game *game)
 		n += game->pos.y % IMAGE_SIZE == 0;
 	if (n)
 	{
-		game->moves += n;
-		ft_printf("\r%u moves", game->moves);
+		game->mov.count += n;
+		ft_printf("\r%u moves", game->mov.count);
 	}
 }
 

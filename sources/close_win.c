@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 18:53:24 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/24 22:25:10 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/26 18:40:58 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	close_win(t_game *game)
 {
-	if (game->moves)
+	if (game->mov.count)
 		ft_putchar_fd('\n', STDOUT_FILENO);
 	mlx_destroy_window(game->mlx, game->win.ptr);
 	mlx_loop_end(game->mlx);
