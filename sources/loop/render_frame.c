@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:12:31 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/26 21:14:17 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/27 12:19:31 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,19 @@ static t_img	get_player_spr(t_game game)
 		return (game.spr.player_d[game.pos.y / IMAGE_SIZE % 2]);
 }
 
-static void	render_box(t_game game)
+static void	render_box(int x, int y, char *str, t_game game)
 {
-	t_pos	pos;
 	size_t	i;
 
-	pos.x = CHAR_WIDTH / 2;
-	pos.y = CHAR_HEIGH / 2;
-	copy_img(game.spr.box_l, game.win.frame, pos.x, pos.y);
-	pos.x += game.spr.box_l.width;
+	copy_img(game.spr.box_l, game.win.frame, x, y);
+	x += game.spr.box_l.width;
 	i = 0;
-	while (game.mov.str[i++])
+	while (str[i++])
 	{
-		copy_img(game.spr.box_c, game.win.frame, pos.x, pos.y);
-		pos.x += game.spr.box_c.width;
+		copy_img(game.spr.box_c, game.win.frame, x, y);
+		x += game.spr.box_c.width;
 	}
-	copy_img(game.spr.box_r, game.win.frame, pos.x, pos.y);
+	copy_img(game.spr.box_r, game.win.frame, x, y);
 }
 
 void	render_frame(t_game game)
@@ -76,5 +73,5 @@ void	render_frame(t_game game)
 	render_collects(map_pos, game);
 	copy_img(get_player_spr(game), game.win.frame, game.pos.x + map_pos.x,
 		game.pos.y + map_pos.y);
-	render_box(game);
+	render_box(CHAR_WIDTH / 2, CHAR_HEIGH / 2, game.mov.str, game);
 }
