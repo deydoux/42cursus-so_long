@@ -6,31 +6,28 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/27 12:33:29 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/27 12:27:48 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "loop.h"
 
-static void	check_collect(t_game *game)
+static void	check_collect(t_game game)
 {
-	t_list		*collects;
 	t_collect	*collect;
 
-	collects = game->map.collects.lst;
-	while (collects)
+	while (game.map.collects.lst)
 	{
-		collect = collects->content;
-		if (collect->active && collect->pos.x - IMAGE_SIZE < game->pos.x
-			&& game->pos.x < collect->pos.x + IMAGE_SIZE
-			&& collect->pos.y - IMAGE_SIZE < game->pos.y
-			&& game->pos.y < collect->pos.y + IMAGE_SIZE)
+		collect = game.map.collects.lst->content;
+		if (collect->active && collect->pos.x - IMAGE_SIZE < game.pos.x
+			&& game.pos.x < collect->pos.x + IMAGE_SIZE
+			&& collect->pos.y - IMAGE_SIZE < game.pos.y
+			&& game.pos.y < collect->pos.y + IMAGE_SIZE)
 		{
-			game->map.collects.last = collect;
 			collect->active = false;
 			return ;
 		}
-		collects = collects->next;
+		game.map.collects.lst = game.map.collects.lst->next;
 	}
 }
 
@@ -59,7 +56,7 @@ static void	check_exit(t_game game)
 int	loop(t_game *game)
 {
 	check_move(game);
-	check_collect(game);
+	check_collect(*game);
 	check_exit(*game);
 	render_frame(*game);
 	mlx_put_image_to_window(game->mlx, game->win.ptr, game->win.frame.ptr, 0,
