@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/27 17:02:25 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/27 17:09:11 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_pos
 {
 	int	x;
 	int	y;
-}		t_pos;
+}	t_pos;
 
 typedef struct s_img
 {
@@ -34,13 +34,13 @@ typedef struct s_img
 	int		pixel_bits;
 	int		line_size;
 	int		endian;
-}			t_img;
+}	t_img;
 
 typedef struct s_collect
 {
 	bool	active;
 	t_pos	pos;
-}			t_collect;
+}	t_collect;
 
 typedef struct s_map
 {
@@ -49,7 +49,7 @@ typedef struct s_map
 	size_t	width;
 	t_img	img;
 	t_list	*collects;
-}			t_map;
+}	t_map;
 
 typedef struct s_spr
 {
@@ -63,13 +63,13 @@ typedef struct s_spr
 	t_img	box_l;
 	t_img	box_c;
 	t_img	box_r;
-}			t_spr;
+}	t_spr;
 
 typedef struct s_win
 {
 	void	*ptr;
 	t_img	frame;
-}			t_win;
+}	t_win;
 
 typedef struct s_key
 {
@@ -78,13 +78,14 @@ typedef struct s_key
 	bool	d;
 	bool	r;
 	char	last;
-}			t_key;
+}	t_key;
 
 typedef struct s_mov
 {
 	unsigned int	n;
+	char			direction;
 	char			str[MOV_STR_SIZE];
-}				t_mov;
+}	t_mov;
 
 typedef struct s_game
 {
@@ -95,8 +96,7 @@ typedef struct s_game
 	t_key	key;
 	t_pos	pos;
 	t_mov	mov;
-	char	direction;
-}				t_game;
+}	t_game;
 
 int		close_win(t_game *game);
 void	copy_img(t_img src, t_img dst, int x, int y);

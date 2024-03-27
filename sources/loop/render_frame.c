@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:12:31 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/27 12:19:31 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/27 17:09:31 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ static void	render_collects(t_pos map_pos, t_game game)
 
 static t_img	get_player_spr(t_game game)
 {
-	if (game.direction == 'u')
+	if (game.mov.direction == 'u')
 		return (game.spr.player_u[game.pos.y / IMAGE_SIZE % 2]);
-	else if (game.direction == 'l')
+	else if (game.mov.direction == 'l')
 		return (game.spr.player_l[game.pos.x / IMAGE_SIZE % 2]);
-	else if (game.direction == 'r')
+	else if (game.mov.direction == 'r')
 		return (game.spr.player_r[game.pos.x / IMAGE_SIZE % 2]);
 	else
 		return (game.spr.player_d[game.pos.y / IMAGE_SIZE % 2]);

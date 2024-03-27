@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 11:30:02 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/26 19:23:43 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/27 17:09:18 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,6 @@ void	check_move(t_game *game)
 			&& game->map.str[i + 1] == '1'))
 		move.y = 0;
 	game->pos.y += move.y;
-	game->direction = get_direction(move, game->key.last);
+	game->mov.direction = get_direction(move, game->key.last);
 	count_move(move, game);
 }
