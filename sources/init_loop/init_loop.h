@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:55:06 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/22 13:15:46 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/27 17:03:13 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ enum e_mask
 	key_press_mask = (1L<<0),
 	key_release_mask = (1L<<1),
 	structure_notify_mask = (1L<<17)
+};
+
+enum e_keycode
+{
+	esc_keycode = 65307
 };
 
 int	key_press(int key, t_game *game);

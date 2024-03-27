@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/26 21:01:03 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/27 17:02:25 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@
 # include "mlx.h"
 # include <errno.h>
 # include <fcntl.h>
-
-enum e_key
-{
-	esc_key = 65307
-};
 
 typedef struct s_pos
 {
