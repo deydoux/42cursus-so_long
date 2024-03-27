@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/27 12:54:40 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/27 18:28:53 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,33 +31,43 @@ static void	check_collect(t_game game)
 	}
 }
 
-static void	check_exit(t_game game)
+static bool	check_char(char c, t_game game)
 {
 	int		i;
-	t_list	*collects;
 
 	i = game.pos.x / IMAGE_SIZE + game.pos.y / IMAGE_SIZE * game.map.width;
-	if (game.map.str[i] == 'E'
-		|| (game.pos.x % IMAGE_SIZE != 0 && game.map.str[i + 1] == 'E')
+	return (game.map.str[i] == c
+		|| (game.pos.x % IMAGE_SIZE != 0 && game.map.str[i + 1] == c)
 		|| (game.pos.y % IMAGE_SIZE != 0
-			&& game.map.str[i + game.map.width] == 'E'))
+			&& game.map.str[i + game.map.width] == c));
+}
+
+static void	check_exit(t_game game)
+{
+	t_list	*collects;
+
+	if (!check_char('E', game))
+		return ;
+	collects = game.map.collects;
+	while (collects)
 	{
-		collects = game.map.collects;
-		while (collects)
-		{
-			if (((t_collect *)collects->content)->active)
-				return ;
-			collects = collects->next;
-		}
-		ft_putstr_fd("\nYou won!", STDOUT_FILENO);
-		close_win(&game);
+		if (((t_collect *)collects->content)->active)
+			return ;
+		collects = collects->next;
 	}
+	ft_putstr_fd("\nYou won!", STDOUT_FILENO);
+	close_win(&game);
 }
 
 int	loop(t_game *game)
 {
 	check_move(game);
 	check_collect(*game);
+	if (check_char('R', *game))
+	{
+		ft_putstr_fd("\nBONK!", STDOUT_FILENO);
+		close_win(game);
+	}
 	check_exit(*game);
 	render_frame(*game);
 	mlx_put_image_to_window(game->mlx, game->win.ptr, game->win.frame.ptr, 0,
