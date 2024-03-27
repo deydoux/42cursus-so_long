@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/26 20:59:09 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/27 12:54:40 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	check_exit(t_game game)
 				return ;
 			collects = collects->next;
 		}
+		ft_putstr_fd("\nYou won!", STDOUT_FILENO);
 		close_win(&game);
 	}
 }
