@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 22:58:09 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/24 21:34:39 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/27 18:41:12 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	propagate_path(size_t position, t_map map)
 {
-	if (ft_strchr(".1cep", map.str[position]))
+	if (ft_strchr(".1ceRp", map.str[position]))
 		return ;
 	if (map.str[position] == '0')
 		map.str[position] = '.';
