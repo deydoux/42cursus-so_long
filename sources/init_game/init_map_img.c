@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:26:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/24 21:39:17 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/27 17:30:23 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static t_img	get_tile(char c, t_spr spr)
 {
 	if (c == '1')
 		return (spr.tiles[1]);
+	if (c == 'R')
+		return (spr.r);
 	if (c == 'E')
 		return (spr.e);
 	return (spr.tiles[0]);

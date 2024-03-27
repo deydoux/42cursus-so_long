@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:27:32 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/26 14:13:25 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/27 17:13:29 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static bool	check_characters(t_map map, char *filename)
 	i = 0;
 	while (map.str[i])
 	{
-		if (!ft_strchr("01CEP\n", map.str[i]))
+		if (!ft_strchr(MAP_CHARSET, map.str[i]))
 		{
 			ft_dprintf(STDERR_FILENO, ERR_UEXP_CHAR, map.str[i], filename,
 				i / map.width + 1, i % map.width + 1);
