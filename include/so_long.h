@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/26 21:01:03 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/27 12:26:45 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,20 @@ typedef struct s_collect
 	t_pos	pos;
 }			t_collect;
 
+typedef struct s_collects
+{
+	t_collect	*last;
+	t_list		*lst;
+}				t_collects;
+
 typedef struct s_map
 {
-	char	*str;
-	size_t	heigh;
-	size_t	width;
-	t_img	img;
-	t_list	*collects;
-}			t_map;
+	char		*str;
+	size_t		heigh;
+	size_t		width;
+	t_img		img;
+	t_collects	collects;
+}				t_map;
 
 typedef struct s_spr
 {

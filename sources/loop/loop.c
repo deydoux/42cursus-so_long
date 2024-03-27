@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:59 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/26 20:59:09 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/27 12:27:48 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static void	check_collect(t_game game)
 {
 	t_collect	*collect;
 
-	while (game.map.collects)
+	while (game.map.collects.lst)
 	{
-		collect = game.map.collects->content;
+		collect = game.map.collects.lst->content;
 		if (collect->active && collect->pos.x - IMAGE_SIZE < game.pos.x
 			&& game.pos.x < collect->pos.x + IMAGE_SIZE
 			&& collect->pos.y - IMAGE_SIZE < game.pos.y
@@ -27,7 +27,7 @@ static void	check_collect(t_game game)
 			collect->active = false;
 			return ;
 		}
-		game.map.collects = game.map.collects->next;
+		game.map.collects.lst = game.map.collects.lst->next;
 	}
 }
 
@@ -42,7 +42,7 @@ static void	check_exit(t_game game)
 		|| (game.pos.y % IMAGE_SIZE != 0
 			&& game.map.str[i + game.map.width] == 'E'))
 	{
-		collects = game.map.collects;
+		collects = game.map.collects.lst;
 		while (collects)
 		{
 			if (((t_collect *)collects->content)->active)
