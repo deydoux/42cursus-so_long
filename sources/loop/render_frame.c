@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:12:31 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/27 12:28:19 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/27 12:19:31 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static void	render_collects(t_pos map_pos, t_game game)
 	t_collect	collect;
 
 	i++;
-	while (game.map.collects.lst)
+	while (game.map.collects)
 	{
-		collect = *(t_collect *)game.map.collects.lst->content;
+		collect = *(t_collect *)game.map.collects->content;
 		if (collect.active)
 			copy_img(game.spr.c[i / COLLECT_ALT % 2], game.win.frame,
 				collect.pos.x + map_pos.x, collect.pos.y + map_pos.y);
-		game.map.collects.lst = game.map.collects.lst->next;
+		game.map.collects = game.map.collects->next;
 	}
 }
 

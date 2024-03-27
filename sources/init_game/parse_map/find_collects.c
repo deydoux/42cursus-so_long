@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 23:52:06 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/27 12:27:16 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/25 17:59:38 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static bool	new_collect(size_t i, t_map *map)
 	collect->active = true;
 	collect->pos.x = i % map->width * IMAGE_SIZE;
 	collect->pos.y = i / map->width * IMAGE_SIZE;
-	ft_lstadd_back(&map->collects.lst, new);
+	ft_lstadd_back(&map->collects, new);
 	return (false);
 }
 
@@ -50,7 +50,7 @@ bool	find_collects(t_map *map, char *filename)
 		}
 		i++;
 	}
-	if (!map->collects.lst)
+	if (!map->collects)
 	{
 		ft_dprintf(STDERR_FILENO, ERR_NO_CMPN, "collectible", filename);
 		return (true);

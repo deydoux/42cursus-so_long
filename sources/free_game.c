@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:38:19 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/27 12:26:57 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/26 21:04:31 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	free_spr(void *mlx, t_spr spr)
 void	free_game(t_game game)
 {
 	free(game.map.str);
-	ft_lstclear(&game.map.collects.lst, free);
+	ft_lstclear(&game.map.collects, free);
 	if (game.mlx)
 	{
 		if (game.map.img.ptr)
