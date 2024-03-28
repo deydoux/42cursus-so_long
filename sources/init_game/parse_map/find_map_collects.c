@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_collects.c                                    :+:      :+:    :+:   */
+/*   find_map_collects.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 23:52:06 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/25 17:59:38 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/28 12:59:55 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static bool	new_collect(size_t i, t_map *map)
 	return (false);
 }
 
-bool	find_collects(t_map *map, char *filename)
+bool	find_map_collects(t_map *map, char *filename)
 {
 	size_t	i;
 

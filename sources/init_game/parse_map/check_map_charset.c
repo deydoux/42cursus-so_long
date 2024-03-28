@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   check_map_charset.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/06 13:27:32 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/28 13:03:26 by deydoux          ###   ########.fr       */
+/*   Created: 2024/03/28 12:33:52 by deydoux           #+#    #+#             */
+/*   Updated: 2024/03/28 12:34:23 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse_map.h"
 
-bool	parse_map(char *filename, t_map *map)
+bool	check_map_charset(t_map map, char *filename)
 {
-	return (read_map_file(filename, map)
-		|| check_map_size(*map)
-		|| check_map_charset(*map, filename)
-		|| check_map_exit(*map, filename)
-		|| find_map_start(map, filename)
-		|| find_map_collects(map, filename)
-		|| check_map_walls(*map, filename)
-		|| check_map_path(*map, filename));
+	size_t	i;
+
+	i = 0;
+	while (map.str[i])
+	{
+		if (!ft_strchr(MAP_CHARSET, map.str[i]))
+		{
+			ft_dprintf(STDERR_FILENO, ERR_UEXP_CHAR, map.str[i], filename,
+				i / map.width + 1, i % map.width + 1);
+			return (true);
+		}
+		i++;
+	}
+	return (false);
 }

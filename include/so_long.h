@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/27 18:07:22 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/28 12:28:59 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_map
 	size_t	heigh;
 	size_t	width;
 	t_img	img;
+	t_pos	start;
 	t_list	*collects;
 }	t_map;
 

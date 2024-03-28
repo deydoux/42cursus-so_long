@@ -1,26 +1,29 @@
 NAME						=	so_long
 BONUS_NAME					=	so_long_bonus
 
-SOURCES						=	close_win.c									\
-								copy_img.c									\
-								free_game.c									\
-								init_game/init_game.c						\
-								init_game/init_map_img.c					\
-								init_game/open_spr.c						\
-								init_game/parse_map/check_closed_map.c		\
-								init_game/parse_map/check_map_components.c	\
-								init_game/parse_map/check_valid_path.c		\
-								init_game/parse_map/find_collects.c			\
-								init_game/parse_map/parse_map.c				\
-								init_game/parse_map/read_map.c				\
-								init_loop/init_loop.c						\
-								init_loop/key_press.c						\
-								init_loop/key_release.c						\
-								loop/check_move.c							\
-								loop/loop.c									\
-								loop/render_frame.c							\
-								new_img.c									\
-								open_img.c									\
+SOURCES						=	close_win.c								\
+								copy_img.c								\
+								free_game.c								\
+								init_game/init_game.c					\
+								init_game/init_map_img.c				\
+								init_game/open_spr.c					\
+								init_game/parse_map/check_map_charset.c	\
+								init_game/parse_map/check_map_exit.c	\
+								init_game/parse_map/check_map_path.c	\
+								init_game/parse_map/check_map_size.c	\
+								init_game/parse_map/check_map_walls.c	\
+								init_game/parse_map/find_map_collects.c	\
+								init_game/parse_map/find_map_start.c	\
+								init_game/parse_map/parse_map.c			\
+								init_game/parse_map/read_map_file.c		\
+								init_loop/init_loop.c					\
+								init_loop/key_press.c					\
+								init_loop/key_release.c					\
+								loop/check_move.c						\
+								loop/loop.c								\
+								loop/render_frame.c						\
+								new_img.c								\
+								open_img.c								\
 								so_long.c
 
 LIBFT_DIR					=	libft

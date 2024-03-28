@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_closed_map.c                                 :+:      :+:    :+:   */
+/*   check_map_walls.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:58:05 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/24 21:33:47 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/28 12:51:13 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static bool	check_vertical_walls(size_t *i, char *map_str)
 	return (false);
 }
 
-bool	check_closed_map(t_map map, char *filename)
+bool	check_map_walls(t_map map, char *filename)
 {
 	size_t	i;
 

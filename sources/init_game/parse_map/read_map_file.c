@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map.c                                         :+:      :+:    :+:   */
+/*   read_map_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:31:27 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/24 21:37:04 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/28 13:01:10 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static bool	copy_map_str(int fd, size_t size, t_map *map)
 	return (fd == -1);
 }
 
-bool	read_map(char *filename, t_map *map)
+bool	read_map_file(char *filename, t_map *map)
 {
 	int		fd;
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valid_path.c                                 :+:      :+:    :+:   */
+/*   check_map_path.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 22:58:09 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/27 18:41:12 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/28 12:57:03 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	revert_propagation(char *str)
 	}
 }
 
-bool	check_valid_path(t_map map, char *filename)
+bool	check_map_path(t_map map, char *filename)
 {
 	propagate_path(ft_strchr(map.str, 'P') - map.str, map);
 	if (ft_strchr(map.str, 'C') || ft_strchr(map.str, 'E'))

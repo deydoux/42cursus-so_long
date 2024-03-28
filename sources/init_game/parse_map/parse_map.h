@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:56:01 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/27 17:37:27 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/28 13:01:43 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@
 #  define MAP_CHARSET	"01CEP\n"
 # endif
 
-bool	check_closed_map(t_map map, char *filename);
-bool	check_map_components(t_map map, char *filename);
-bool	check_valid_path(t_map map, char *filename);
-bool	find_collects(t_map *map, char *filename);
-bool	read_map(char *filename, t_map *map);
+bool	check_map_charset(t_map map, char *filename);
+bool	check_map_exit(t_map map, char *filename);
+bool	check_map_path(t_map map, char *filename);
+bool	check_map_size(t_map map);
+bool	check_map_walls(t_map map, char *filename);
+bool	find_map_collects(t_map *map, char *filename);
+bool	find_map_start(t_map *map, char *filename);
+bool	read_map_file(char *filename, t_map *map);
 
 #endif
