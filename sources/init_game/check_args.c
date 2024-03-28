@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 13:24:32 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/28 13:12:18 by deydoux          ###   ########.fr       */
+/*   Created: 2024/03/28 13:09:39 by deydoux           #+#    #+#             */
+/*   Updated: 2024/03/28 13:10:00 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_game.h"
 
-bool	init_game(int argc, char **argv, t_game *game)
+bool	check_args(int argc, char **argv)
 {
-	ft_bzero(game, sizeof(*game));
-	if (check_args(argc, argv) || parse_map(argv[1], &game->map))
+	bool	error;
+	size_t	len;
+
+	error = argc != 2;
+	if (!error)
+	{
+		len = ft_strlen(argv[1]);
+		error = len < 4;
+		if (!error)
+			error = ft_strncmp(argv[1] + len - 4, ".ber", 4) != 0;
+	}
+	if (error)
+	{
+		if (argc)
+			ft_dprintf(STDERR_FILENO, ERR_USAGE, argv[0]);
+		else
+			ft_dprintf(STDERR_FILENO, ERR_USAGE, "so_long");
 		return (true);
-	ft_memcpy(&game->pos, &game->map.start, sizeof(game->pos));
-	return (init_mlx(&game->mlx)
-		|| open_spr(game->mlx, &game->spr)
-		|| init_map_img(game->mlx, &game->spr, &game->map)
-		|| new_win(game->mlx, game->map, &game->win));
+	}
+	return (false);
 }

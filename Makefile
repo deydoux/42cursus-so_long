@@ -4,8 +4,11 @@ BONUS_NAME					=	so_long_bonus
 SOURCES						=	close_win.c								\
 								copy_img.c								\
 								free_game.c								\
+								init_game/check_args.c					\
 								init_game/init_game.c					\
 								init_game/init_map_img.c				\
+								init_game/init_mlx.c					\
+								init_game/new_win.c						\
 								init_game/open_spr.c					\
 								init_game/parse_map/check_map_charset.c	\
 								init_game/parse_map/check_map_exit.c	\
