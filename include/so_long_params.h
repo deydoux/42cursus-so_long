@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:52:26 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/26 19:23:34 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/28 13:33:44 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@
 # define MAX_WINDOW_HEIGH	720
 # define MAX_WINDOW_WIDTH	1280
 # define MOV_STR_SIZE		17
-# define TEXT_COLOR			0x000000
+# define TEXT_COLOR			0x111111
 # define WINDOW_TITLE		"so_long"
 #endif
