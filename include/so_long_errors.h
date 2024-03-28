@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:50:34 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/28 14:15:31 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/20 14:12:43 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,5 @@
 # define ERR_OPEN_MAP	"Error\nFailed to open %s map file\n"
 # define ERR_READ_MAP	"Error\nFailed to read %s map file\n"
 # define ERR_UEXP_CHAR	"Error\nUnexpected '%c' character at %s:%u:%u\n"
-# ifdef BONUS
-#  define ERR_USAGE		"Error\nUsage: %s [-h] map_file.ber\n"
-# else
-#  define ERR_USAGE		"Error\nUsage: %s map_file.ber\n"
-# endif
+# define ERR_USAGE		"Error\nUsage: %s map_file.ber\n"
 #endif

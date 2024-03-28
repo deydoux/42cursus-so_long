@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/28 14:47:41 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/28 14:05:35 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ typedef struct s_mov
 
 typedef struct s_game
 {
-	char	hard;
 	void	*mlx;
 	t_map	map;
 	t_spr	spr;

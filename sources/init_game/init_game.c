@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:24:32 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/28 15:16:43 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/28 13:12:18 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 bool	init_game(int argc, char **argv, t_game *game)
 {
 	ft_bzero(game, sizeof(*game));
-	if (check_args(argc, argv, &game->hard)
-		|| parse_map(argv[1 + (game->hard == 1)], &game->map))
+	if (check_args(argc, argv) || parse_map(argv[1], &game->map))
 		return (true);
 	ft_memcpy(&game->pos, &game->map.start, sizeof(game->pos));
 	return (init_mlx(&game->mlx)
