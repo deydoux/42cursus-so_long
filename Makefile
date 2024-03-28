@@ -1,13 +1,13 @@
 NAME						=	so_long
 BONUS_NAME					=	so_long_bonus
 
-SOURCES						=	close_win.c								\
-								copy_img.c								\
+SOURCES						=	copy_img.c								\
 								free_game.c								\
 								init_game/check_args.c					\
 								init_game/init_game.c					\
 								init_game/init_map_img.c				\
 								init_game/init_mlx.c					\
+								init_game/new_img.c						\
 								init_game/new_win.c						\
 								init_game/open_spr.c					\
 								init_game/parse_map/check_map_charset.c	\
@@ -19,6 +19,7 @@ SOURCES						=	close_win.c								\
 								init_game/parse_map/find_map_start.c	\
 								init_game/parse_map/parse_map.c			\
 								init_game/parse_map/read_map_file.c		\
+								init_loop/close_win.c					\
 								init_loop/init_loop.c					\
 								init_loop/key_press.c					\
 								init_loop/key_release.c					\
@@ -29,8 +30,6 @@ SOURCES						=	close_win.c								\
 								init_loop/loop/check_rake.c				\
 								init_loop/loop/loop.c					\
 								init_loop/loop/render_frame.c			\
-								new_img.c								\
-								open_img.c								\
 								so_long.c
 
 LIBFT_DIR					=	libft

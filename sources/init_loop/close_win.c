@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   open_img.c                                         :+:      :+:    :+:   */
+/*   close_win.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 13:03:02 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/20 18:14:24 by deydoux          ###   ########.fr       */
+/*   Created: 2024/01/16 18:53:24 by deydoux           #+#    #+#             */
+/*   Updated: 2024/03/28 13:55:11 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "init_loop.h"
 
-t_img	open_img(void *mlx, char *filename)
+int	close_win(t_game *game)
 {
-	t_img	img;
-
-	img.ptr = mlx_xpm_file_to_image(mlx, filename, &img.width, &img.heigh);
-	if (img.ptr)
-	{
-		img.buffer = mlx_get_data_addr(img.ptr, &img.pixel_bits, &img.line_size,
-				&img.endian);
-	}
-	return (img);
+	ft_putchar_fd('\n', STDOUT_FILENO);
+	mlx_destroy_window(game->mlx, game->win.ptr);
+	mlx_loop_end(game->mlx);
+	free_game(*game);
+	exit(EXIT_SUCCESS);
 }

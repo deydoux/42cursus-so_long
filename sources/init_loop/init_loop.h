@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:55:06 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/27 17:03:13 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/28 13:55:31 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ enum e_keycode
 	esc_keycode = 65307
 };
 
+int	close_win(t_game *game);
 int	key_press(int key, t_game *game);
 int	key_release(int key, t_game *game);
 int	loop(t_game *game);

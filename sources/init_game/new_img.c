@@ -6,11 +6,11 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 13:17:56 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/20 18:13:00 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/28 13:59:46 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "init_game.h"
 
 t_img	new_img(void *mlx, int heigh, int width)
 {

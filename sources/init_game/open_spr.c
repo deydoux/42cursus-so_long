@@ -12,6 +12,19 @@
 
 #include "init_game.h"
 
+static t_img	open_img(void *mlx, char *filename)
+{
+	t_img	img;
+
+	img.ptr = mlx_xpm_file_to_image(mlx, filename, &img.width, &img.heigh);
+	if (img.ptr)
+	{
+		img.buffer = mlx_get_data_addr(img.ptr, &img.pixel_bits, &img.line_size,
+				&img.endian);
+	}
+	return (img);
+}
+
 bool	open_spr(void *mlx, t_spr *spr)
 {
 	const char	*filename[] = {"assets/0.xpm", "assets/1.xpm", "assets/c0.xpm",
