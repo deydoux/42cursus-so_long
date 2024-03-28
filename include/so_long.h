@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/28 17:22:32 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/28 18:18:38 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include "mlx.h"
 # include <errno.h>
 # include <fcntl.h>
+
+# define MOV_STR_SIZE	17
 
 typedef struct s_pos
 {
@@ -65,6 +67,7 @@ typedef struct s_spr
 	t_img	box_l;
 	t_img	box_c;
 	t_img	box_r;
+	t_img	heart;
 }	t_spr;
 
 typedef struct s_win
@@ -91,14 +94,14 @@ typedef struct s_mov
 
 typedef struct s_game
 {
-	void	*mlx;
-	t_map	map;
-	t_spr	spr;
-	t_win	win;
-	t_key	key;
-	t_pos	pos;
-	t_mov	mov;
-	char	health;
+	void			*mlx;
+	t_map			map;
+	t_spr			spr;
+	t_win			win;
+	t_key			key;
+	t_pos			pos;
+	t_mov			mov;
+	unsigned char	health;
 }	t_game;
 
 void	copy_img(t_img src, t_img dst, int x, int y);

@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:12:31 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/27 17:09:31 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/28 18:21:40 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,18 @@ static void	render_box(int x, int y, char *str, t_game game)
 	copy_img(game.spr.box_r, game.win.frame, x, y);
 }
 
+static void	render_hearts(int x, int y, t_game game)
+{
+	unsigned char	i;
+
+	i = 0;
+	while (i++ < game.health)
+	{
+		copy_img(game.spr.heart, game.win.frame, x, y);
+		x += game.spr.heart.width + (HEART_X_OFFSET / 2);
+	}
+}
+
 void	render_frame(t_game game)
 {
 	t_pos	map_pos;
@@ -74,4 +86,5 @@ void	render_frame(t_game game)
 	copy_img(get_player_spr(game), game.win.frame, game.pos.x + map_pos.x,
 		game.pos.y + map_pos.y);
 	render_box(CHAR_WIDTH / 2, CHAR_HEIGH / 2, game.mov.str, game);
+	render_hearts(HEART_X_OFFSET, HEART_Y_OFFSET, game);
 }
