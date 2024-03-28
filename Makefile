@@ -65,12 +65,12 @@ bonus					:	$(BONUS_NAME)
 -include 						$(DEPENDENCIES)
 
 $(LIBFT_DIR)			:
-	$(MAKE) --no-print-directory -C	$@
+	$(MAKE) --no-print-directory -C	$@ > /dev/null
 
 $(LIBFT)				:	$(LIBFT_DIR)
 
 $(MLX_DIR)				:
-	$(MAKE) --no-print-directory -C	$@
+	$(MAKE) --no-print-directory -C	$@ > /dev/null
 
 $(MLX)					:	$(MLX_DIR)
 
