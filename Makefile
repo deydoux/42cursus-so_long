@@ -22,13 +22,13 @@ SOURCES						=	close_win.c								\
 								init_loop/init_loop.c					\
 								init_loop/key_press.c					\
 								init_loop/key_release.c					\
-								loop/check_char_contact.c				\
-								loop/check_collect.c					\
-								loop/check_exit.c						\
-								loop/check_move.c						\
-								loop/check_rake.c						\
-								loop/loop.c								\
-								loop/render_frame.c						\
+								init_loop/loop/check_char_contact.c		\
+								init_loop/loop/check_collect.c			\
+								init_loop/loop/check_exit.c				\
+								init_loop/loop/check_move.c				\
+								init_loop/loop/check_rake.c				\
+								init_loop/loop/loop.c					\
+								init_loop/loop/render_frame.c			\
 								new_img.c								\
 								open_img.c								\
 								so_long.c
