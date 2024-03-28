@@ -56,13 +56,13 @@ LIBFT					=	$(LIBFT_DIR)/libft.a
 MLX						=	$(MLX_DIR)/libmlx.a
 OBJECTS					=	$(addprefix $(BUILD_DIR)/,$(SOURCES:.c=.o))
 BONUS_OBJECTS			=	$(addprefix $(BONUS_BUILD_DIR)/,$(SOURCES:.c=.o))
-DEPENDENCIES			=	$(OBJECTS:.o=.d)
+DEPENDENCIES			=	$(OBJECTS:.o=.d) $(BONUS_OBJECTS:.o=.d)
 
 all						:	$(NAME) bonus
 
 bonus					:	$(BONUS_NAME)
 
--include 						$(DEPENDENCIES)
+-include 					$(DEPENDENCIES)
 
 $(LIBFT_DIR)			:
 	$(MAKE) --no-print-directory -C	$@ > /dev/null
