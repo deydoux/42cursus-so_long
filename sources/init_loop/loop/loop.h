@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 13:57:43 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/28 17:20:21 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/28 17:32:22 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define CHAR_HEIGH		9
 # define CHAR_WIDTH		6
 # define COLLECT_ALT	512
+# define CLEAR_SEQ		"\33[2K\r"
 
 bool	check_char_contact(char c, t_game game);
 void	check_collect(t_game game);

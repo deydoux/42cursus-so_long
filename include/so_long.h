@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/28 14:05:35 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/28 17:22:32 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct s_game
 	t_key	key;
 	t_pos	pos;
 	t_mov	mov;
+	char	health;
 }	t_game;
 
 void	copy_img(t_img src, t_img dst, int x, int y);
