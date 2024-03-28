@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:23:48 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/28 14:05:57 by deydoux          ###   ########.fr       */
+/*   Updated: 2024/03/28 14:49:10 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 # define INIT_GAME_H
 # include "so_long.h"
 
-bool	check_args(int argc, char **argv);
+# ifdef BONUS
+#  define HARD_FLAG	true
+# else
+#  define HARD_FLAG	false
+# endif
+
+bool	check_args(int argc, char **argv, char *hard);
 bool	new_win(void *mlx, t_map map, t_win *win);
 bool	init_map_img(void *mlx, t_spr *spr, t_map *map);
 bool	init_mlx(void **mlx);
