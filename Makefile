@@ -64,22 +64,18 @@ bonus					:	$(BONUS_NAME)
 
 -include 					$(DEPENDENCIES)
 
-$(LIBFT_DIR)			:
-	$(MAKE) --no-print-directory -C	$@ > /dev/null
+$(LIBFT)				:	FORCE
+	$(MAKE) -C	$(LIBFT_DIR) > /dev/null
 
-$(LIBFT)				:	$(LIBFT_DIR)
-
-$(MLX_DIR)				:
-	$(MAKE) --no-print-directory -C	$@ > /dev/null
-
-$(MLX)					:	$(MLX_DIR)
+$(MLX)				:	FORCE
+	$(MAKE) -C	$(MLX_DIR) > /dev/null
 
 $(BONUS_BUILD_DIR)/%.o	:	$(SOURCES_DIR)/%.c
-	@$(MKDIR) -p $(@D)
+	@$(MKDIR) $(@D)
 	$(CC) $(BONUS_CFLAGS) -o $@ -c	$<
 
 $(BUILD_DIR)/%.o		:	$(SOURCES_DIR)/%.c
-	@$(MKDIR) -p $(@D)
+	@$(MKDIR) $(@D)
 	$(CC) $(CFLAGS) -o $@ -c	$<
 
 $(NAME)					:	$(OBJECTS) $(LIBFT) $(MLX)
@@ -89,15 +85,17 @@ $(BONUS_NAME)			:	$(BONUS_OBJECTS) $(LIBFT) $(MLX)
 	$(CC) $(BONUS_CFLAGS) -o $@ $^ $(LFLAGS)
 
 clean					:
-	$(MAKE) --no-print-directory -C	$(LIBFT_DIR) $@
-	$(MAKE) --no-print-directory -C	$(MLX_DIR) $@
+	$(MAKE) -C	$(LIBFT_DIR) $@ > /dev/null
+	$(MAKE) -C	$(MLX_DIR) $@ > /dev/null
 	$(RM) $(BUILD_DIR)
 
 fclean					:
-	$(MAKE) --no-print-directory -C	$(LIBFT_DIR) $@
-	$(MAKE) --no-print-directory -C	$(MLX_DIR) clean
+	$(MAKE) -C	$(LIBFT_DIR) $@ > /dev/null
+	$(MAKE) -C	$(MLX_DIR) clean > /dev/null
 	$(RM) $(BUILD_DIR) $(NAME) $(BONUS_NAME)
 
 re						:	fclean all
 
-.PHONY					:	all bonus clean fclean re $(LIBFT_DIR) $(MLX_DIR)
+FORCE					:
+
+.PHONY					:	all bonus clean fclean re FORCE
