@@ -67,7 +67,7 @@ bonus					:	$(BONUS_NAME)
 $(LIBFT)				:	FORCE
 	$(MAKE) -C	$(LIBFT_DIR) > /dev/null
 
-$(MLX)				:	FORCE
+$(MLX)					:	FORCE
 	$(MAKE) -C	$(MLX_DIR) > /dev/null
 
 $(BONUS_BUILD_DIR)/%.o	:	$(SOURCES_DIR)/%.c
