@@ -48,7 +48,7 @@ X11_DIR					=	/usr/lib
 endif
 
 CC						=	cc
-CFLAGS					=	-I$(INCLUDE_DIR) -I$(MLX_DIR) -MD -Wall -Wextra -Werror -g
+CFLAGS					=	-I$(INCLUDE_DIR) -I$(MLX_DIR) -MD -Wall -Wextra -Werror
 BONUS_CFLAGS			=	$(CFLAGS) -D BONUS
 LFLAGS					=	-L$(X11_DIR) -lX11 -lXext -lm
 RM						=	rm -rf
