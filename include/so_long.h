@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/28 18:18:38 by deydoux          ###   ########.fr       */
+/*   Updated: 2025/01/09 16:25:33 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,30 @@ typedef struct s_map
 	t_list	*collects;
 }	t_map;
 
+typedef struct s_spr_1
+{
+	t_img	blc; // bottom left corner
+	t_img	bm; // bottom middle
+	t_img	brc; // bottom right corner
+	t_img	hl; // horizontal left
+	t_img	hm; // horizontal middle
+	t_img	hr; // horizontal right
+	t_img	i1; // single
+	t_img	m; // middle
+	t_img	ml; // middle left
+	t_img	mr; // middle right
+	t_img	tlc; // top left corner
+	t_img	tm; // top middle
+	t_img	trc; // top right corner
+	t_img	vb; // vertical bottom
+	t_img	vm; // vertical middle
+	t_img	vt; // vertical top
+} t_spr_1;
+
 typedef struct s_spr
 {
-	t_img	tiles[2];
+	t_img	i0;
+	t_spr_1	i1;
 	t_img	c[2];
 	t_img	e;
 	t_img	r;
@@ -106,6 +127,7 @@ typedef struct s_game
 
 void	copy_img(t_img src, t_img dst, int x, int y);
 void	free_game(t_game game);
+void	free_spr_1(void *mlx, t_spr_1 *i1);
 bool	init_game(int argc, char **argv, t_game *game);
 void	init_loop(t_game *game);
 

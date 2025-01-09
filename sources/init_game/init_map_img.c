@@ -6,43 +6,46 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:26:52 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/27 17:30:23 by deydoux          ###   ########.fr       */
+/*   Updated: 2025/01/09 16:53:59 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_game.h"
 
-static t_img	get_tile(char c, t_spr spr)
+static t_img	get_tile(t_map map, size_t x, size_t y, t_spr spr)
 {
-	if (c == '1')
-		return (spr.tiles[1]);
-	if (c == 'R')
+	if (map.str[x + y * map.width] == '1')
+		return (get_tile_1(map, x, y, spr.i1));
+	if (map.str[x + y * map.width] == 'R')
 		return (spr.r);
-	if (c == 'E')
+	if (map.str[x + y * map.width] == 'E')
 		return (spr.e);
-	return (spr.tiles[0]);
+	return (spr.i0);
 }
 
 static bool	copy_tiles(t_spr spr, t_map map)
 {
 	size_t	x;
 	size_t	y;
+	char	*str;
 
 	x = 0;
 	y = 0;
-	while (*map.str)
+	str = map.str;
+	while (*str)
 	{
-		if (*map.str == '\n')
+		if (*str == '\n')
 		{
 			x = 0;
-			y += IMAGE_SIZE;
+			y++;
 		}
 		else
 		{
-			copy_img(get_tile(*map.str, spr), map.img, x, y);
-			x += IMAGE_SIZE;
+			copy_img(get_tile(map, x, y, spr), map.img, x * IMAGE_SIZE,
+				y * IMAGE_SIZE);
+			x++;
 		}
-		map.str++;
+		str++;
 	}
 	return (false);
 }
@@ -51,8 +54,7 @@ static void	free_tiles(void *mlx, t_spr *spr)
 {
 	mlx_destroy_image(mlx, spr->e.ptr);
 	spr->e.ptr = NULL;
-	mlx_destroy_image(mlx, spr->tiles[1].ptr);
-	spr->tiles[1].ptr = NULL;
+	free_spr_1(mlx, &spr->i1);
 }
 
 bool	init_map_img(void *mlx, t_spr *spr, t_map *map)

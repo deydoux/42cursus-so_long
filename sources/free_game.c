@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:38:19 by deydoux           #+#    #+#             */
-/*   Updated: 2024/03/28 17:38:29 by deydoux          ###   ########.fr       */
+/*   Updated: 2025/01/09 16:25:38 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void	free_spr(void *mlx, t_spr spr)
 {
-	const t_img	*img[] = {&spr.tiles[0], &spr.tiles[1], &spr.c[0], &spr.c[1],
-		&spr.e, &spr.r, &spr.player_u[0], &spr.player_u[1], &spr.player_l[0],
-		&spr.player_l[1], &spr.player_d[0], &spr.player_d[1], &spr.player_r[0],
-		&spr.player_r[1], &spr.box_l, &spr.box_c, &spr.box_r, &spr.heart, NULL};
+	const t_img	*img[] = {&spr.i0, &spr.c[0], &spr.c[1], &spr.e, &spr.r,
+		&spr.player_u[0], &spr.player_u[1], &spr.player_l[0], &spr.player_l[1],
+		&spr.player_d[0], &spr.player_d[1], &spr.player_r[0], &spr.player_r[1],
+		&spr.box_l, &spr.box_c, &spr.box_r, &spr.heart, NULL};
 	size_t		i;
 
 	i = 0;
@@ -27,6 +27,7 @@ static void	free_spr(void *mlx, t_spr spr)
 			mlx_destroy_image(mlx, (*img[i]).ptr);
 		i++;
 	}
+	free_spr_1(mlx, &spr.i1);
 }
 
 void	free_game(t_game game)

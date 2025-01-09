@@ -3,7 +3,9 @@ BONUS_NAME				=	so_long_bonus
 
 SOURCES					=	copy_img.c								\
 							free_game.c								\
+							free_spr_1.c							\
 							init_game/check_args.c					\
+							init_game/get_tile_1.c					\
 							init_game/init_game.c					\
 							init_game/init_map_img.c				\
 							init_game/init_mlx.c					\
@@ -46,7 +48,7 @@ X11_DIR					=	/usr/lib
 endif
 
 CC						=	cc
-CFLAGS					=	-I$(INCLUDE_DIR) -I$(MLX_DIR) -MD -Wall -Wextra -Werror
+CFLAGS					=	-I$(INCLUDE_DIR) -I$(MLX_DIR) -MD -Wall -Wextra -Werror -g
 BONUS_CFLAGS			=	$(CFLAGS) -D BONUS
 LFLAGS					=	-L$(X11_DIR) -lX11 -lXext -lm
 RM						=	rm -rf
