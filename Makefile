@@ -67,10 +67,10 @@ bonus					:	$(BONUS_NAME)
 -include 					$(DEPENDENCIES)
 
 $(LIBFT)				:	FORCE
-	$(MAKE) -C	$(LIBFT_DIR) > /dev/null
+	$(MAKE) -C	$(LIBFT_DIR)
 
 $(MLX)					:	FORCE
-	$(MAKE) -C	$(MLX_DIR) > /dev/null
+	$(MAKE) -C	$(MLX_DIR) 2> /dev/null
 
 $(BONUS_BUILD_DIR)/%.o	:	$(SOURCES_DIR)/%.c
 	@$(MKDIR) $(@D)
