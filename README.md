@@ -22,13 +22,14 @@ This project is part of the 42 curriculum and focuses on creating a simple 2D ga
 - The player cannot move through walls
 - Number of movements must be displayed in the shell
 - Must use MinilibX for graphics rendering
+- Valid path to complete the game
 - Map must be constructed with 5+1 components:
-  - Walls (1)
-  - Collectibles (C)
-  - Exit (E)
-  - Starting position (P)
-  - Empty spaces (0)
-  - **Bonus enemy:** Rake (R)
+  - `0` Empty spaces
+  - `1` Walls
+  - `P` Starting position
+  - `C` Collectibles
+  - `E` Exit
+  - `R` Rakes (**Enemies bonus**)
 
 **Map example**
 <img align="right" height="192" width="192" src="https://github.com/user-attachments/assets/842945b4-bff6-4388-ab26-e2df36808b2a">
@@ -77,6 +78,7 @@ make
 
 - [42](https://42.fr/)
 - [MinilibX](https://github.com/42Paris/minilibx-linux)
+- [42 Docs - MinilibX](https://harm-smits.github.io/42docs/libs/minilibx)
 
 ### Sprites
 - [TUNIC GBC by MintFerret](https://mintferret.itch.io/tunicdemake)
