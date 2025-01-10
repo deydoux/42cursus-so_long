@@ -22,7 +22,7 @@ This project is part of the 42 curriculum and focuses on creating a simple 2D ga
 - The player cannot move through walls
 - Number of movements must be displayed in the shell
 - Must use MinilibX for graphics rendering
-- Map must be constructed with 3 components:
+- Map must be constructed with 5+1 components:
   - Walls (1)
   - Collectibles (C)
   - Exit (E)
