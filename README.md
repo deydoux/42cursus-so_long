@@ -30,7 +30,7 @@ This project is part of the 42 curriculum and focuses on creating a simple 2D ga
   - Empty spaces (0)
   - **Bonus enemy:** Rake (R)
 
-**Parsing demonstration**
+**Map example**
 <img align="right" height="192" width="192" src="https://github.com/user-attachments/assets/842945b4-bff6-4388-ab26-e2df36808b2a">
 ```
 11111
