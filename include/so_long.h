@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2025/01/09 16:25:33 by deydoux          ###   ########.fr       */
+/*   Updated: 2025/01/11 18:31:49 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,22 @@ typedef struct s_win
 	t_img	frame;
 }	t_win;
 
+typedef struct s_key_conf
+{
+	char	u;
+	char	l;
+	char	d;
+	char	r;
+}	t_key_conf;
+
 typedef struct s_key
 {
-	bool	u;
-	bool	l;
-	bool	d;
-	bool	r;
-	char	last;
+	bool		u;
+	bool		l;
+	bool		d;
+	bool		r;
+	char		last;
+	t_key_conf	conf;
 }	t_key;
 
 typedef struct s_mov

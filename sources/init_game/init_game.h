@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:23:48 by deydoux           #+#    #+#             */
-/*   Updated: 2025/01/09 16:57:07 by deydoux          ###   ########.fr       */
+/*   Updated: 2025/01/11 18:53:46 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 # define MAX_WINDOW_HEIGH	720
 # define MAX_WINDOW_WIDTH	1280
 
-bool	check_args(int argc, char **argv);
+bool	check_args(int argc, char **argv, char **filename);
 t_img	get_tile_1(t_map map, size_t x, size_t y, t_spr_1 i1);
 bool	new_win(void *mlx, t_map map, t_win *win);
+bool	init_key_conf(int argc, char **argv, t_game *game);
 bool	init_map_img(void *mlx, t_spr *spr, t_map *map);
 bool	init_mlx(void **mlx);
 t_img	new_img(void *mlx, int heigh, int width);

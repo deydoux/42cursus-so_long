@@ -7,6 +7,7 @@ SOURCES					=	copy_img.c								\
 							init_game/check_args.c					\
 							init_game/get_tile_1.c					\
 							init_game/init_game.c					\
+							init_game/init_key_conf.c				\
 							init_game/init_map_img.c				\
 							init_game/init_mlx.c					\
 							init_game/new_img.c						\

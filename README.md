@@ -70,6 +70,7 @@ reboot
 ```bash
 make
 ./so_long_bonus maps/maze10.ber
+./so_long_bonus maps/maze10.ber -k zqsd # AZERTY layout
 ```
 *You can replace `maps/maze10.ber` by any `.ber` file.*
 
