@@ -70,7 +70,7 @@ $(LIBFT)				:	FORCE
 	$(MAKE) -C	$(LIBFT_DIR)
 
 $(MLX)					:	FORCE
-	$(MAKE) -C	$(MLX_DIR) 2> /dev/null
+	$(MAKE) -C	$(MLX_DIR)
 
 $(BONUS_BUILD_DIR)/%.o	:	$(SOURCES_DIR)/%.c
 	@$(MKDIR) $(@D)
@@ -87,13 +87,13 @@ $(BONUS_NAME)			:	$(BONUS_OBJECTS) $(LIBFT) $(MLX)
 	$(CC) $(BONUS_CFLAGS) -o $@ $^ $(LFLAGS)
 
 clean					:
-	$(MAKE) -C	$(LIBFT_DIR) $@ > /dev/null
-	$(MAKE) -C	$(MLX_DIR) $@ > /dev/null
+	$(MAKE) -C	$(LIBFT_DIR) $@
+	$(MAKE) -C	$(MLX_DIR) $@
 	$(RM) $(BUILD_DIR)
 
 fclean					:
-	$(MAKE) -C	$(LIBFT_DIR) $@ > /dev/null
-	$(MAKE) -C	$(MLX_DIR) clean > /dev/null
+	$(MAKE) -C	$(LIBFT_DIR) $@
+	$(MAKE) -C	$(MLX_DIR) clean
 	$(RM) $(BUILD_DIR) $(NAME) $(BONUS_NAME)
 
 re						:	fclean all
