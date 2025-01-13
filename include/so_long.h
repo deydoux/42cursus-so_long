@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:07 by deydoux           #+#    #+#             */
-/*   Updated: 2025/01/11 18:31:49 by deydoux          ###   ########.fr       */
+/*   Updated: 2025/01/13 13:26:50 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct s_spr_1
 	t_img	vb; // vertical bottom
 	t_img	vm; // vertical middle
 	t_img	vt; // vertical top
-} t_spr_1;
+}	t_spr_1;
 
 typedef struct s_spr
 {

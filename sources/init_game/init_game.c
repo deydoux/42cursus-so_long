@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:24:32 by deydoux           #+#    #+#             */
-/*   Updated: 2025/01/11 18:54:11 by deydoux          ###   ########.fr       */
+/*   Updated: 2025/01/13 13:40:30 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 bool	init_game(int argc, char **argv, t_game *game)
 {
-	char	*filename;
-
 	ft_bzero(game, sizeof(*game));
-	if (check_args(argc, argv, &filename) || init_key_conf(argc, argv, game)
-		|| parse_map(filename, &game->map))
+	game->key.conf = (t_key_conf){KEY_UP, KEY_LEFT, KEY_DOWN, KEY_RIGHT};
+	if (handle_args(argc, argv, game))
 		return (true);
 	ft_memcpy(&game->pos, &game->map.start, sizeof(game->pos));
 	game->health = 3;
