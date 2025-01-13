@@ -66,9 +66,13 @@ brew install xquartz
 reboot
 ```
 
-### Build and run
+### Build
 ```bash
 make
+```
+
+### Run
+```bash
 ./so_long_bonus maps/maze10.ber
 ./so_long_bonus maps/maze10.ber -k zqsd # AZERTY layout
 ```
