@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:50:34 by deydoux           #+#    #+#             */
-/*   Updated: 2025/01/13 13:34:34 by deydoux          ###   ########.fr       */
+/*   Updated: 2025/01/13 14:14:33 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@
 # define ERR_READ_MAP	"Error\nFailed to read %s map file\n"
 # define ERR_UEXP_CHAR	"Error\nUnexpected '%c' character at %s:%u:%u\n"
 # define USAGE			"Usage: %s [options]... [map].ber\n\
-  -h, --help\t\tDisplay this help\n\
+  -h, --help\t\tDisplay this help message\n\
   -k, --keys <keys>\tSet keybindings (Default: wasd)\n"
 #endif
