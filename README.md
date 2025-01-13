@@ -55,7 +55,7 @@ This project is part of the 42 curriculum and focuses on creating a simple 2D ga
 
 ## Getting started
 ### Requirements
-**For Linux**
+**For Ubuntu/Debian**
 ```bash
 sudo apt-get install gcc libbsd-dev libxext-dev make xorg
 ```
