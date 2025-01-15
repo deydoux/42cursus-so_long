@@ -78,7 +78,7 @@ make
 ```
 *You can replace `maps/maze10.ber` by any `.ber` file.*
 
-## Credits
+## References
 <img align="right" src="https://github.com/user-attachments/assets/e3a1b843-a0ac-46f7-9cfb-6b7e81369aac">
 
 - [42](https://42.fr/)
